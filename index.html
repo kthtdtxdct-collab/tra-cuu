@@ -49,11 +49,11 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
 <div class="wrap">
 <header><h1>Tra cứu thông tin quy hoạch – phường Nha Trang</h1><p>Nhập toạ độ đỉnh thửa (VN-2000, ghi trên Giấy chứng nhận) để xem thửa đất thuộc đồ án quy hoạch nào, lộ giới, mặt cắt đường, mật độ xây dựng, tầng cao, chiều cao và sơ đồ vị trí. Mọi tính toán chạy ngay trên máy của bạn; số liệu bạn nhập không được gửi đi đâu.</p></header><div class="disc"><b>Thông tin tham khảo.</b> Kết quả tra cứu tự động từ bản vẽ các đồ án quy hoạch đã được phê duyệt, không thay thế văn bản cung cấp thông tin quy hoạch. Để có thông tin chính thức, đề nghị liên hệ UBND phường Nha Trang (nộp hồ sơ đề nghị cung cấp thông tin quy hoạch theo quy định).</div>
 
-<section class="card pv-hide"><h2><span class="step">1</span>Tải Giấy chứng nhận (ảnh hoặc PDF)</h2>
-<div class="drop"><input type="file" id="f" accept="image/*,.pdf" multiple><p>Ảnh chụp hoặc bản quét các trang có mục “Thông tin thửa đất” và “Sơ đồ thửa đất” (bảng toạ độ VN-2000 nếu có). Có thể chọn nhiều ảnh.</p></div>
-<div class="acts"><button class="pri" id="rd">Đọc GCN</button><button class="pri sec" id="manual">Nhập tay</button><button class="pri sec" id="sample">Nạp hồ sơ mẫu (thửa 16, tờ 30)</button><span class="mut" id="rdm"></span></div></section>
+<section class="card"><h2><span class="step">1</span>Tải Giấy chứng nhận (ảnh hoặc PDF)</h2>
+<div class="drop"><input type="file" id="f" accept="image/*,.pdf" multiple><p>Ảnh chụp rõ, thẳng hoặc file PDF các trang có “Thông tin thửa đất” và bảng toạ độ VN-2000. Ảnh được đọc ngay trên máy của bạn, không gửi đi đâu. Lần đầu cần tải bộ đọc chữ (khoảng 5 MB); mỗi trang đọc khoảng 20–60 giây.</p></div>
+<div class="acts"><button class="pri" id="rd">Đọc GCN</button><button class="pri sec" id="manual">Nhập tay</button><button class="pri sec pv-hide" id="sample">Nạp hồ sơ mẫu (thửa 16, tờ 30)</button><span class="mut" id="rdm"></span></div></section>
 
-<section class="card" id="info"><h2><span class="step">1</span>Nhập thông tin thửa đất (theo Giấy chứng nhận)</h2>
+<section class="card" id="info"><h2><span class="step">2</span>Kiểm tra / nhập thông tin thửa đất (theo Giấy chứng nhận)</h2>
 <div class="row"><div><label for="st">Thửa đất số</label><input type="text" id="st"></div><div><label for="sto">Tờ bản đồ số</label><input type="text" id="sto"></div><div><label for="md">Mục đích sử dụng</label><input type="text" id="md"></div></div>
 <label for="dc">Địa chỉ thửa đất</label><input type="text" id="dc">
 <div class="row pv-hide"><div><label for="ten">Cấp cho (người sử dụng đất)</label><input type="text" id="ten" placeholder="ông/bà ..."></div><div><label for="dclh">Địa chỉ liên hệ</label><input type="text" id="dclh"></div></div>
@@ -74,7 +74,7 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
 <div class="banner" id="banner"></div>
 <div id="warns"></div>
 <div class="grid2">
- <section class="card"><h2><span class="step">2</span>Thông tin quy hoạch thửa đất (tham khảo)</h2><div class="kpis" id="kpis"></div><div class="tw"><table id="tbl"></table></div></section>
+ <section class="card"><h2><span class="step">3</span>Thông tin quy hoạch thửa đất (tham khảo)</h2><div class="kpis" id="kpis"></div><div class="tw"><table id="tbl"></table></div></section>
  <section class="card"><h2>Vị trí thửa đất</h2>
   <div class="tw"><table class="ct" id="ctab"></table></div>
   <p class="mut" id="wgs"></p>
@@ -93,6 +93,133 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@4.2.1/dist/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/svg2pdf.js@2.8.1/dist/svg2pdf.umd.min.js"></script>
 <script>var PUBLIC=true;</script>
+<script>/* Đọc GCN bằng OCR ngay trên trình duyệt (Tesseract.js) cho trang công khai: ảnh không gửi đi đâu.
+   Hai lượt: (A) đọc cả trang bằng tiếng Việt để lấy số thửa, tờ, địa chỉ và tìm vị trí bảng toạ độ;
+             (B) cắt riêng bảng toạ độ, phóng to, đọc lại chỉ với chữ số.
+   QHOcr.read(canvases, onProgress) -> {so_thua, so_to, dia_chi, coords:[{id,x,y}], checks:[...]} */
+(function (root) {
+  'use strict';
+  const CDN = 'https://cdn.jsdelivr.net/npm/@tesseract.js-data/';
+
+  // ---------------- chuẩn hoá số ----------------
+  function digits(s) { return String(s).replace(/[^\d.,]/g, ''); }
+  function coordNum(tok, kind) {           // kind 'x' (~1 3xx xxx,xx) | 'y' (~5xx xxx - 6xx xxx,xx)
+    let s = digits(tok).replace(/,/g, '.');
+    const parts = s.split('.'); let ip = parts[0], dp = parts.slice(1).join('');
+    if (kind === 'x') {
+      if (!/^13\d/.test(ip)) return null;
+      if (!dp && ip.length >= 9) { dp = ip.slice(7); ip = ip.slice(0, 7); }      // mất dấu chấm: 135415110 -> 1354151.10
+      if (ip.length !== 7) return null;
+    } else {
+      if (!/^[56]\d/.test(ip)) return null;
+      if (!dp && ip.length >= 8) { dp = ip.slice(6); ip = ip.slice(0, 6); }
+      if (ip.length !== 6) return null;
+    }
+    const v = parseFloat(ip + '.' + (dp || '0').slice(0, 3));
+    return isFinite(v) ? v : null;
+  }
+  function edgeNum(tok) {
+    const s = digits(tok).replace(/,/g, '.');
+    if (!s) return null;
+    let v = parseFloat(s);
+    if (!s.includes('.') && /^\d{3,4}$/.test(s)) v = v / 100;                  // 467 -> 4.67
+    return isFinite(v) && v > 0 && v < 1000 ? v : null;
+  }
+
+  // ---------------- bảng toạ độ (lượt B) ----------------
+  function parseTable(text) {
+    const rows = [];
+    for (const raw of text.split(/\n/)) {
+      const toks = raw.replace(/(?<=\d)[)|lI\]!](?=\d)/g, '1').replace(/[|()\[\]{}]/g, ' ').trim().split(/\s+/).filter(Boolean);
+      const merged = [];   // ghép số bị tách bởi khoảng trắng: "1354 151.10"
+      for (let i = 0; i < toks.length; i++) {
+        const a = toks[i], b = toks[i + 1];
+        if (b && /^\d{3,4}$/.test(digits(a)) && /^\d{3}[.,]\d{1,3}$/.test(digits(b))) { merged.push(a + b); i++; } else merged.push(a);
+      }
+      let xi = merged.findIndex(t => coordNum(t, 'x') !== null);
+      if (xi < 0) continue;
+      const yi = merged.findIndex((t, k) => k > xi && coordNum(t, 'y') !== null);
+      if (yi < 0) continue;
+      const id = xi > 0 && /^\d{1,3}$/.test(digits(merged[xi - 1])) ? digits(merged[xi - 1]) : '';
+      const e = merged.slice(yi + 1).map(edgeNum).find(v => v !== null);
+      rows.push({ id, x: coordNum(merged[xi], 'x'), y: coordNum(merged[yi], 'y'), edge: e ?? null });
+    }
+    // bỏ dòng lặp điểm đầu ở cuối bảng
+    if (rows.length > 3) { const a = rows[0], b = rows[rows.length - 1]; if (Math.abs(a.x - b.x) < 0.02 && Math.abs(a.y - b.y) < 0.02) rows.pop(); }
+    rows.forEach((r, i) => { if (!r.id) r.id = String(i + 1); });
+    return rows;
+  }
+
+  // đối chiếu cột "cạnh" (nếu đọc được) với khoảng cách tính từ toạ độ
+  function checkEdges(rows) {
+    const n = rows.length; if (n < 3) return [];
+    const d = (i, j) => Math.hypot(rows[i].x - rows[j].x, rows[i].y - rows[j].y);
+    let prev = 0, next = 0;   // cạnh ghi ở dòng k là k-1→k hay k→k+1
+    rows.forEach((r, k) => { if (r.edge == null) return; if (Math.abs(d((k - 1 + n) % n, k) - r.edge) < 0.06) prev++; if (Math.abs(d(k, (k + 1) % n) - r.edge) < 0.06) next++; });
+    const usePrev = prev >= next, bad = [];
+    rows.forEach((r, k) => {
+      if (r.edge == null) return;
+      const j = usePrev ? (k - 1 + n) % n : (k + 1) % n, dd = d(k, j);
+      if (Math.abs(dd - r.edge) > 0.06) bad.push(`điểm ${r.id}: cạnh ${rows[usePrev ? j : k].id}-${rows[usePrev ? k : j].id} theo GCN ${r.edge.toFixed(2)} m, tính từ toạ độ ${dd.toFixed(2)} m`);
+    });
+    return bad;
+  }
+
+  // ---------------- thông tin thửa (lượt A) ----------------
+  function pick(text, re) { const m = text.match(re); return m ? m[1].trim() : null; }
+  function parseInfo(text) {
+    const t = text.replace(/\r/g, '');
+    return {
+      so_thua: pick(t, /th[^\s\d]{0,2}a\s*đ[^\s\d]{0,2}t\s*s[^\s\d:]{0,2}\s*[:.]?\s*(\d{1,5})/i),
+      so_to: pick(t, /t[^\s\d]{0,2}\s*b[^\s\d]{0,2}n\s*đ[^\s\d]{0,2}\s*s[^\s\d:]{0,2}\s*[:.]?\s*(\d{1,4})/i),
+      dia_chi: pick(t, /đ[ịi]a\s*ch[^\s]{0,2}\s*(?:th[^\s]{0,2}a\s*đ[^\s]{0,2}t)?\s*[:/.]\s*([^\n]{5,140})/i),
+    };
+  }
+
+  // ---------------- ảnh ----------------
+  function crop(cv, x0, y0, x1, y1, scale) {
+    x0 = Math.max(0, Math.floor(x0)); y0 = Math.max(0, Math.floor(y0)); x1 = Math.min(cv.width, Math.ceil(x1)); y1 = Math.min(cv.height, Math.ceil(y1));
+    const c = document.createElement('canvas'); c.width = Math.round((x1 - x0) * scale); c.height = Math.round((y1 - y0) * scale);
+    const g = c.getContext('2d'); g.imageSmoothingQuality = 'high'; g.filter = 'grayscale(1) contrast(1.4)';
+    g.drawImage(cv, x0, y0, x1 - x0, y1 - y0, 0, 0, c.width, c.height); return c;
+  }
+  function upscale(cv, minW) { if (cv.width >= minW) return cv; return crop(cv, 0, 0, cv.width, cv.height, minW / cv.width); }
+
+  async function read(canvases, onProgress) {
+    const T = root.Tesseract; if (!T) throw new Error('Chưa tải được bộ đọc ảnh (Tesseract).');
+    const prog = (s, p) => onProgress && onProgress(s, p);
+    prog('Đang tải bộ đọc chữ tiếng Việt…', 0);
+    const wv = await T.createWorker('vie', 1, { langPath: CDN + 'vie/4.0.0_best_int', logger: m => m.status === 'recognizing text' && prog(null, m.progress) });
+    const we = await T.createWorker('eng', 1, { langPath: CDN + 'eng/4.0.0_best_int' });
+    try {
+      await we.setParameters({ tessedit_char_whitelist: '0123456789.,|() ', preserve_interword_spaces: '1', tessedit_pageseg_mode: '6' });
+      let info = {}, rows = [];
+      for (let i = 0; i < canvases.length; i++) {
+        const cv = upscale(canvases[i], 2400);
+        prog(`Đang đọc trang ${i + 1}/${canvases.length}…`, 0);
+        const A = await wv.recognize(cv, {}, { text: true, blocks: true });
+        const inf = parseInfo(A.data.text);
+        for (const k in inf) if (inf[k] && !info[k]) info[k] = inf[k];
+        // vị trí bảng toạ độ: các từ giống X (13xxxxx…)
+        const words = []; for (const b of A.data.blocks || []) for (const p of b.paragraphs || []) for (const l of p.lines || []) for (const w of l.words || []) words.push(w);
+        const xw = words.filter(w => /^1\s?3\d{2}/.test(digits(w.text)) && digits(w.text).replace(/[.,]/g, '').length >= 7);
+        if (xw.length < 2) continue;
+        const x0 = Math.min(...xw.map(w => w.bbox.x0)), x1 = Math.max(...xw.map(w => w.bbox.x1)), y0 = Math.min(...xw.map(w => w.bbox.y0)), y1 = Math.max(...xw.map(w => w.bbox.y1));
+        const wX = x1 - x0, lh = Math.max(...xw.map(w => w.bbox.y1 - w.bbox.y0));
+        const tab = crop(cv, x0 - wX * 0.45, y0 - lh * 1.2, x1 + wX * 2.4, y1 + lh * 1.2, Math.max(1.5, 60 / lh));
+        prog(`Đang đọc bảng toạ độ trang ${i + 1}…`, 0);
+        const B = await we.recognize(tab);
+        const r = parseTable(B.data.text);
+        if (r.length > rows.length) rows = r;
+      }
+      const checks = checkEdges(rows);
+      return Object.assign(info, { coords: rows.map(r => ({ id: r.id, x: r.x, y: r.y })), checks });
+    } finally { await wv.terminate(); await we.terminate(); }
+  }
+
+  root.QHOcr = { read, parseTable, parseInfo, checkEdges, coordNum };
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+</script>
 <script>/* Lõi tính thông tin quy hoạch nhà ở riêng lẻ - phường Nha Trang (bản JavaScript, chuyển từ engine.py).
    Toạ độ trong code: (E, N) = (Y, X) VN-2000 Khánh Hòa; GCN ghi X (bắc), Y (đông).
    Cần globalThis.jsts. Xuất globalThis.QH = {DB, fmt, num, geo helpers}. */
@@ -1425,16 +1552,27 @@ muc_dich (string: loại đất, ví dụ 'Đất ở tại đô thị'),
 coords: [{"id":"1","x":number,"y":number}] theo bảng toạ độ VN-2000 (X ~ 1.3xx.xxx là cột X, Y ~ 60x.xxx là cột Y), giữ nguyên thứ tự số hiệu đỉnh, không lặp lại điểm cuối trùng điểm đầu; nếu không có bảng toạ độ thì [].
 Số thập phân dùng dấu chấm. Trường không có thì để null. Không đoán số liệu. Đọc kỹ từng chữ số của toạ độ.`;
 function loadScript(src){return new Promise((ok,no)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=()=>no(new Error('Không tải được thư viện đọc PDF'));document.head.appendChild(s)})}
-async function pdfImages(file){const W='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/';
+async function pdfImages(file,sc){const W='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/';
  if(!window.pdfjsLib){await loadScript(W+'pdf.worker.min.js');await loadScript(W+'pdf.min.js');window.pdfjsLib.GlobalWorkerOptions.workerSrc=W+'pdf.worker.min.js'}
  const pdf=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise,out=[];
- for(let i=1;i<=Math.min(pdf.numPages,4);i++){const pg=await pdf.getPage(i),vp=pg.getViewport({scale:2.2}),cv=document.createElement('canvas');cv.width=vp.width;cv.height=vp.height;
+ for(let i=1;i<=Math.min(pdf.numPages,4);i++){const pg=await pdf.getPage(i),vp=pg.getViewport({scale:sc||2.2}),cv=document.createElement('canvas');cv.width=vp.width;cv.height=vp.height;
   await pg.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;out.push(cv)}return out}
 async function fileCanvas(file){const url=URL.createObjectURL(file);try{const im=new Image();im.src=url;await im.decode();const cv=document.createElement('canvas');cv.width=im.naturalWidth;cv.height=im.naturalHeight;cv.getContext('2d').drawImage(im,0,0);return cv}finally{URL.revokeObjectURL(url)}}
 /* mỗi trang: ảnh toàn trang + 2 nửa trên/dưới (để số toạ độ rõ hơn sau khi Claude thu nhỏ ảnh) */
 function pieces(cv){const toB=c=>new Promise(r=>c.toBlob(r,'image/jpeg',0.9));const out=[toB(cv)];const h=cv.height,w=cv.width;
  for(const [y0,y1] of [[0,0.55],[0.45,1]]){const c=document.createElement('canvas');c.width=w;c.height=Math.round(h*(y1-y0));c.getContext('2d').drawImage(cv,0,-Math.round(h*y0));out.push(toB(c))}return out}
+async function ocrRead(fs){busy('rdm','Đang chuẩn bị ảnh…');$('rd').disabled=true;
+ try{if(!window.Tesseract)await loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js');
+  let cvs=[];for(const f of fs){if(/pdf$/i.test(f.type)||/\.pdf$/i.test(f.name))cvs=cvs.concat(await pdfImages(f,4.2));else cvs.push(await fileCanvas(f))}
+  const j=await QHOcr.read(cvs,(s,p)=>{if(s)busy('rdm',s);else if(p!=null){const t=$('rdm').textContent.replace(/ \d+%…?$/,'').replace(/…$/,'');busy('rdm',t+' '+Math.round(p*100)+'%…')}});
+  fillForm({so_thua:j.so_thua||'',so_to:j.so_to||'',dia_chi:j.dia_chi||'',coords:j.coords,muc_dich:'Đất ở tại đô thị'});
+  $('rdm').classList.remove('busy');
+  const n=(j.coords||[]).length;
+  $('rdm').innerHTML=(n?'Đã đọc '+n+' điểm toạ độ.':'Không tìm thấy bảng toạ độ trong ảnh: nhập toạ độ bằng tay.')+' <b>Máy đọc ảnh có thể sai: đối chiếu từng số với GCN trước khi tra cứu.</b>'+((j.checks||[]).length?'<br>Cần kiểm tra: '+j.checks.map(esc).join('; '):'')}
+ catch(e){console.error(e);$('rdm').classList.remove('busy');$('rdm').textContent='Không đọc được ảnh: '+(e&&e.message||e)+'. Nhập số liệu bằng tay.';$('info').hidden=false}
+ finally{$('rd').disabled=false}}
 $('rd').onclick=async()=>{const fs=[...$('f').files];if(!fs.length){$('rdm').textContent='Chọn file GCN trước.';return}
+ if(PUBLIC||!window.claude)return ocrRead(fs);
  const sample=await window.claude?.use?.('sample');if(!sample){$('rdm').textContent='Trang chỉ đọc được GCN khi mở trong Claude. Bấm “Nhập tay” để nhập số liệu.';return}
  busy('rdm','Đang chuẩn bị ảnh…');$('rd').disabled=true;
  try{let cvs=[];for(const f of fs){if(/pdf$/i.test(f.type)||/\.pdf$/i.test(f.name))cvs=cvs.concat(await pdfImages(f));else cvs.push(await fileCanvas(f))}
