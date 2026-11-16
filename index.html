@@ -1,0 +1,1530 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><title>Thông tin quy hoạch phường Nha Trang</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Tinos:ital,wght@0,400;0,700;1,400&family=Arimo:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Bố cục: một cột theo đúng quy trình hồ sơ - 1 tải GCN, 2 kiểm tra số liệu, 3 kết quả (thông tin QH, vị trí, sơ đồ A4, văn bản) */
+:root{--bg:#f1f4f6;--card:#fff;--ink:#14202b;--mut:#566777;--pri:#0b5c86;--pri-ink:#fff;--ln:#d3dce4;--soft:#e9f1f6;--warn-bg:#fff3d1;--warn-ink:#634600;--q-bg:#e8f0ff;--q-ink:#1d3c7a;--ok:#16794a;
+--font:'Be Vietnam Pro',system-ui,'Segoe UI',Arial,sans-serif;--doc:'Tinos','Times New Roman',Times,serif}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f151b;--card:#18222b;--ink:#e6ecf2;--mut:#9cadbd;--pri:#5cb0e6;--pri-ink:#06202f;--ln:#2b3a47;--soft:#1e2c38;--warn-bg:#3a2f0e;--warn-ink:#f0d68a;--q-bg:#1b2a46;--q-ink:#b9cdf5;--ok:#5fd19a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f151b;--card:#18222b;--ink:#e6ecf2;--mut:#9cadbd;--pri:#5cb0e6;--pri-ink:#06202f;--ln:#2b3a47;--soft:#1e2c38;--warn-bg:#3a2f0e;--warn-ink:#f0d68a;--q-bg:#1b2a46;--q-ink:#b9cdf5;--ok:#5fd19a;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--font);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 40px}
+.wrap{max-width:1180px;margin:0 auto}
+header{padding-block:22px 14px}
+header h1{margin:0;font-size:24px;font-weight:700;text-wrap:balance}header p{margin:4px 0 0;color:var(--mut);font-size:14px;max-width:78ch}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:10px;padding:16px;margin-bottom:14px;min-width:0}
+h2{font-size:16px;margin:0 0 12px;font-weight:600;text-wrap:balance}.step{display:inline-block;background:var(--pri);color:var(--pri-ink);border-radius:50%;width:22px;height:22px;text-align:center;line-height:22px;font-size:13px;margin-right:8px}
+h3.sub{font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);margin:16px 0 4px;font-weight:600}
+.grid2{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:14px}@media(max-width:860px){.grid2{grid-template-columns:minmax(0,1fr)}}
+.drop{border:2px dashed var(--ln);border-radius:10px;padding:20px 14px;text-align:center;background:var(--soft)}
+.drop input{max-width:100%}.drop p{margin:6px 0 0;color:var(--mut);font-size:13px}
+label{display:block;font-size:12.5px;color:var(--mut);margin:10px 0 3px}
+input[type=text],input[type=number],textarea{width:100%;font:inherit;padding:8px 10px;border:1px solid var(--ln);border-radius:6px;background:var(--card);color:var(--ink)}
+textarea{height:120px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0 10px}
+.acts{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+button.pri,a.btn{font:inherit;font-weight:600;background:var(--pri);color:var(--pri-ink);border:1px solid var(--pri);border-radius:7px;padding:8px 15px;cursor:pointer;text-decoration:none;display:inline-block}
+button.sec,a.btn.sec{background:transparent;color:var(--pri)}
+button:disabled{opacity:.5;cursor:default}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--pri);outline-offset:2px}
+.banner{background:var(--pri);color:var(--pri-ink);border-radius:10px;padding:14px 16px;margin-bottom:14px}.banner b{font-size:17px;display:block;text-wrap:balance}.banner div{font-size:14px;opacity:.95;margin-top:4px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px;margin-bottom:12px}
+.kpis div{border:1px solid var(--ln);border-radius:8px;padding:8px 10px;background:var(--soft)}.kpis b{display:block;font-size:19px;font-variant-numeric:tabular-nums}.kpis span{font-size:12px;color:var(--mut)}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:7px 8px;border-bottom:1px solid var(--ln);text-align:left;vertical-align:top}th{color:var(--mut);font-weight:500;width:36%}
+td{font-variant-numeric:tabular-nums}
+table.ct th,table.ct td{width:auto;text-align:right;font-family:ui-monospace,Consolas,monospace;font-size:13px;padding:4px 8px}table.ct th:first-child,table.ct td:first-child{text-align:center}
+.note{border-radius:7px;padding:8px 11px;margin:8px 0;font-size:13.5px;background:var(--warn-bg);color:var(--warn-ink)}.note.q{background:var(--q-bg);color:var(--q-ink)}.note.ok{background:var(--soft);color:var(--ink)}
+.dgw{overflow-x:auto;border:1px solid var(--ln);border-radius:6px;background:#fff}.dgw svg{display:block;width:100%;height:auto;min-width:640px}.mut{color:var(--mut);font-size:13px}
+.paper{font-family:var(--doc);font-size:15.5px;line-height:1.42;background:#fff;color:#111;border:1px solid var(--ln);padding:26px 30px 26px 44px;max-width:760px;margin:0 auto;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.paper p{margin:0 0 3px;text-align:justify;text-indent:1cm}.paper p.c{text-align:center;text-indent:0}.paper .hd,.paper .sg{display:grid;grid-template-columns:1fr 1.5fr;text-align:center;font-size:13.5px;margin-bottom:10px;gap:8px}.paper .hd b{display:block}.paper .sg{margin-top:14px;text-align:left;font-size:12.5px;white-space:pre-line}.paper .sg div+div{text-align:center;font-weight:700;font-size:13.5px}
+@media(max-width:560px){.paper{padding:16px 14px}}
+.cands{display:grid;gap:6px;margin-top:8px}.cands button{text-align:left}
+ul.plans{margin:6px 0 0;padding-left:18px;font-size:13px;color:var(--mut);columns:2 320px}
+.busy::after{content:"";display:inline-block;width:12px;height:12px;margin-left:8px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sp 0.8s linear infinite;vertical-align:-2px}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.busy::after{animation:none}}
+</style>
+<style>.pv-hide{display:none!important}.disc{background:var(--warn-bg);color:var(--warn-ink);border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:14px}
+footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
+<div class="wrap">
+<header><h1>Tra cứu thông tin quy hoạch – phường Nha Trang</h1><p>Nhập toạ độ đỉnh thửa (VN-2000, ghi trên Giấy chứng nhận) để xem thửa đất thuộc đồ án quy hoạch nào, lộ giới, mặt cắt đường, mật độ xây dựng, tầng cao, chiều cao và sơ đồ vị trí. Mọi tính toán chạy ngay trên máy của bạn; số liệu bạn nhập không được gửi đi đâu.</p></header><div class="disc"><b>Thông tin tham khảo.</b> Kết quả tra cứu tự động từ bản vẽ các đồ án quy hoạch đã được phê duyệt, không thay thế văn bản cung cấp thông tin quy hoạch. Để có thông tin chính thức, đề nghị liên hệ UBND phường Nha Trang (nộp hồ sơ đề nghị cung cấp thông tin quy hoạch theo quy định).</div>
+
+<section class="card pv-hide"><h2><span class="step">1</span>Tải Giấy chứng nhận (ảnh hoặc PDF)</h2>
+<div class="drop"><input type="file" id="f" accept="image/*,.pdf" multiple><p>Ảnh chụp hoặc bản quét các trang có mục “Thông tin thửa đất” và “Sơ đồ thửa đất” (bảng toạ độ VN-2000 nếu có). Có thể chọn nhiều ảnh.</p></div>
+<div class="acts"><button class="pri" id="rd">Đọc GCN</button><button class="pri sec" id="manual">Nhập tay</button><button class="pri sec" id="sample">Nạp hồ sơ mẫu (thửa 16, tờ 30)</button><span class="mut" id="rdm"></span></div></section>
+
+<section class="card" id="info"><h2><span class="step">1</span>Nhập thông tin thửa đất (theo Giấy chứng nhận)</h2>
+<div class="row"><div><label for="st">Thửa đất số</label><input type="text" id="st"></div><div><label for="sto">Tờ bản đồ số</label><input type="text" id="sto"></div><div><label for="md">Mục đích sử dụng</label><input type="text" id="md"></div></div>
+<label for="dc">Địa chỉ thửa đất</label><input type="text" id="dc">
+<div class="row pv-hide"><div><label for="ten">Cấp cho (người sử dụng đất)</label><input type="text" id="ten" placeholder="ông/bà ..."></div><div><label for="dclh">Địa chỉ liên hệ</label><input type="text" id="dclh"></div></div>
+<h3 class="sub">Diện tích theo GCN</h3>
+<div class="row"><div><label for="dtt">Tổng diện tích thửa (m²)</label><input type="number" step="0.01" id="dtt"></div><div><label for="dt">Diện tích được cấp / công nhận (m²)</label><input type="number" step="0.01" id="dt"></div>
+<div><label for="qg">Trong đó thuộc QH giao thông (m²)</label><input type="number" step="0.01" id="qg"></div><div><label for="kc">Không được công nhận (m²)</label><input type="number" step="0.01" id="kc"></div></div>
+<h3 class="sub">Đường tiếp giáp ghi trên GCN</h3>
+<div class="row"><div><label for="rn">Tên đường</label><input type="text" id="rn"></div><div><label for="rq">Lộ giới ghi trên GCN (m)</label><input type="number" step="0.1" id="rq"></div><div><label for="rh">Bề rộng hiện trạng (m)</label><input type="number" step="0.1" id="rh"></div></div>
+<p class="mut">Lộ giới luôn lấy theo đồ án quy hoạch; số trên GCN chỉ để đối chiếu.</p>
+<h3 class="sub pv-hide">Hồ sơ tiếp nhận</h3>
+<div class="row pv-hide"><div><label for="nd">Ngày đơn đề nghị</label><input type="text" id="nd" placeholder="22/10/2026"></div><div><label for="cb">Chuyên viên kiểm tra</label><input type="text" id="cb"></div></div>
+<label for="co">Toạ độ đỉnh thửa VN-2000 (mỗi dòng: số hiệu X Y). Ví dụ: 1 1354151.10 601723.28. Giấy chứng nhận chưa có toạ độ thì đề nghị liên hệ UBND phường.</label><textarea id="co"></textarea>
+<div class="mut" id="coinfo"></div>
+<div class="acts"><button class="pri" id="go">Tra cứu quy hoạch</button><button class="pri sec pv-hide" id="fd">Tìm thửa trên bản đồ địa chính</button><span class="mut" id="gom"></span></div>
+<div class="cands" id="cands"></div></section>
+
+<div id="out" hidden>
+<div class="banner" id="banner"></div>
+<div id="warns"></div>
+<div class="grid2">
+ <section class="card"><h2><span class="step">2</span>Thông tin quy hoạch thửa đất (tham khảo)</h2><div class="kpis" id="kpis"></div><div class="tw"><table id="tbl"></table></div></section>
+ <section class="card"><h2>Vị trí thửa đất</h2>
+  <div class="tw"><table class="ct" id="ctab"></table></div>
+  <p class="mut" id="wgs"></p>
+  <div class="acts"><a class="btn" id="gm" target="_blank" rel="noopener">Mở Google Maps (vệ tinh)</a><button class="pri sec" id="kml">Tải KMZ (Google Earth / My Maps)</button></div>
+  <p class="mut">Google My Maps: mở google.com/maps/d, tạo bản đồ mới, chọn “Nhập” rồi chọn file KML để thấy ranh thửa và chỉ giới đường đỏ trên ảnh vệ tinh. Có thể mở trực tiếp file KMZ bằng Google Earth.</p></section>
+</div>
+<section class="card"><h2>Sơ đồ vị trí thửa đất (A4, tham khảo)</h2><div class="dgw" id="dg"></div><div class="acts"><button class="pri" id="pdf">Tải sơ đồ PDF</button><span class="mut" id="dlm"></span></div></section>
+<section class="card pv-hide"><h2>Văn bản cung cấp thông tin quy hoạch</h2><div class="paper" id="paper"></div><div class="acts"><button class="pri" id="dx">Tải văn bản Word</button><span class="mut">Theo mẫu của UBND phường (A4, Times New Roman 14), chừa trống tên người ký.</span></div></section>
+</div>
+<section class="card"><h2>Phạm vi dữ liệu</h2><p class="mut">Đồ án đã nạp (đọc từ bản vẽ .dxf). Thửa thuộc quy hoạch chi tiết thì áp dụng QHCT; khu vực chỉ có quy hoạch phân khu thì áp dụng Quy chế quản lý kiến trúc (QĐ 1559/QĐ-UBND, Phụ lục 11). Cốt xây dựng = cốt tim đường quy hoạch giao thông + 0,2 m.</p><ul class="plans" id="plans"></ul></section>
+</div>
+<footer>Dữ liệu: bản vẽ các đồ án quy hoạch đã được phê duyệt trên địa bàn phường Nha Trang; mặt cắt đường theo Quy định quản lý của đồ án. Trang tham khảo, không phải cổng thông tin chính thức.</footer>
+<script src="https://cdn.jsdelivr.net/npm/jsts@2.12.1/dist/jsts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/proj4@2.15.0/dist/proj4.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@4.2.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/svg2pdf.js@2.8.1/dist/svg2pdf.umd.min.js"></script>
+<script>var PUBLIC=true;</script>
+<script>/* Lõi tính thông tin quy hoạch nhà ở riêng lẻ - phường Nha Trang (bản JavaScript, chuyển từ engine.py).
+   Toạ độ trong code: (E, N) = (Y, X) VN-2000 Khánh Hòa; GCN ghi X (bắc), Y (đông).
+   Cần globalThis.jsts. Xuất globalThis.QH = {DB, fmt, num, geo helpers}. */
+(function (root) {
+'use strict';
+const J = root.jsts;
+const RD = new J.io.GeoJSONReader();
+const BP = J.operation.buffer.BufferParameters;
+const LIL = J.linearref.LengthIndexedLine;
+const TOL_AREA = 0.3;
+const MDXD_TABLE = [[90, 100.0], [100, 90.0], [200, 70.0], [300, 60.0], [500, 50.0], [1000, 40.0]];
+const ROAD_CS = {"816":{"trần phú":[{"lg":26.0,"vh":8.0,"md":16.0,"pc":2.0,"tu":"Yersin","den":"Hoàng Diệu"}],"lê thánh tôn":[{"lg":25.0,"vh":8.0,"md":17.0,"pc":0,"tu":"Trần Phú","den":"Lý Thánh Tôn"}],"86 trần phú":[{"lg":35.0,"vh":10.0,"md":23.0,"pc":2.0,"tu":"Trần Phú","den":"Hẻm Nguyễn Thiện Thuật"}],"hoàng hoa thám":[{"lg":20.0,"vh":8.0,"md":12.0,"pc":0,"tu":"Yersin","den":"Lê Thánh Tôn"}],"ngô gia tự":[{"lg":20.0,"vh":8.0,"md":12.0,"pc":0,"tu":"Lê Thánh Tôn","den":"Trần Nhật Duật"}],"nguyễn trãi":[{"lg":20.0,"vh":8.0,"md":12.0,"pc":0,"tu":"Lê Thánh Tôn","den":"Trần Nhật Duật"}],"nguyễn chánh":[{"lg":20.0,"vh":8.0,"md":12.0,"pc":0,"tu":"Trần Phú","den":"Lê Thánh Tôn"}],"lý thánh tôn":[{"lg":20.0,"vh":8.0,"md":12.0,"pc":0,"tu":"Yersin","den":"Lê Thánh Tôn"}],"yersin":[{"lg":20.0,"vh":8.0,"md":12.0,"pc":0,"tu":"Nguyễn Trãi","den":"Trần Phú"}],"quang trung":[{"lg":20.0,"vh":8.0,"md":12.0,"pc":0,"tu":"Yersin","den":"Lê Thánh Tôn"}],"biệt thự":[{"lg":20.0,"vh":8.0,"md":12.0,"pc":0,"tu":"Trần Phú","den":"Nguyễn Thiện Thuật"}],"trần quang khải":[{"lg":20.0,"vh":10.0,"md":10.0,"pc":0,"tu":"Trần Phú","den":"Nguyễn Thiện Thuật"}],"tô hiến thành":[{"lg":16.0,"vh":6.0,"md":10.0,"pc":0,"tu":"Nguyễn Thị Minh Khai","den":"Lê Thánh Tôn"}],"trần nhật duật":[{"lg":16.0,"vh":6.0,"md":10.0,"pc":0,"tu":"Nguyễn Trãi","den":"Nguyễn Thị Minh Khai"}],"hồng bàng":[{"lg":16.0,"vh":6.0,"md":10.0,"pc":0,"tu":"Nguyễn Thị Minh Khai","den":"Nguyễn Trãi"}],"trần hưng đạo":[{"lg":20.0,"vh":8.0,"md":12.0,"pc":0,"tu":"Yersin","den":"Lê Thánh Tôn"}],"đinh tiên hoàng":[{"lg":20.0,"vh":8.0,"md":12.0,"pc":0,"tu":"Lý Tự Trọng","den":"Lê Thánh Tôn"}],"lý tự trọng":[{"lg":20.0,"vh":8.0,"md":12.0,"pc":0,"tu":"Trần Phú","den":"Nguyễn Trãi"}],"hùng vương":[{"lg":20.0,"vh":8.0,"md":12.0,"pc":0,"tu":"Lê Thánh Tôn","den":"Trần Quang Khải"}],"nguyễn thiện thuật":[{"lg":20.0,"vh":8.0,"md":12.0,"pc":0,"tu":"Lê Thánh Tôn","den":"Hẻm 86 Trần Phú"}],"tuệ tĩnh":[{"lg":20.0,"vh":8.0,"md":12.0,"pc":0,"tu":"Trần Phú","den":"Nguyễn Thiện Thuật"}],"võ trứ":[{"lg":18.0,"vh":8.0,"md":10.0,"pc":0,"tu":"Tô Hiến Thành","den":"Nguyễn Trãi"}],"trần văn ơn":[{"lg":16.0,"vh":6.0,"md":10.0,"pc":0,"tu":"Yersin","den":"Lý Tự Trong"}],"phù đổng":[{"lg":16.0,"vh":6.0,"md":10.0,"pc":0,"tu":"Ngô Gia Tự","den":"Nguyễn Trãi"}],"trần bình trọng":[{"lg":16.0,"vh":6.0,"md":10.0,"pc":0,"tu":"Huỳnh Thúc Kháng","den":"Trần Nhật Duật"}],"trần nguyên hãn":[{"lg":16.0,"vh":6.0,"md":10.0,"pc":0,"tu":"Lê Quý Đôn","den":"Trần Nhật Duật"}],"bùi thị xuân":[{"lg":13.0,"vh":6.0,"md":7.0,"pc":0,"tu":"Lê Thánh Tôn","den":"Lê Quý Đôn"}],"huỳnh thúc kháng":[{"lg":14.0,"vh":6.0,"md":8.0,"pc":0,"tu":"Tô Hiến Thành","den":"Nguyễn Trãi"}],"bạch đằng":[{"lg":14.0,"vh":6.0,"md":8.0,"pc":0,"tu":"Tô Hiến Thành","den":"Nguyễn Trãi"}],"ngô đức kế":[{"lg":14.0,"vh":6.0,"md":8.0,"pc":0,"tu":"Huỳnh Thúc Kháng","den":"Trương Định"}],"ngô thời nhiệm":[{"lg":14.0,"vh":6.0,"md":8.0,"pc":0,"tu":"Võ Trứ","den":"Mê Linh"}],"mạc đĩnh chi":[{"lg":14.0,"vh":6.0,"md":8.0,"pc":0,"tu":"Huỳnh Thúc Kháng","den":"Phù Đổng"}],"mê linh":[{"lg":13.0,"vh":6.0,"md":7.0,"pc":0,"tu":"Nguyễn Thị Minh Khai","den":"Nguyễn Trãi"}],"trương định":[{"lg":13.0,"vh":6.0,"md":7.0,"pc":0,"tu":"Ngô Đức Kế","den":"Trần Bình Trọng"}],"lê quý đôn":[{"lg":13.0,"vh":6.0,"md":7.0,"pc":0,"tu":"Tô Hiến Thành","den":"Bùi Thị Xuân"}],"nguyễn hữu huân":[{"lg":13.0,"vh":6.0,"md":7.0,"pc":0,"tu":"Ngô Gia Tự","den":"Trần Nguyên Hãn"}],"cô bắc":[{"lg":13.0,"vh":6.0,"md":7.0,"pc":0,"tu":"Lê Quý Đôn","den":"Huỳnh Thúc Kháng"}],"nguyễn thi":[{"lg":14.0,"vh":6.0,"md":8.0,"pc":0,"tu":"Hùng Vương","den":"Trần Phú"}]}};   // mặt cắt đường theo bảng QH giao thông trong Quy định quản lý đồ án (data/road_cs.json)
+const QHCT_RULES = { '5289': { mdxd_max: 95.0, h_max: 25.0 } };   // thuyết minh 5289/2012: đất ở cao 14-25 m, MĐXD 80-95%
+const QHCT_NOTES = {
+  '5289': 'Thuyết minh QHCT 5289/2012 (mục VI, IX): khoảng lùi nhà liên kế có sân 1,5 m - 3 m, nhà liên kế phố xây sát lộ giới, cụ thể theo bản vẽ quy hoạch giao thông - CGĐĐ - CGXD; ' +
+    'cốt nền nhà liên kế phố cao hơn vỉa hè 0,2 m (nhà có sân: sân +0,1 m so vỉa hè, nền +0,3 m so sân); chiều cao tầng trệt 3,6 m, các tầng trên 3,3 m; ' +
+    'ban công theo quy chuẩn; đất ở chiều cao tối đa 14 - 25 m, MĐXD 80 - 95% (áp dụng tối đa 95%; chỉ tiêu từng ô theo Bảng 11 - chưa có dữ liệu); các quy định khác theo quy chuẩn hiện hành; không quy định khoảng lùi sau.',
+};
+const QCT_Q = f => `Bản vẽ QHCT không thể hiện chỉ giới xây dựng phía đường ${f.name || f.dir}: tạm lấy CGXD trùng CGĐĐ; đề nghị cán bộ đối chiếu thuyết minh, quy định quản lý của đồ án QHCT (khoảng lùi tối thiểu 1,5 m).`;
+const SPECIAL_STREETS = { 'phan dinh phung': [13.0, 16.0], 'huynh thuc khang': [14.0, 18.0], 'trinh phong': [14.0, 18.0], 'nhi ha': [16.0, 20.0] };
+
+// ---------------------------------------------------------------- tiện ích số
+function fmt(v, nd = 1) {
+  let s = Number(v).toFixed(nd).replace('.', ',');
+  if (nd && s.includes(',')) s = s.replace(/0+$/, '').replace(/,$/, '');
+  return s;
+}
+function num(v) {
+  if (v === null || v === undefined || v === '') return null;
+  const x = parseFloat(String(v).replace(',', '.'));
+  return isFinite(x) ? x : null;
+}
+const r2 = (v, n = 2) => Math.round(v * 10 ** n) / 10 ** n;
+function mdxdThuan(area) {
+  if (area <= MDXD_TABLE[0][0]) return 100.0;
+  if (area >= MDXD_TABLE[MDXD_TABLE.length - 1][0]) return 40.0;
+  for (let i = 0; i < MDXD_TABLE.length - 1; i++) {
+    const [s1, m1] = MDXD_TABLE[i], [s2, m2] = MDXD_TABLE[i + 1];
+    if (s1 <= area && area <= s2) return m1 - (area - s1) * (m1 - m2) / (s2 - s1);
+  }
+}
+function balcony(w) { if (w < 5) return 0.0; if (w < 7) return 0.5; if (w < 12) return 0.9; if (w < 15) return 1.2; return 1.4; }
+function maxHeightNoSetback(w) { if (w < 19) return 19.0; if (w < 22) return 22.0; return 28.0; }
+function norm(s) {
+  s = String(s || '').normalize('NFD').replace(/đ/g, 'd').replace(/Đ/g, 'D').replace(/[̀-ͯ]/g, '').toLowerCase();
+  return s.replace(/[^a-z0-9/]+/g, ' ').trim();
+}
+function titleCase(s) { return s.toLowerCase().replace(/(^|[^\p{L}])(\p{L})/gu, (m, a, b) => a + b.toUpperCase()); }
+
+// ---------------------------------------------------------------- hình học
+const C = (x, y) => new J.geom.Coordinate(x, y);
+const GF = RD.read({ type: 'Point', coordinates: [0, 0] }).getFactory();
+const pt = (x, y) => GF.createPoint(C(x, y));
+function closeRing(r) { const a = r[0], b = r[r.length - 1]; return (a[0] === b[0] && a[1] === b[1]) ? r : r.concat([a]); }
+function LS(cs) { return RD.read({ type: 'LineString', coordinates: cs.map(c => [c[0], c[1]]) }); }
+function rawPoly(ring, holes) { return RD.read({ type: 'Polygon', coordinates: [closeRing(ring)].concat((holes || []).filter(h => h.length >= 3).map(closeRing)) }); }
+function parts(g, type) {
+  const out = [];
+  if (!g || g.isEmpty()) return out;
+  const t = g.getGeometryType();
+  if (t.startsWith('Multi') || t === 'GeometryCollection') {
+    for (let i = 0; i < g.getNumGeometries(); i++) out.push(...parts(g.getGeometryN(i), type));
+  } else if (!type || t === type) out.push(g);
+  return out;
+}
+function largestPoly(g) { const ps = parts(g, 'Polygon'); return ps.length ? ps.reduce((a, b) => a.getArea() >= b.getArea() ? a : b) : null; }
+function poly(ring, holes) {
+  if (!ring || ring.length < 3) return null;
+  let g;
+  try { g = rawPoly(ring, holes); } catch (e) { return null; }
+  if (!g.isValid()) { try { g = largestPoly(g.buffer(0)); } catch (e) { return null; } }
+  return g && !g.isEmpty() ? g : null;
+}
+function lines(lst) { const o = []; for (const l of lst || []) { if (l.length >= 2) { const g = LS(l); if (g.getLength() > 0.05) o.push(g); } } return o; }
+function cs(g) { return g.getCoordinates().map(c => [c.x, c.y]); }
+function buf(g, d, cap = 1, join = 1) {
+  const p = new BP(); p.setEndCapStyle(cap); p.setJoinStyle(join); if (cap === 1 && join === 1) p.setQuadrantSegments(8);
+  return J.operation.buffer.BufferOp.bufferOp(g, d, p);
+}
+function ov(op, a, b) {
+  try { return a[op](b); } catch (e) {
+    try { return a.buffer(0)[op](b.buffer(0)); } catch (e2) {
+      try { return J.operation.overlay.snap.SnapIfNeededOverlayOp.overlayOp(a, b, { intersection: 1, union: 2, difference: 3, symDifference: 4 }[op]); } catch (e3) { return null; }
+    }
+  }
+}
+const inter = (a, b) => (a && b) ? ov('intersection', a, b) : null;
+const diff = (a, b) => !a ? null : (!b || b.isEmpty()) ? a : ov('difference', a, b);
+function union(list) {
+  list = list.filter(g => g && !g.isEmpty());
+  if (!list.length) return null;
+  if (list.length === 1) return list[0].getDimension() === 2 ? list[0].buffer(0) : list[0].union();
+  try { return GF.createGeometryCollection(list).union(); } catch (e) {
+    let u = list[0]; for (const g of list.slice(1)) u = ov('union', u, g) || u; return u;
+  }
+}
+const area = g => g && !g.isEmpty() ? g.getArea() : 0;
+const isEmpty = g => !g || g.isEmpty();
+function linemerge(g) {
+  const lm = new J.operation.linemerge.LineMerger();
+  for (const l of parts(g, 'LineString')) lm.add(l);
+  return lm.getMergedLineStrings().toArray();
+}
+function project(l, p) { return new LIL(l).project(p.getCoordinate ? p.getCoordinate() : p); }
+function interpolate(l, s) { const L = l.getLength(); s = Math.max(0, Math.min(L, s)); return GF.createPoint(new LIL(l).extractPoint(s)); }
+function interpN(l, f) { return interpolate(l, f * l.getLength()); }
+function substring(l, a, b) { return new LIL(l).extractLine(a, b); }
+function nearestPoints(a, b) { const c = J.operation.distance.DistanceOp.nearestPoints(a, b); return [GF.createPoint(c[0]), GF.createPoint(c[1])]; }
+function isCCW(ringCoords) { return J.algorithm.Orientation.isCCW(ringCoords.map(c => C(c[0], c[1]))); }
+function extend(l, k) {
+  const c = cs(l);
+  const [x0, y0] = c[0], [x1, y1] = c[1], [xa, ya] = c[c.length - 2], [xb, yb] = c[c.length - 1];
+  const d0 = Math.hypot(x1 - x0, y1 - y0) || 1, d1 = Math.hypot(xb - xa, yb - ya) || 1;
+  if (c.length > 2) return LS([[x0 - (x1 - x0) / d0 * k, y0 - (y1 - y0) / d0 * k]].concat(c.slice(1, -1), [[xb + (xb - xa) / d1 * k, yb + (yb - ya) / d1 * k]]));
+  return LS([[x0 - (x1 - x0) / d0 * k, y0 - (y1 - y0) / d0 * k], [x1 + (x1 - x0) / d0 * k, y1 + (y1 - y0) / d0 * k]]);
+}
+/* offset_curve (mitre) như shapely: d > 0 bên trái theo chiều đường */
+function offsetCurve(l, d) {
+  let c = cs(l).filter((p, i, a) => i === 0 || Math.hypot(p[0] - a[i - 1][0], p[1] - a[i - 1][1]) > 1e-9);
+  if (c.length < 2) return null;
+  const segs = [];
+  for (let i = 0; i < c.length - 1; i++) {
+    const [ax, ay] = c[i], [bx, by] = c[i + 1], L = Math.hypot(bx - ax, by - ay);
+    const nx = -(by - ay) / L * d, ny = (bx - ax) / L * d;
+    segs.push([[ax + nx, ay + ny], [bx + nx, by + ny]]);
+  }
+  const out = [segs[0][0]];
+  for (let i = 0; i < segs.length - 1; i++) {
+    const [p1, p2] = segs[i], [p3, p4] = segs[i + 1];
+    const d1x = p2[0] - p1[0], d1y = p2[1] - p1[1], d2x = p4[0] - p3[0], d2y = p4[1] - p3[1];
+    const den = d1x * d2y - d1y * d2x;
+    if (Math.abs(den) < 1e-12) { out.push(p2); continue; }
+    const t = ((p3[0] - p1[0]) * d2y - (p3[1] - p1[1]) * d2x) / den;
+    const X = [p1[0] + t * d1x, p1[1] + t * d1y];
+    if (Math.hypot(X[0] - p2[0], X[1] - p2[1]) > 5 * Math.abs(d)) { out.push(p2, p3); } else out.push(X);
+  }
+  out.push(segs[segs.length - 1][1]);
+  return LS(out);
+}
+function polygonize(g) { const pz = new J.operation.polygonize.Polygonizer(); pz.add(g); return pz.getPolygons().toArray(); }
+function bboxOf(list) {
+  let a = [Infinity, Infinity, -Infinity, -Infinity];
+  for (const p of list) { if (p[0] < a[0]) a[0] = p[0]; if (p[1] < a[1]) a[1] = p[1]; if (p[0] > a[2]) a[2] = p[0]; if (p[1] > a[3]) a[3] = p[1]; }
+  return a;
+}
+function envNear(g, env, d) { const e = g.getEnvelopeInternal(); return !(env.getMinX() - d > e.getMaxX() || env.getMaxX() + d < e.getMinX() || env.getMinY() - d > e.getMaxY() || env.getMaxY() + d < e.getMinY()); }
+function near(geoms, g, d) { const env = g.getEnvelopeInternal(); return geoms.filter(x => envNear(x, env, d) && x.distance(g) <= d); }
+function dirName(dx, dy) {
+  let ang = Math.atan2(dx, dy) * 180 / Math.PI; ang = ((ang % 360) + 360) % 360;
+  return ['Bắc', 'Đông Bắc', 'Đông', 'Đông Nam', 'Nam', 'Tây Nam', 'Tây', 'Tây Bắc'][Math.floor(((ang + 22.5) % 360) / 45)];
+}
+const cmp = (a, b) => { for (let i = 0; i < a.length; i++) { if (a[i] < b[i]) return -1; if (a[i] > b[i]) return 1; } return 0; };
+
+// ---------------------------------------------------------------- đồ án
+class Plan {
+  constructor(d) {
+    this.meta = {}; for (const k of ['code', 'loai', 'ten', 'do_an', 'qd']) if (k in d) this.meta[k] = d[k];
+    this.no_basement = !!d.no_basement;
+    this.zones = [];
+    for (const z of d.zones || []) {
+      const g = poly(z.ring, z.holes);
+      if (!g || g.getArea() < 1) continue;
+      z.poly = g; this.zones.push(z);
+    }
+    const rs = (d.ranh || []).filter(r => r.length >= 3).map(r => poly(r)).filter(Boolean);
+    this.ranh = rs.length ? union(rs) : null;
+    this.edges = lines(d.edges); this.centers = lines(d.centers); this.cgxd = lines(d.cgxd);
+    this.caodo = d.caodo || []; this.names = d.names || [];
+  }
+  zonesHit(P) {
+    const env = P.getEnvelopeInternal(), out = [];
+    for (const z of this.zones) {
+      if (!envNear(z.poly, env, 0)) continue;
+      const a = area(inter(z.poly, P));
+      if (a > 0.05) out.push([a, z]);
+    }
+    return out.sort((x, y) => cmp([-Math.round(x[0]), x[1].id ? 0 : 1, x[1].poly.getArea()], [-Math.round(y[0]), y[1].id ? 0 : 1, y[1].poly.getArea()]));
+  }
+}
+
+class Cadastre {
+  constructor(d) {
+    this.code = d.code; this.ten = d.ten;
+    this.bnd = lines(d.bnd); this.road = lines(d.road); this.cam = lines(d.cam);
+    this.nums = d.nums; this.addr = d.addr || [];
+    const pts = []; for (const l of this.bnd) { const e = l.getEnvelopeInternal(); pts.push([e.getMinX(), e.getMinY()], [e.getMaxX(), e.getMaxY()]); }
+    this.bb = pts.length ? bboxOf(pts) : null;
+  }
+  find(so_thua, dia_chi, area_) {
+    const key = norm(dia_chi || ''), so = String(so_thua).trim(), cands = [];
+    const pts = this.nums.filter(n => n[0] === so);
+    if (!pts.length) return [];
+    const addrPts = [];
+    if (key) {
+      const house = key.split(' ')[0];
+      for (const a of this.addr) {
+        const na = norm(a[0]);
+        if (na && (na === key || (na.split(' ')[0] === house && key.includes(na.split(' ').slice(1).join(' '))))) addrPts.push(pt(a[1], a[2]));
+      }
+    }
+    for (const n of pts) {
+      const p = pt(n[1], n[2]);
+      const dmin = addrPts.length ? Math.min(...addrPts.map(a => p.distance(a))) : null;
+      if (addrPts.length && dmin > 30) continue;
+      const nr = near(this.bnd, p, 60);
+      const faces = nr.length ? polygonize(union(nr)).filter(f => f.contains(p)) : [];
+      if (!faces.length) continue;
+      const f = faces.reduce((a, b) => a.getArea() <= b.getArea() ? a : b);
+      const ring = cs(f.getExteriorRing()).slice(0, -1);
+      cands.push({ ring, area: r2(f.getArea(), 1), d_addr: dmin !== null ? r2(dmin, 1) : null, area_diff: area_ ? r2(f.getArea() - area_, 1) : null, ward: this.ten });
+    }
+    return cands.sort((a, b) => cmp([a.area_diff !== null ? Math.abs(a.area_diff) : 0, a.d_addr || 0], [b.area_diff !== null ? Math.abs(b.area_diff) : 0, b.d_addr || 0]));
+  }
+}
+
+// ---------------------------------------------------------------- CSDL (nạp theo nhu cầu)
+class DB {
+  /* index: {plans:[{code, file, bbox}], cads:[{code, file, bbox}]}, load(file) -> Promise<json>, ranh: [{ring}] */
+  constructor(index, load, ranh) {
+    this.index = index; this.load = load; this.plans = []; this.cads = []; this._p = {}; this._c = {};
+    const rs = (ranh || []).filter(r => r.ring.length >= 3).map(r => poly(r.ring)).filter(Boolean);
+    this.ranh = rs.length ? union(rs) : null;
+  }
+  async ensure(P, dPlan = 400, dCad = 150) {
+    const e = P.getEnvelopeInternal();
+    const hit = (bb, d) => !(bb[0] - d > e.getMaxX() || bb[2] + d < e.getMinX() || bb[1] - d > e.getMaxY() || bb[3] + d < e.getMinY());
+    const jobs = [];
+    for (const p of this.index.plans) if (!this._p[p.code] && p.bbox && hit(p.bbox, dPlan)) jobs.push(this.load(p.file).then(d => { if (!this._p[p.code]) { const pl = new Plan(d); this._p[p.code] = pl; if (pl.zones.length) this.plans.push(pl); } }));
+    for (const c of this.index.cads) if (!this._c[c.code] && c.bbox && hit(c.bbox, dCad)) jobs.push(this.load(c.file).then(d => { if (!this._c[c.code]) { const cd = new Cadastre(d); this._c[c.code] = cd; this.cads.push(cd); } }));
+    await Promise.all(jobs);
+    const order = this.index.plans.map(p => p.code);
+    this.plans.sort((a, b) => order.indexOf(a.meta.code) - order.indexOf(b.meta.code));
+  }
+  async ensureAllCads() {
+    await Promise.all(this.index.cads.filter(c => !this._c[c.code]).map(c => this.load(c.file).then(d => { if (!this._c[c.code]) { const cd = new Cadastre(d); this._c[c.code] = cd; this.cads.push(cd); } })));
+  }
+  planList() { return this.index.plans.map(p => p.meta); }
+  plansAt(P) {
+    const out = [];
+    for (const p of this.plans) {
+      if (!p.ranh) continue;
+      const a = area(inter(p.ranh, P));
+      if (a > 0.2 && p.zonesHit(P).length) out.push([a, p]);
+    }
+    return out.sort((x, y) => cmp([x[1].meta.loai === 'QHCT' ? 0 : 1, -x[0]], [y[1].meta.loai === 'QHCT' ? 0 : 1, -y[0]])).map(t => t[1]);
+  }
+  cadAt(P) {
+    let best = null; const e = P.getEnvelopeInternal();
+    for (const c of this.cads) {
+      if (!c.bb || c.bb[0] > e.getMaxX() || c.bb[2] < e.getMinX() || c.bb[1] > e.getMaxY() || c.bb[3] < e.getMinY()) continue;
+      const ls = near(c.bnd, P, 1.0);
+      if (!ls.length) continue;
+      const cover = inter(P.getBoundary(), union(ls.map(l => l.buffer(0.3))));
+      const inside = c.nums.filter(n => n[1] >= e.getMinX() && n[1] <= e.getMaxX() && n[2] >= e.getMinY() && n[2] <= e.getMaxY() && P.contains(pt(n[1], n[2]))).length;
+      const sc = [inside, cover ? cover.getLength() : 0];
+      if (!best || cmp(sc, best[0]) > 0) best = [sc, c];
+    }
+    return best ? best[1] : null;
+  }
+  async findParcel(so_thua, dia_chi, area_) {
+    await this.ensureAllCads();
+    let out = [];
+    for (const c of this.cads) out = out.concat(c.find(so_thua, dia_chi, area_));
+    return out.sort((a, b) => (a.area_diff !== null ? Math.abs(a.area_diff) : 0) - (b.area_diff !== null ? Math.abs(b.area_diff) : 0));
+  }
+
+  // ------------------------------------------------------------ phân tích
+  analyze(ringEN, g) {
+    g = g || {};
+    const P = poly(ringEN);
+    const res = { warnings: [], questions: [], notes: [], area_calc: r2(P.getArea()) };
+    const ar = num(g.area_rec);
+    const area_total = num(g.area_total) || (ar ? ar + (num(g.area_not_rec) || 0) : null);
+    const area_rec = ar || area_total;
+    res.area_total_gcn = area_total; res.area_rec_gcn = area_rec;
+    const uoc = !!g.coords_src;   // GCN không có toạ độ: ranh từ bản đồ địa chính -> chỉ ước tính
+    res.ranh_uoc_tinh = uoc;
+    if (uoc) res.notes.push(`GCN không có toạ độ: ranh thửa ước tính theo bản đồ địa chính (số hoá, không chính xác toạ độ thực địa), chỉ để minh hoạ vị trí và đối chiếu quy hoạch; diện tích thửa đất lấy theo GCN` + (area_rec ? ` (${fmt(area_rec, 2)} m² được công nhận)` : '') + ` là căn cứ pháp lý.`);
+    if (area_total && !uoc) {
+      const dA = P.getArea() - area_total;
+      res.area_dev = r2(dA);
+      if (Math.abs(dA) > TOL_AREA) res.warnings.push(`Diện tích theo toạ độ (${fmt(P.getArea(), 2)} m²) lệch tổng diện tích thửa trên GCN (${fmt(area_total, 2)} m²) ${fmt(Math.abs(dA), 2)} m² (> 0,3 m²): đề nghị kiểm tra lại toạ độ/trích đo.`);
+    }
+    res.in_ward = this.ranh ? this.ranh.intersects(P) : null;
+    if (res.in_ward === false) res.warnings.push('Thửa đất nằm ngoài ranh khu vực quy hoạch thuộc phường Nha Trang.');
+    const plans = this.plansAt(P);
+    res.plans = plans.map(p => p.meta);
+    if (!plans.length) { res.warnings.push('Thửa đất không thuộc đồ án quy hoạch nào đã nạp dữ liệu.'); return res; }
+    const pl = plans[0];
+    res.plan = pl.meta; res.area_type = pl.meta.loai === 'QHCT' ? 'QHCT' : 'QHPK';
+    const hits = pl.zonesHit(P);
+    const main = hits[0][1];
+    const zc = Object.assign({}, main);
+    if (main.circles && main.circles.length) {
+      const c = main.circles.reduce((a, b) => pt(a.pt[0], a.pt[1]).distance(P) <= pt(b.pt[0], b.pt[1]).distance(P) ? a : b);
+      for (const [k, k2] of [['id', 'id'], ['hs', 'hssd'], ['tc', 'tang_cao'], ['md', 'mdxd'], ['dt', 'dt_ha']]) if (c[k]) zc[k2] = c[k];
+    }
+    res.zone = {}; for (const k of ['id', 'func', 'func_code', 'dt_ha', 'hssd', 'tang_cao', 'mdxd', 'is_housing', 'h_max', 'layer']) res.zone[k] = zc[k] === undefined ? null : zc[k];
+    res.zones_hit = hits.map(([a, z]) => ({ id: z.id || null, func: z.func || null, area: r2(a), housing: z.is_housing }));
+    const housingU = union(hits.filter(([a, z]) => z.is_housing !== false).map(([a, z]) => z.poly));
+    const anyOther = hits.some(([a, z]) => z.is_housing === false);
+    const otherU = anyOther ? diff(union(hits.filter(([a, z]) => z.is_housing === false).map(([a, z]) => z.poly)), housingU) : null;
+    res.area_other_func = !isEmpty(otherU) ? r2(area(inter(P, otherU))) : 0.0;
+    if (res.area_other_func > 0.3) {
+      const names = [...new Set(hits.filter(([a, z]) => z.is_housing === false).map(([a, z]) => `${z.func}${z.id ? ' ' + z.id : ''}`))].sort();
+      res.warnings.push(`Một phần thửa đất (${fmt(res.area_other_func, 2)} m²) thuộc chức năng khác ngoài đất ở: ` + names.join(', '));
+    }
+    if (res.zone.is_housing === false) res.warnings.push(`Thửa đất thuộc ${res.zone.func} ${res.zone.id || ''} - không phải đất ở: cần xem xét cụ thể trước khi cung cấp thông tin cho nhà ở riêng lẻ.`);
+    const cad = this.cadAt(P);
+    res.cad = cad ? cad.ten : null;
+    // đường tiếp giáp, CGĐĐ
+    const frontages = this._frontages(P, pl, cad, g);
+    res.frontages = frontages.map(f => { const o = {}; for (const k in f) if (!['cgdd', 'center', 'center_full', 'strip'].includes(k)) o[k] = f[k]; return o; });
+    const _rcs = ROAD_CS[String(pl.meta.code || '').split('-')[0]] || {};
+    for (const f of res.frontages) for (const c of (_rcs[(f.name || '').toLowerCase().trim()] || [])) {
+      if (f.width && Math.abs(c.lg - f.width) < 0.05 && c.vh > 0) { f.cs = { vh: c.vh / 2, md: c.md, pc: c.pc, src: 'Quy định quản lý đồ án (bảng quy hoạch giao thông)' }; break; }
+    }
+    res.cgdd_lines = frontages.filter(f => f.cgdd).map(f => cs(f.cgdd));
+    res.center_lines = frontages.filter(f => f.center).map(f => cs(f.center));
+    const strips = frontages.filter(f => f.strip).map(f => f.strip);
+    let lost = strips.length ? union(strips.map(s => inter(s, P)).filter(Boolean)) : null;
+    if (!isEmpty(lost)) lost = lost.buffer(0);
+    res.area_road_calc = !isEmpty(lost) ? r2(lost.getArea()) : 0.0;
+    res.lost_geom = !isEmpty(lost) ? parts(lost, 'Polygon').filter(x => x.getArea() > 0.01).map(x => cs(x.getExteriorRing())) : [];
+    let kept = !isEmpty(lost) ? diff(P, lost) : P;
+    if (kept.getGeometryType() !== 'Polygon') kept = largestPoly(kept);
+    // diện tích phù hợp xây dựng
+    const qhgt_in = num(g.qhgt_in);
+    const not_rec = num(g.area_not_rec) || 0.0;
+    const calc_suit = !isEmpty(housingU) ? area(inter(kept, housingU)) : kept.getArea();
+    res.area_suit_calc = r2(calc_suit);
+    let suit;
+    if (area_rec) {
+      suit = area_rec - (qhgt_in || 0.0) - res.area_other_func;
+      res.area_suit_basis = 'GCN';
+      if (qhgt_in === null && res.area_road_calc > TOL_AREA) {
+        const cut_rec = Math.max(0.0, res.area_road_calc - not_rec);
+        suit = area_rec - cut_rec - res.area_other_func;
+        res.area_suit_basis = 'GCN - phần lộ giới đo từ toạ độ';
+        res.questions.push(`GCN không ghi diện tích thuộc quy hoạch giao thông; theo ${uoc ? 'ranh ước tính từ bản đồ địa chính' : 'toạ độ'}, phần đất trong lộ giới là ${fmt(res.area_road_calc, 2)} m² - đã trừ ${fmt(cut_rec, 2)} m² khỏi diện tích được công nhận. Đề nghị kiểm tra lại.`);
+      }
+      if (qhgt_in !== null && area_total) {
+        const road_tot = qhgt_in + not_rec;
+        if (uoc && g.qhgt_uoc_tinh) res.questions.push(`GCN không ghi phần diện tích được công nhận nằm trong lộ giới quy hoạch; ${fmt(qhgt_in, 2)} m² là số ƯỚC TÍNH trên ranh bản đồ địa chính (diện tích phù hợp xây dựng ${fmt(area_rec - qhgt_in, 2)} m² cũng là ước tính). Đề nghị trích đo/trích lục có toạ độ để xác định chính xác, hoặc xác nhận chấp nhận số liệu ước tính.`);
+        else if (uoc) res.notes.push(`Phần đất thuộc QH giao thông lấy theo GCN (${fmt(road_tot, 2)} m²); phần đo trên ranh ước tính (${fmt(res.area_road_calc, 2)} m²) chỉ để tham khảo.`);
+        else if (Math.abs(road_tot - res.area_road_calc) > Math.max(0.5, 0.05 * road_tot)) res.warnings.push(`Phần đất thuộc QH giao thông theo GCN (${fmt(road_tot, 2)} m²) khác phần đo được từ CGĐĐ (${fmt(res.area_road_calc, 2)} m²): kiểm tra lại lộ giới.`);
+        else res.notes.push(`Phần đất trong lộ giới đo từ toạ độ (${fmt(res.area_road_calc, 2)} m²) khớp số liệu GCN (${fmt(road_tot, 2)} m²).`);
+      }
+    } else { suit = calc_suit - not_rec; res.area_suit_basis = 'toạ độ'; }
+    res.area_road_gcn = qhgt_in !== null ? r2((qhgt_in || 0) + (g.not_rec_is_road === false ? 0 : not_rec)) : null;
+    res.area_not_rec = not_rec;
+    res.area_suitable = r2(Math.max(suit, 0.0), 1);
+    const est = uoc && (!area_rec || !!g.qhgt_uoc_tinh || (qhgt_in === null && res.area_road_calc > TOL_AREA));
+    res.area_suitable_uoc_tinh = !!est;
+    if (area_rec && Math.abs(res.area_suitable - area_rec) > 0.05) {
+      const cut = area_rec - res.area_other_func - Math.max(suit, 0.0);
+      const ps = [`${fmt(area_rec, 2)} m² (được công nhận theo GCN)`];
+      if (cut > 0.005) ps.push(`${fmt(cut, 2)} m² (phần nằm trong lộ giới quy hoạch${est ? ', ước tính' : ''})`);
+      if (res.area_other_func > 0.3) ps.push(`${fmt(res.area_other_func, 2)} m² (chức năng khác ngoài đất ở)`);
+      res.area_suit_expl = ps.join(' − ') + ` = ${fmt(Math.max(suit, 0.0), 2)} m²` + (est ? ` (ước tính, làm tròn ${fmt(res.area_suitable, 1)} m²)` : '');
+    }
+    // khoảng lùi trước / CGXD
+    const ws = frontages.filter(f => f.width).map(f => f.width);
+    const wmax = ws.length ? Math.max(...ws) : null, wmin = ws.length ? Math.min(...ws) : null;
+    for (const f of frontages) f.setback = this._setback(f, pl, P, g, res);
+    const mainF = frontages.length ? frontages.reduce((a, b) => (b.width || 0) > (a.width || 0) ? b : a) : null;
+    let setback = mainF ? mainF.setback : 0.0;
+    if (g.setback_override !== null && g.setback_override !== undefined && g.setback_override !== '') { setback = parseFloat(g.setback_override); if (mainF) mainF.setback = setback; }
+    res.setback = setback;
+    const cgxdLines = []; let build = kept;
+    for (const f of frontages) {
+      if (!f.cgdd) continue;
+      const sb = f.setback;
+      if (sb && sb > 0) {
+        const band = buf(f.cgdd, sb, 2, 2);
+        build = diff(build, band) || build;
+        let bb = inter(band.getBoundary(), kept.buffer(-0.01));
+        bb = bb ? diff(bb, f.cgdd.buffer(sb * 0.7)) : null;
+        const ls = bb ? linemerge(bb) : [];
+        for (const x of ls) if (x.getLength() > 0.3) cgxdLines.push(cs(x));
+      } else {
+        const cg = inter(f.cgdd, P.buffer(2.0));
+        for (const x of parts(cg, 'LineString')) if (x.getLength() > 0.3) cgxdLines.push(cs(x));
+      }
+    }
+    res.cgxd_lines = cgxdLines;
+    // khoảng lùi sau (Phụ lục 11 mục 7.1)
+    let D = null, rear = 0.0;
+    if (mainF && mainF.cgdd) {
+      const ext = extend(mainF.cgdd, 60);
+      D = Math.max(...cs(kept.getExteriorRing()).map(c => ext.distance(pt(c[0], c[1]))));
+      res.depth = r2(D);
+      // Khu vực có QHCT: không áp dụng Quy chế QLKT, QHCT không quy định lùi sau
+      if (res.area_type !== 'QHCT' && res.area_suitable > 50) rear = D >= 16 ? 2.0 : (D >= 9 ? 1.0 : 0.0);
+    }
+    res.rear_setback = rear; res.rear_lines = [];
+    if (rear > 0 && mainF) {
+      const cg = mainF.cgdd, rearEdges = [], kc = cs(kept.getExteriorRing());
+      const ex_ = extend(cg, 60);
+      for (let i = 0; i < kc.length - 1; i++) {
+        const a = kc[i], b = kc[i + 1], seg = LS([a, b]);
+        if (seg.getLength() < 0.5) continue;
+        const mid = interpN(seg, 0.5);
+        const s = project(ex_, mid), ca = interpolate(ex_, s - 1), cb = interpolate(ex_, s + 1);
+        const a1 = Math.atan2(cb.getY() - ca.getY(), cb.getX() - ca.getX()), a2 = Math.atan2(b[1] - a[1], b[0] - a[0]);
+        const dang = Math.abs(((((a1 - a2) * 180 / Math.PI + 90) % 180) + 180) % 180 - 90);
+        if (ex_.distance(mid) >= D - 7.0 && dang < 35) rearEdges.push(seg);
+      }
+      if (rearEdges.length) {
+        const band = union(rearEdges.map(s => buf(s, rear, 2, 2)));
+        build = diff(build, band) || build;
+        let bb = inter(band.getBoundary(), kept.buffer(-0.02));
+        bb = bb ? diff(bb, kept.getExteriorRing().buffer(rear * 0.7)) : null;
+        res.rear_lines = (bb ? linemerge(bb) : []).filter(x => x.getLength() > 0.3).map(cs);
+      }
+    }
+    res.build_poly = parts(build, 'Polygon').filter(x => x.getArea() > 0.5).map(x => cs(x.getExteriorRing()));
+    res.build_area = r2(area(build));
+    // chỉ tiêu
+    const z = res.zone;
+    const hs_qh = num(z.hssd), tc_qh = num(z.tang_cao);
+    res.hssd = hs_qh ? Math.min(7.0, hs_qh) : 7.0;
+    res.tang_cao_qh = tc_qh ? Math.trunc(tc_qh) : null;
+    let floors = Math.min(6, res.tang_cao_qh || 6);
+    const qhct = res.area_type === 'QHCT';
+    if (qhct) {
+      const qn = QHCT_NOTES[String(pl.meta.code || '').split('-')[0]];
+      if (qn) res.notes.push(qn);
+      res.notes.push('Khu vực có QHCT: áp dụng theo đồ án QHCT (bản vẽ, thuyết minh, quy định quản lý) và quy chuẩn hiện hành; không áp dụng Quy chế quản lý kiến trúc (Điều 2 khoản 2 điểm b Quyển 1 và mục 1 Phụ lục 11 Quy chế).');
+    }
+    const notes = [];
+    if (wmax !== null) {
+      if (wmax < 7) { floors = Math.min(floors, 4); notes.push('Lô đất chỉ tiếp giáp đường/hẻm có lộ giới nhỏ hơn 7 m: tầng cao tối đa 04 tầng.'); }
+      else if (wmin !== null && wmin < 7 && 7 <= wmax && !qhct) notes.push('Lô đất tiếp giáp hai đường có lộ giới khác nhau: phần công trình xây cao hơn chiều cao tại chỉ giới xây dựng phía đường có lộ giới nhỏ hơn phải lùi vào 3,5 m (Mục 9.2 Phụ lục 11 Quy chế).');
+    }
+    const s = res.area_suitable;
+    let h_cap = null;
+    const width_front = mainF ? mainF.len_front : null;
+    if (qhct) { /* khu có QHCT: không áp dụng Mục 3.2 Phụ lục 11 Quy chế */ }
+    else if (s < 15) { h_cap = 7.0; floors = Math.min(floors, 2); notes.push('Lô đất có diện tích nhỏ hơn 15 m²: chỉ được cải tạo, sửa chữa theo hiện trạng hoặc xây mới chiều cao tại đỉnh mái không quá 7,0 m (Mục 3.2 Phụ lục 11 Quy chế).'); }
+    else if (s < 36) { h_cap = 11.6; floors = Math.min(floors, 3); notes.push('Lô đất có diện tích từ 15 m² đến dưới 36 m²: tối đa 03 tầng, chiều cao tại chỉ giới xây dựng không quá 11,6 m' + ((wmax || 0) >= 6 ? ', đỉnh mái không quá 13,6 m' : '') + ' (Mục 3.2 Phụ lục 11 Quy chế).'); }
+    if (!qhct && ((width_front !== null && width_front !== undefined && width_front < 3.0) || (D !== null && D < 3.0))) { h_cap = 7.0; floors = Math.min(floors, 2); notes.push('Lô đất có chiều rộng mặt tiền hoặc chiều sâu nhỏ hơn 3,0 m: chiều cao tối đa tại chỉ giới xây dựng 7,0 m, đỉnh mái không quá 9,0 m (Mục 3.2 Phụ lục 11 Quy chế).'); }
+    res.tang_cao = floors; res.tang_cao_note = notes;
+    let h = wmax ? maxHeightNoSetback(wmax) : 19.0;
+    const qr = (res.area_type === 'QHCT' && z.is_housing !== false) ? (QHCT_RULES[String(pl.meta.code || '').split('-')[0]] || {}) : {};
+    if (z.h_max) h = Math.min(h, parseFloat(z.h_max));
+    if (qr.h_max) h = Math.min(h, qr.h_max);
+    if (h_cap) h = Math.min(h, h_cap);
+    res.chieu_cao = h;
+    res.tang_ham = (pl.no_basement || s < 36) ? 0 : 1;
+    res.mdxd_thuan = (s <= 100 && h <= 25) ? 100.0 : r2(mdxdThuan(s));
+    const md_qh = num(z.mdxd) || qr.mdxd_max || null;
+    if (res.area_type === 'QHCT' && md_qh && md_qh < res.mdxd_thuan) { res.mdxd_thuan = md_qh; res.notes.push(`MĐXD lấy theo QHCT (${fmt(md_qh)}%).`); }
+    // ban công
+    const bl = [];
+    for (const f of frontages) {
+      const w = f.width; if (!w) continue;
+      if (w < 7 && f.setback > 0) {
+        const v = Math.abs(f.setback - 2.4) < 1e-6 ? 0.9 : (Math.abs(f.setback - 1.5) < 1e-6 ? 0.0 : balcony(w));
+        bl.push({ dir: f.dir, name: f.name, width: w, val: v, basis: 'so với chỉ giới xây dựng' });
+      } else bl.push({ dir: f.dir, name: f.name, width: w, val: balcony(w), basis: 'ra ngoài chỉ giới xây dựng' });
+    }
+    res.ban_cong_list = bl; res.ban_cong = bl.length ? Math.min(...bl.map(b => b.val)) : null;
+    // cốt xây dựng
+    this._cot_note = null;
+    const [cot, src] = this._cot(P, pl, frontages);
+    res.cot_xd = cot; res.cot_src = src;
+    if (this._cot_note) res.notes.push(this._cot_note);
+    if (cot === null) res.questions.push('Chưa tìm thấy cốt cao độ tim đường quy hoạch gần thửa đất: đề nghị bổ sung cốt xây dựng.');
+    if (frontages.some(f => f.source === 'đề xuất 4 m')) res.questions.push('Hẻm tiếp giáp có lộ giới < 4 m: đã đề xuất quản lý lộ giới 4 m (Điều 2.7.6 QCVN 01). Nếu hẻm cụt dài < 40 m hoặc chỉ 4-5 hộ sử dụng thì cán bộ xem xét quản lý theo hiện trạng.');
+    if (!frontages.length) res.questions.push('Chưa xác định được đường/hẻm tiếp giáp từ bản đồ quy hoạch: đề nghị nhập lộ giới và khoảng lùi.');
+    res._pl = pl; res._cad = cad;
+    return res;
+  }
+
+  _frontages(P, pl, cad, g) {
+    const out = [], ring = cs(P.getExteriorRing());
+    const qh_w = num(g.road_qh);
+    let centers = near(pl.centers, P, 30);
+    if (!centers.length) for (const p2 of this.plans) if (p2 !== pl) centers = centers.concat(near(p2.centers, P, 30));
+    const edges = near(pl.edges, P, 15);
+    const cam = cad ? near(cad.cam, P, 15) : [];
+    const used = [];
+    const uc = centers.length ? union(centers) : null;
+    let clist = uc ? (uc.getGeometryType() === 'MultiLineString' ? linemerge(uc) : parts(uc, 'LineString')) : [];
+    clist = clist.map(c => [c.distance(P), c]).sort((a, b) => a[0] - b[0]).map(t => t[1]);
+    for (const c of clist) {
+      if (c.getGeometryType() !== 'LineString' || c.getLength() < 3) continue;
+      const [q_par, q_c] = nearestPoints(P, c);
+      const dpc = q_par.distance(q_c);
+      if (dpc > 25) continue;
+      const pr = ring.map(x => project(c, pt(x[0], x[1]))).sort((a, b) => a - b);
+      const seg = substring(c, Math.max(0, pr[0] - 2), Math.min(c.getLength(), pr[pr.length - 1] + 2));
+      if (seg.getLength() < 1) continue;
+      let half = null, src = null, edge = null;
+      const tries = [[pl.meta.loai === 'QHCT' ? edges : [], 'QHCT'], [cam, 'cắm mốc lộ giới'], [edges, 'bản vẽ QH']];
+      const probe = LS([[q_c.getX(), q_c.getY()], [q_par.getX(), q_par.getY()]]).buffer(0.3);
+      for (const [ls, nm] of tries) {
+        let best = null;
+        for (const L of ls) {
+          const mid = interpolate(L, project(L, q_c));
+          const d_c = c.distance(mid);
+          if (d_c < 1.0 || d_c > 25) continue;
+          const side_ok = probe.intersects(L) || L.distance(P) < 0.5 || L.intersects(P);
+          if (!side_ok) continue;
+          if (!best || d_c < best[0]) best = [d_c, L];
+        }
+        if (best) { half = Math.round(best[0] * 4) / 4; edge = best[1]; src = nm; break; }
+      }
+      if (half === null && qh_w) { half = qh_w / 2; src = 'lộ giới ghi trên GCN'; }
+      if (half === null) continue;
+      if (dpc - half > 4.0) continue;
+      let width = Math.round(2 * half * 2) / 2, source = src;
+      if (width < 4) { width = 4.0; half = 2.0; source = 'đề xuất 4 m'; }
+      const out_note = (qh_w && Math.abs(qh_w - width) > 0.25 && source !== 'đề xuất 4 m') ? `GCN ghi lộ giới ${fmt(qh_w)} m; theo đồ án quy hoạch là ${fmt(width)} m: áp dụng theo quy hoạch.` : null;
+      let cg = null;
+      for (const sgn of [1, -1]) {
+        let o; try { o = offsetCurve(seg, sgn * half); } catch (e) { continue; }
+        if (!o || o.isEmpty()) continue;
+        if (!cg || o.distance(P) < cg.distance(P)) cg = o;
+      }
+      if (['QHCT', 'cắm mốc lộ giới', 'bản vẽ QH'].includes(source) && edge) {
+        const clip = inter(edge, buf(seg, half + 1.0, 2, 2));
+        let ps = parts(clip, 'LineString').filter(x => x.getLength() > 0.5);
+        if (ps.length) {
+          const u2 = union(ps);
+          ps = u2.getGeometryType() === 'MultiLineString' ? linemerge(u2) : parts(u2, 'LineString');
+          if (ps.length) cg = ps.reduce((a, b) => a.distance(P) <= b.distance(P) ? a : b);
+        }
+      }
+      if (!cg || cg.isEmpty()) continue;
+      const strip = union([buf(seg, half, 2, 2), cg.buffer(0.001)]);
+      const cp = P.getCentroid(), mp = interpolate(cg, project(cg, cp));
+      const name = this._roadName(pl, seg, g);
+      const front_len = this._frontLen(P, cg);
+      if (used.some(u => c.distance(u) < 1)) continue;
+      used.push(c);
+      out.push({ dir: dirName(mp.getX() - cp.getX(), mp.getY() - cp.getY()), name, width, half, source, dist_center: r2(dpc), note: out_note, len_front: r2(front_len), cgdd: cg, center: seg, center_full: c, strip });
+    }
+    return out;
+  }
+  _frontLen(P, cg) {
+    const x = inter(extend(cg, 30), P.buffer(0.3));
+    if (!isEmpty(x) && x.getLength() > 1) return x.getLength();
+    let tot = 0.0; const c = cs(P.getExteriorRing());
+    const dmin = Math.min(...c.map(p => cg.distance(pt(p[0], p[1]))));
+    for (let i = 0; i < c.length - 1; i++) { const s = LS([c[i], c[i + 1]]); if (cg.distance(interpN(s, 0.5)) <= dmin + 1.5) tot += s.getLength(); }
+    return tot;
+  }
+  _roadName(pl, seg, g) {
+    if (g.road_name) return g.road_name;
+    let best = null;
+    for (const n of pl.names) { const d = seg.distance(pt(n.x, n.y)); if (d < 25 && (!best || d < best[0])) best = [d, n.t]; }
+    if (best) return titleCase(best[1].replace(/^(đường|Đường|ĐƯỜNG|Đ\.|đ\.)\s*/, '').trim());
+    return null;
+  }
+  _setback(f, pl, P, g, res) {
+    const w = f.width || 0, nm = norm(f.name || '');
+    for (const k in (pl.meta.loai !== 'QHCT' ? SPECIAL_STREETS : {})) {
+      if (nm.includes(k)) { const [a, b] = SPECIAL_STREETS[k]; res.notes.push(`Đường ${f.name}: CGĐĐ ${fmt(a)} m, CGXD ${fmt(b)} m theo Mục 7.7 Phụ lục 11 Quy chế.`); return (b - a) / 2; }
+    }
+    if (pl.meta.loai === 'QHCT') {
+      // Khu có QHCT: khoảng lùi theo CGXD trên bản vẽ QHCT; tối thiểu 1,5 m CHỈ áp dụng cho đường/hẻm < 4 m (đã đề xuất mở 4 m)
+      const small = f.source === 'đề xuất 4 m', nm_ = f.name || ('phía ' + (f.dir || ''));
+      let sb = null;
+      const xs = (pl.cgxd.length && f.cgdd) ? near(pl.cgxd, P, 8) : [];
+      if (xs.length) {
+        const cen = P.getCentroid();
+        let ds = xs.map(x => Math.round(f.cgdd.distance(interpolate(x, project(x, cen))) * 10) / 10).sort((a, b) => a - b);
+        if (ds.length && ds[0] < 0.4) sb = 0.0;
+        else { ds = ds.filter(d => d >= 0.4 && d <= 8); if (ds.length) sb = ds[0]; }
+      }
+      if (sb === null) {
+        if (small) { res.notes.push(`Đường ${nm_} có lộ giới < 4 m (đề xuất 4 m): áp dụng khoảng lùi tối thiểu 1,5 m.`); return 1.5; }
+        res.notes.push(`Bản vẽ QHCT không thể hiện chỉ giới xây dựng riêng cho đường ${nm_} (lộ giới ≥ 4 m): chỉ giới xây dựng trùng chỉ giới đường đỏ (không lùi).`);
+        return 0.0;
+      }
+      if (small) { const sb2 = Math.max(1.5, sb); res.notes.push(`Đường ${nm_} có lộ giới < 4 m (đề xuất 4 m): giữ CGXD theo QHCT, khoảng lùi tối thiểu 1,5 m → ${fmt(sb2)} m.`); return sb2; }
+      res.notes.push(sb === 0 ? 'Theo bản vẽ QHCT, chỉ giới xây dựng trùng chỉ giới đường đỏ.' : `Khoảng lùi theo bản vẽ QHCT: ${fmt(sb)} m.`);
+      return sb;
+    }
+    if (w < 7) return 2.4;
+    return 0.0;
+  }
+  _cot(P, pl, frontages) {
+    let pts = pl.caodo.slice();
+    const PB = P.buffer(300);
+    for (const p2 of this.plans) if (p2 !== pl && p2.ranh && p2.ranh.intersects(PB)) pts = pts.concat(p2.caodo);
+    if (!pts.length || !frontages.length) return [null, []];
+    const fs = frontages.slice().sort((a, b) => (b.width || 0) - (a.width || 0));
+    for (const f of fs) {
+      let c = f.center_full || f.center; if (!c) continue;
+      c = this._roadChain(pl, c);
+      const seen = new Set(), on = [];
+      for (const q of pts) {
+        const p = pt(q.x, q.y);
+        if (p.distance(c) < 4) { const k = r2(project(c, p)) + '|' + q.tk; if (!seen.has(k)) { seen.add(k); on.push([r2(project(c, p)), q.tk]); } }
+      }
+      on.sort((a, b) => cmp(a, b));
+      if (!on.length) continue;
+      const s0 = project(c, P.getCentroid());
+      const lo = on.filter(o => o[0] <= s0), hi = on.filter(o => o[0] > s0);
+      let tim, src;
+      if (lo.length && hi.length) {
+        const [sa, ta] = lo[lo.length - 1], [sb, tb] = hi[0];
+        tim = sb > sa ? ta + (tb - ta) * (s0 - sa) / (sb - sa) : (ta + tb) / 2;
+        src = [{ tk: ta, d: r2(s0 - sa, 1) }, { tk: tb, d: r2(sb - s0, 1) }];
+      } else {
+        const [sa, ta] = lo.length ? lo[lo.length - 1] : hi[0];
+        tim = ta; src = [{ tk: ta, d: r2(Math.abs(s0 - sa), 1) }];
+        this._cot_note = `Cốt xây dựng lấy theo cốt tim đường quy hoạch gần nhất của đường ${f.name || ''} (+${fmt(ta, 2)} m, cách ${fmt(Math.abs(s0 - sa), 0)} m) + 0,2 m.`;
+      }
+      return [r2(tim + 0.2), { road: f.name, tim: r2(tim), pts: src }];
+    }
+    return [null, []];
+  }
+  _roadChain(pl, c, lim = 600.0) {
+    const ang = (a, b) => Math.atan2(b[1] - a[1], b[0] - a[0]);
+    const wrap = x => Math.abs(((x + Math.PI) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI) - Math.PI);
+    let cc = cs(c);
+    const ls = pl.centers.filter(L => envNear(L, c.getEnvelopeInternal(), 400) && L.distance(c) < 400).map(cs);
+    for (let it = 0; it < 40; it++) {
+      if (LS(cc).getLength() > lim) break;
+      let grown = false;
+      for (const end of [0, 1]) {
+        const e = end ? cc[cc.length - 1] : cc[0], prev = end ? cc[cc.length - 2] : cc[1];
+        const a0 = ang(prev, e); let best = null;
+        for (const lc of ls) {
+          for (const rev of [false, true]) {
+            const q = rev ? lc.slice().reverse() : lc;
+            if (Math.hypot(q[0][0] - e[0], q[0][1] - e[1]) < 3.0 && q.length > 1) {
+              if (Math.hypot(q[q.length - 1][0] - e[0], q[q.length - 1][1] - e[1]) < 1.5) continue;
+              const da = wrap(ang(q[0], q[1]) - a0);
+              if (da < 30 * Math.PI / 180 && (!best || da < best[0])) best = [da, q];
+            }
+          }
+        }
+        if (best) {
+          let q = best[1], k = 1;
+          while (k + 1 < q.length) { const da = wrap(ang(q[k], q[k + 1]) - ang(q[k - 1], q[k])); if (da > 35 * Math.PI / 180) break; k++; }
+          q = q.slice(0, k + 1);
+          if (LS(q).within(LS(cc).buffer(0.5))) continue;
+          cc = end ? cc.concat(q.slice(1)) : q.slice().reverse().slice(0, -1).concat(cc); grown = true;
+        }
+      }
+      if (!grown) break;
+    }
+    return LS(cc);
+  }
+}
+
+root.QH = { DB, Plan, Cadastre, fmt, num, norm, geom: { poly, LS, pt, cs, parts, buf, inter, diff, union, area, isEmpty, linemerge, project, interpolate, interpN, substring, nearestPoints, isCCW, extend, offsetCurve, near, largestPoly } };
+})(globalThis);
+
+/* Sơ đồ kiểm tra thông tin quy hoạch - khổ A4 ngang (SVG, đơn vị mm), chuyển từ render.py.
+   Nét: CGĐĐ xanh lá liền, CGXD vàng đứt, khoảng lùi sau cam chấm, đất giao thông gạch đỏ. */
+(function (root) {
+'use strict';
+const Q = root.QH, G = Q.geom, fmt = Q.fmt;
+const W = 297.0, H = 210.0, M = 5.0, MAP = [M, 40.0, W - 2 * M, 127.0];
+const SCALES = [100, 150, 200, 250, 300, 400, 500, 600, 800, 1000];
+const GREEN = '#00b400', YEL = '#e8c400', BLUE = '#1f4fd8', ORANGE = '#e07000', RED = '#d62020';
+const PT = 25.4 / 72;   // 1 point = 0.3528 mm
+const FONT = "Arimo, 'Liberation Sans', Arial, sans-serif";
+const FUNC_COLOR = { ONH: '#e8c200', HH: '#e07a1f', GD: '#e06fa8', YT: '#e04040', VH: '#b05fc0', CX: '#3aa53a', TDTT: '#7fbf3f', CQ: '#8a5a3a', AN: '#6f7f3f', QP: '#556b2f', TG: '#9a5a5a', DV: '#d04f6f', DL: '#e05fb0', BX: '#9a9a9a', HTKT: '#7f8fa0', MN: '#4f8fd0', R: '#2f7f2f', CC: '#c07f5f', K: '#bbbbbb' };
+
+function lighten(hex, t) {
+  hex = hex.replace('#', ''); const c = [0, 2, 4].map(i => parseInt(hex.substr(i, 2), 16));
+  return '#' + c.map(v => Math.floor(v + (255 - v) * t).toString(16).padStart(2, '0')).join('');
+}
+function ang(p, q) { let a = Math.atan2(q[1] - p[1], q[0] - p[0]) * 180 / Math.PI; if (a > 90) a -= 180; if (a <= -90) a += 180; return a; }
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const f2 = v => (Math.round(v * 1000) / 1000).toString();
+
+let _ctx = null;
+function textWidthMM(s, fsPt, bold) {   // chiều rộng chữ (mm)
+  try {
+    if (!_ctx && root.document) _ctx = root.document.createElement('canvas').getContext('2d');
+    if (_ctx) { _ctx.font = (bold ? 'bold ' : '') + '100px Arimo, "Liberation Sans", Arial, sans-serif'; return _ctx.measureText(s).width / 100 * fsPt * PT; }
+  } catch (e) { }
+  return s.length * fsPt * PT * (bold ? 0.6 : 0.55);
+}
+
+class Placer {
+  constructor() { this.boxes = []; }
+  _b(x, y, w, h, a) {
+    const c = Math.cos(a * Math.PI / 180), s = Math.sin(a * Math.PI / 180);
+    const pts = [[-w / 2, -h / 2], [w / 2, -h / 2], [w / 2, h / 2], [-w / 2, h / 2]].map(([u, v]) => [x + u * c - v * s, y + u * s + v * c]);
+    return G.poly(pts);
+  }
+  free(x, y, w, h, a = 0) { const b = this._b(x, y, w, h, a); return this.boxes.every(o => !b.intersects(o)); }
+  add(x, y, w, h, a = 0) { this.boxes.push(this._b(x, y, w, h, a)); }
+  block(g) { this.boxes.push(g); }
+}
+function boxGeom(x0, y0, x1, y1) { return G.poly([[x0, y0], [x1, y0], [x1, y1], [x0, y1]]); }
+function pickScale(geom, margin = 2.0) {
+  const e = geom.getEnvelopeInternal();
+  const w = e.getWidth() + 2 * margin, h = e.getHeight() + 2 * margin;
+  for (const s of SCALES) if (w <= MAP[2] * s / 1000 * 0.60 && h <= MAP[3] * s / 1000 * 0.97) return s;
+  return SCALES[SCALES.length - 1];
+}
+
+/* -------- trình vẽ SVG (toạ độ trang mm, gốc trái dưới như matplotlib) -------- */
+class Pen {
+  constructor() { this.o = []; this.defs = []; this.nid = 0; }
+  Y(y) { return H - y; }
+  line(pts, o = {}) {   // pts: [[x,y],...] toạ độ trang
+    if (pts.length < 2) return;
+    const lw = (o.lw || 1) * PT;
+    const da = o.dash ? ` stroke-dasharray="${o.dash.map(v => f2(v * (o.lw || 1) * PT)).join(' ')}"` : '';
+    this.o.push(`<polyline points="${pts.map(p => f2(p[0]) + ',' + f2(this.Y(p[1]))).join(' ')}" fill="none" stroke="${o.color || '#000'}" stroke-width="${f2(lw)}"${da} stroke-linecap="${o.cap || 'butt'}" stroke-linejoin="${o.join || 'miter'}"${o.clip ? ` clip-path="url(#${o.clip})"` : ''}/>`);
+  }
+  polygon(pts, o = {}) {
+    const d = pts.map(p => f2(p[0]) + ',' + f2(this.Y(p[1]))).join(' ');
+    this.o.push(`<polygon points="${d}" fill="${o.fc || 'none'}"${o.fo !== undefined ? ` fill-opacity="${o.fo}"` : ''} stroke="${o.ec || 'none'}" stroke-width="${f2((o.lw || 0) * PT)}"${o.clip ? ` clip-path="url(#${o.clip})"` : ''}/>`);
+  }
+  pathPoly(rings, o = {}) {   // đa giác có lỗ
+    const d = rings.map(r => 'M' + r.map(p => f2(p[0]) + ',' + f2(this.Y(p[1]))).join('L') + 'Z').join('');
+    this.o.push(`<path d="${d}" fill-rule="evenodd" fill="${o.fc || 'none'}" stroke="${o.ec || 'none'}" stroke-width="${f2((o.lw || 0) * PT)}"${o.clip ? ` clip-path="url(#${o.clip})"` : ''}/>`);
+  }
+  rect(x, y, w, h, o = {}) { this.polygon([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], o); }
+  circle(cx, cy, r, o = {}) { this.o.push(`<circle cx="${f2(cx)}" cy="${f2(this.Y(cy))}" r="${f2(r)}" fill="${o.fc || 'none'}" stroke="${o.ec || '#000'}" stroke-width="${f2((o.lw || 1) * PT)}"/>`); }
+  clipRect(x, y, w, h) { const id = 'c' + (this.nid++); this.defs.push(`<clipPath id="${id}"><rect x="${f2(x)}" y="${f2(this.Y(y + h))}" width="${f2(w)}" height="${f2(h)}"/></clipPath>`); return id; }
+  clipPoly(pts) { const id = 'c' + (this.nid++); this.defs.push(`<clipPath id="${id}"><polygon points="${pts.map(p => f2(p[0]) + ',' + f2(this.Y(p[1]))).join(' ')}"/></clipPath>`); return id; }
+  hatch(pts, color, spacing = 1.2, lw = 0.5) {   // gạch chéo '/////' bên trong đa giác
+    const id = this.clipPoly(pts);
+    const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+    const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys), span = (x1 - x0) + (y1 - y0);
+    for (let t = -span; t <= span; t += spacing) this.line([[x0 + t, y0], [x0 + t + (y1 - y0), y1]], { color, lw, clip: id });
+    this.polygon(pts, { ec: color, lw: 0 });
+  }
+  /* chữ: x,y trang mm; fs pt; ha left|center|right; va center|top|bottom|baseline; rot độ (ngược chiều kim đồng hồ) */
+  text(x, y, s, o = {}) {
+    s = String(s); if (!s) return;
+    const fs = o.fs || 10, ls = (o.linespacing || 1.2) * fs * PT, lines = s.split('\n');
+    const wmax = Math.max(...lines.map(l => textWidthMM(l, fs, o.bold)));
+    const hTot = (lines.length - 1) * ls + fs * PT * 0.72;
+    const ha = o.ha || 'left', va = o.va || 'baseline';
+    const ax = ha === 'center' ? -wmax / 2 : ha === 'right' ? -wmax : 0;
+    let ytop;   // y (xuống dưới) của đỉnh chữ dòng đầu, tương đối điểm neo
+    if (va === 'center') ytop = -hTot / 2; else if (va === 'top') ytop = 0; else if (va === 'bottom') ytop = -hTot; else ytop = -fs * PT * 0.72;
+    const g = [];
+    if (o.bbox) {
+      const pad = (o.bbox.pad !== undefined ? o.bbox.pad : 4) * PT;
+      g.push(`<rect x="${f2(ax - pad)}" y="${f2(ytop - pad - fs * PT * 0.12)}" width="${f2(wmax + 2 * pad)}" height="${f2(hTot + 2 * pad + fs * PT * 0.3)}" fill="${o.bbox.fc || 'white'}"${o.bbox.alpha !== undefined ? ` fill-opacity="${o.bbox.alpha}"` : ''} stroke="${o.bbox.ec && o.bbox.ec !== 'none' ? o.bbox.ec : 'none'}" stroke-width="${f2((o.bbox.lw || 1) * PT)}"/>`);
+    }
+    const anchor = ha === 'center' ? 'middle' : ha === 'right' ? 'end' : 'start';
+    lines.forEach((l, i) => {
+      g.push(`<text x="${f2(ha === 'center' ? 0 : ha === 'right' ? 0 : 0)}" y="${f2(ytop + fs * PT * 0.72 + i * ls)}" font-family="${FONT}" font-size="${f2(fs * PT)}"${o.bold ? ' font-weight="bold"' : ''}${o.italic ? ' font-style="italic"' : ''} fill="${o.color || '#000'}" text-anchor="${anchor}">${esc(l)}</text>`);
+    });
+    const tr = `translate(${f2(x)},${f2(this.Y(y))})` + (o.rot ? ` rotate(${f2(-o.rot)})` : '');
+    this.o.push(`<g transform="${tr}">${g.join('')}</g>`);
+  }
+  /* mũi tên giữa hai điểm (trang mm): heads 'both' | 'end' | 'none'; filled */
+  arrow(a, b, o = {}) {
+    const lw = o.lw || 0.8, color = o.color || '#000';
+    const hl = (o.hl || 4) * PT, hw = (o.hw || 2) * PT;
+    const dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy) || 1, ux = dx / L, uy = dy / L, nx = -uy, ny = ux;
+    this.line([a, b], { lw, color });
+    const head = (p, sx, sy) => {
+      const q1 = [p[0] - sx * hl + nx * hw, p[1] - sy * hl + ny * hw], q2 = [p[0] - sx * hl - nx * hw, p[1] - sy * hl - ny * hw];
+      if (o.filled) this.polygon([q1, p, q2], { fc: color, ec: color, lw: lw * 0.5 });
+      else this.line([q1, p, q2], { lw, color, join: 'miter' });
+    };
+    if (o.heads === 'both' || o.heads === 'end') head(b, ux, uy);
+    if (o.heads === 'both') head(a, -ux, -uy);
+  }
+  svg() {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}mm" height="${H}mm" viewBox="0 0 ${W} ${H}"><defs>${this.defs.join('')}</defs><rect x="0" y="0" width="${W}" height="${H}" fill="#ffffff"/>${this.o.join('')}</svg>`;
+  }
+}
+
+/* result: kết quả DB.analyze; ringEN: toạ độ (E,N); meta như render.py; cad {bnd:[LineString], nums}; zones: [zone] */
+function render(result, ringEN, meta, cad, zones) {
+  const P = G.poly(ringEN);
+  const cgLines = (result.cgdd_lines || []).map(G.LS), ctLines = (result.center_lines || []).map(G.LS);
+  let focus = P.buffer(1.5);
+  (result.frontages || []).forEach((f, i) => {   // khung chứa trọn mặt cắt đường (lộ giới, vỉa hè)
+    const c = (result.center_lines || [])[i]; if (!c || !f.half || !f.cs) return;
+    const e = G.extend(G.LS(c), 80), cc = P.getCentroid(), q = G.interpolate(e, G.project(e, cc));
+    focus = focus.union(G.pt(2 * q.getX() - cc.getX(), 2 * q.getY() - cc.getY()).buffer(f.half * 0.15 + 2)).convexHull();
+  });
+  const scale = meta.scale || pickScale(focus);
+  const mm = scale / 1000.0;
+  const pen = new Pen();
+  pen.rect(M, M, W - 2 * M, H - 2 * M, { ec: '#000', lw: 0.8 });
+  let y = H - M - 6;
+  for (const [t, fs, bold, it] of [
+    [meta.public ? `SƠ ĐỒ TRA CỨU THÔNG TIN QUY HOẠCH - THAM KHẢO (TỶ LỆ 1/${scale})` : `SƠ ĐỒ KIỂM TRA THÔNG TIN QUY HOẠCH (IN TỶ LỆ 1/${scale})`, 12, true, false],
+    [`THEO ĐỒ ÁN ${meta.do_an || ''}`, 11.5, true, false],
+    [`(Phê duyệt theo ${meta.qd || ''})`, 9.5, false, true],
+    [`ĐỊA CHỈ: THỬA ĐẤT SỐ ${meta.so_thua || ''}, TỜ BẢN ĐỒ SỐ ${meta.so_to || ''}`, 10.5, true, false],
+    [meta.dia_chi ? `NHÀ SỐ: ${meta.dia_chi}`.toUpperCase() : '', 10.5, true, false]]) {
+    if (t) pen.text(W / 2, y, t, { fs, bold, italic: it, ha: 'center', va: 'center' });
+    y -= 6.4;
+  }
+  pen.line([[M, MAP[1] + MAP[3]], [W - M, MAP[1] + MAP[3]]], { lw: 0.6 });
+  pen.line([[M, MAP[1]], [W - M, MAP[1]]], { lw: 0.6 });
+  // ---------------- khung bản đồ ----------------
+  const fe = focus.getEnvelopeInternal();
+  const cx = (fe.getMinX() + fe.getMaxX()) / 2 + MAP[2] * mm * 0.10, cy = (fe.getMinY() + fe.getMaxY()) / 2;
+  const hw = MAP[2] * mm / 2, hh = MAP[3] * mm / 2;
+  const X0 = cx - hw, Y0 = cy - hh;
+  const T = (x, yy) => [MAP[0] + (x - X0) / mm, MAP[1] + (yy - Y0) / mm];
+  const TT = arr => arr.map(p => T(p[0], p[1]));
+  const win = boxGeom(cx - hw, cy - hh, cx + hw, cy + hh);
+  const clip = pen.clipRect(MAP[0], MAP[1], MAP[2], MAP[3]);
+  const th = 2.9 * mm;
+  const pl = new Placer();
+  pl.block(boxGeom(cx - hw, cy + hh - 52 * mm, cx - hw + 128 * mm, cy + hh));
+  pl.block(boxGeom(cx - hw, cy - hh, cx - hw + 58 * mm, cy - hh + 58 * mm));
+  pl.block(boxGeom(cx + hw - 62 * mm, cy - hh, cx + hw, cy - hh + 9 * mm));
+  pl.block(boxGeom(cx + hw - 14 * mm, cy + hh - 24 * mm, cx + hw, cy + hh));
+  const mtext = (x, yy, s, o) => { const [a, b] = T(x, yy); pen.text(a, b, s, o); };
+  const mline = (c, o) => pen.line(TT(c), Object.assign({ clip }, o));
+  // nền: bản đồ quy hoạch sử dụng đất của đồ án
+  const legendZ = {};
+  const zl = (zones || []).filter(z => z.poly.intersects(win));
+  for (const z of zl.slice().sort((a, b) => b.poly.getArea() - a.poly.getArea())) {
+    const gg = G.inter(z.poly, win);
+    const col = z.color || FUNC_COLOR[z.func_code] || '#cccccc';
+    const fc = lighten(col, 0.62);
+    for (const part of G.parts(gg, 'Polygon')) {
+      if (part.getArea() < 0.5) continue;
+      const rings = [G.cs(part.getExteriorRing())];
+      for (let i = 0; i < part.getNumInteriorRing(); i++) rings.push(G.cs(part.getInteriorRingN(i)));
+      pen.pathPoly(rings.map(TT), { fc, ec: lighten(col, 0.15), lw: 0.5, clip });
+    }
+    const key = z.func || 'Đất khác';
+    legendZ[key] = [fc, lighten(col, 0.15), ((legendZ[key] || [0, 0, 0])[2]) + G.area(gg)];
+  }
+  const zlab = [];
+  const winIn = win.buffer(-8 * mm);
+  for (const z of zl) {
+    if (!z.id) continue;
+    let p0 = z.cpt ? G.pt(z.cpt[0], z.cpt[1]) : z.poly.getInteriorPoint();
+    if (!winIn.contains(p0)) { const ii = G.inter(z.poly, winIn); p0 = G.area(ii) > 20 ? ii.getInteriorPoint() : null; }
+    if (!p0 || P.buffer(1).contains(p0) || zlab.some(q => p0.distance(q) < 20 * mm)) continue;
+    zlab.push(p0);
+    const tw = z.id.length * th * 0.7;
+    if (pl.free(p0.getX(), p0.getY(), tw, th * 1.3)) {
+      mtext(p0.getX(), p0.getY(), z.id, { fs: 8.5, bold: true, color: '#5a3a00', ha: 'center', va: 'center', bbox: { fc: 'white', ec: '#a0702a', lw: 0.5, pad: 1.0, alpha: 0.9 } });
+      pl.add(p0.getX(), p0.getY(), tw, th * 1.3);
+    }
+  }
+  // nền: địa chính
+  if (cad) {
+    for (const gl of cad.bnd || []) if (gl.intersects(win)) mline(G.cs(gl), { color: '#8c8c8c', lw: 0.3 });
+    const PB1 = P.buffer(1);
+    for (const [t, x, yy] of cad.nums || []) { const p = G.pt(x, yy); if (win.contains(p) && !PB1.contains(p)) mtext(x, yy, t, { fs: 5.5, color: '#777', ha: 'center', va: 'center' }); }
+  }
+  // tim đường + CGĐĐ hai bên + kích thước lộ giới
+  const fr = result.frontages || [];
+  ctLines.forEach((c, i) => {
+    const f = fr[i] || {}; const half = f.half || 0;
+    const e = G.extend(c, 80);
+    for (const part of G.parts(G.inter(e, win), 'LineString')) mline(G.cs(part), { color: '#555', lw: 0.5, dash: [8, 2, 1, 2] });
+    for (const sgn of [1, -1]) {
+      const o = G.offsetCurve(e, sgn * half); if (!o) continue;
+      for (const part of G.parts(G.inter(o, win), 'LineString')) if (part.getLength() > 1) mline(G.cs(part), { color: GREEN, lw: 1.3 });
+    }
+    if (f.cs && half) for (const sgn of [1, -1]) {   // mép bó vỉa (ranh vỉa hè - mặt đường)
+      const o = G.offsetCurve(e, sgn * (half - f.cs.vh)); if (!o) continue;
+      for (const part of G.parts(G.inter(o, win), 'LineString')) if (part.getLength() > 1) mline(G.cs(part), { color: '#6b6b6b', lw: 0.9 });
+    }
+    const mid = G.interpN(c, 0.5), s0 = G.project(e, mid);
+    for (const dd of [-0.28 * hw, 0.28 * hw, -0.45 * hw, 0.45 * hw, 0]) {
+      const p0 = G.interpolate(e, s0 + dd), a = G.interpolate(e, Math.max(0, s0 + dd - 1)), b = G.interpolate(e, Math.min(e.getLength(), s0 + dd + 1));
+      const an = ang([a.getX(), a.getY()], [b.getX(), b.getY()]);
+      const txt = f.name ? `ĐƯỜNG ${f.name.toUpperCase()}` : 'ĐƯỜNG QUY HOẠCH';
+      const tw = txt.length * th * 0.62;
+      if (win.buffer(-tw / 2).contains(p0) && !P.buffer(2).contains(p0)) {
+        mtext(p0.getX(), p0.getY(), txt, { fs: 8, bold: true, color: '#444', rot: an, ha: 'center', va: 'center', bbox: { fc: 'white', ec: 'none', alpha: 0.8, pad: 0.6 } });
+        pl.add(p0.getX(), p0.getY(), tw, th * 1.4);
+        break;
+      }
+    }
+    let best = null;
+    { const sc0 = G.project(e, P.getCentroid()), inner = win.buffer(-3 * mm), PB = P.buffer(0.8);
+      for (let k = -60; k <= 60; k++) {
+        const p0 = G.interpolate(e, sc0 + k * 0.5), s_ = G.project(e, p0), q1 = G.interpolate(e, s_ - 0.5), q2 = G.interpolate(e, s_ + 0.5);
+        const ux = q2.getX() - q1.getX(), uy = q2.getY() - q1.getY(), n = Math.hypot(ux, uy) || 1;
+        const A_ = G.pt(p0.getX() - uy / n * half, p0.getY() + ux / n * half), B_ = G.pt(p0.getX() + uy / n * half, p0.getY() - ux / n * half);
+        if (!(inner.contains(A_) && inner.contains(B_))) continue;
+        if (G.LS([[A_.getX(), A_.getY()], [B_.getX(), B_.getY()]]).intersects(PB)) continue;
+        const sc = -Math.abs(Math.abs(k * 0.5) - 6 * th);   // gần thửa nhưng không đè
+        if (!best || sc > best[0]) best = [sc, p0];
+      } }
+    if (best && half) {
+      const p0 = best[1], s1 = G.project(e, p0), a = G.interpolate(e, s1 - 0.5), b = G.interpolate(e, s1 + 0.5);
+      let ux = b.getX() - a.getX(), uy = b.getY() - a.getY(); const n = Math.hypot(ux, uy) || 1; ux /= n; uy /= n;
+      const nx = -uy, ny = ux;
+      const A = [p0.getX() + nx * half, p0.getY() + ny * half], B = [p0.getX() - nx * half, p0.getY() - ny * half];
+      const dim = (P1, P2, lbl, shift, fs, bold) => {
+        const Q1 = [P1[0] + ux * shift, P1[1] + uy * shift], Q2 = [P2[0] + ux * shift, P2[1] + uy * shift];
+        pen.arrow(T(...Q2), T(...Q1), { lw: 0.8, heads: 'both', filled: true, hl: 2.8, hw: 1.0 });
+        if (shift) for (const [Q, Pp] of [[Q1, P1], [Q2, P2]]) mline([[Pp[0] - ux * th * 0.3, Pp[1] - uy * th * 0.3], [Q[0] + ux * th * 0.4, Q[1] + uy * th * 0.4]], { color: '#000', lw: 0.4 });
+        const mx = (Q1[0] + Q2[0]) / 2 + ux * th * 0.75, my = (Q1[1] + Q2[1]) / 2 + uy * th * 0.75;
+        mtext(mx, my, lbl, { fs, bold, rot: ang(Q1, Q2), ha: 'center', va: 'center', bbox: { fc: 'white', ec: 'none', alpha: 0.85, pad: 0.4 } });
+        pl.add(mx, my, th * 6, th * 2);
+      };
+      if (f.cs) {
+        const vh = f.cs.vh, Av = [A[0] - nx * vh, A[1] - ny * vh], Bv = [B[0] + nx * vh, B[1] + ny * vh];
+        dim(B, Bv, `Vỉa hè ${fmt(vh)} m`, 0, 7.5, false); dim(Bv, Av, `Mặt đường ${fmt(f.cs.md)} m`, 0, 7.5, false); dim(Av, A, `Vỉa hè ${fmt(vh)} m`, 0, 7.5, false);
+        const sg = G.project(e, P.getCentroid()) > s1 ? -1 : 1;   // đặt kích thước lộ giới về phía xa thửa
+        dim(A, B, `Lộ giới ${fmt(f.width)} m`, sg * th * 3.2, 8.5, true);
+      } else dim(A, B, `Lộ giới ${fmt(f.width)} m`, 0, 8.5, true);
+    }
+  });
+  // đất giao thông
+  const lost = (result.lost_geom || []).filter(r => r.length >= 3).map(r => G.poly(r)).filter(Boolean);
+  for (const g of lost) pen.hatch(TT(G.cs(g.getExteriorRing())), RED, 1.0, 0.5);
+  // CGĐĐ cạnh thửa
+  for (const g of cgLines) { const x = G.inter(G.extend(g, 25), win); const l = (x && x.getGeometryType() === 'LineString') ? x : g; mline(G.cs(l), { color: GREEN, lw: 1.6 }); }
+  // CGXD
+  const sb = result.setback || 0;
+  for (const ln of result.cgxd_lines || []) {
+    let L = G.LS(ln);
+    if (sb <= 0) L = G.inter(G.extend(L, 25), win);
+    if (!L || L.getGeometryType() !== 'LineString') continue;
+    mline(G.cs(L), { color: YEL, lw: 1.6, dash: [5, 3] });
+  }
+  for (const ln of result.rear_lines || []) mline(ln, { color: ORANGE, lw: 1.0, dash: [2, 2] });
+  // thửa đất
+  mline(G.cs(P.getExteriorRing()), { color: '#000', lw: 1.6 });
+  pl.block(P.buffer(0.15));
+  // nhãn CGĐĐ / CGXD
+  if (cgLines.length) {
+    const g = G.extend(cgLines[0], 25);
+    for (const [frac, txt, col] of [[0.2, 'CGĐĐ', '#008a00'], [0.8, 'CGXD' + (sb <= 0 ? ' trùng CGĐĐ' : ` (lùi ${fmt(sb)} m)`), '#9a7a00']]) {
+      const gw = G.inter(g, win.buffer(-8 * mm));
+      if (G.isEmpty(gw) || gw.getGeometryType() !== 'LineString') continue;
+      for (const df of [0, 0.1, -0.1, 0.2, -0.2]) {
+        const p0 = G.interpN(gw, Math.min(Math.max(frac + df, 0.05), 0.95));
+        const a = G.interpolate(gw, Math.max(0, G.project(gw, p0) - 1)), b = G.interpolate(gw, Math.min(gw.getLength(), G.project(gw, p0) + 1));
+        const an = ang([a.getX(), a.getY()], [b.getX(), b.getY()]);
+        const ux = b.getX() - a.getX(), uy = b.getY() - a.getY(), n = Math.hypot(ux, uy) || 1;
+        let nx = -uy / n, ny = ux / n;
+        if (G.pt(p0.getX() + nx, p0.getY() + ny).distance(P) < G.pt(p0.getX() - nx, p0.getY() - ny).distance(P)) { nx = -nx; ny = -ny; }
+        const tx = p0.getX() + nx * th * 0.9, ty = p0.getY() + ny * th * 0.9, tw = txt.length * th * 0.6;
+        if (pl.free(tx, ty, tw, th * 1.2) && !P.buffer(0.5).contains(G.pt(tx, ty))) {
+          mtext(tx, ty, txt, { fs: 8, bold: true, color: col, rot: an, ha: 'center', va: 'center', bbox: { fc: 'white', ec: 'none', alpha: 0.85, pad: 0.4 } });
+          pl.add(tx, ty, tw, th * 1.2);
+          break;
+        }
+      }
+    }
+  }
+  // kích thước cạnh thửa + số hiệu đỉnh
+  const coords = G.cs(P.getExteriorRing());
+  const ccw = G.isCCW(coords);
+  const cen = P.getCentroid();
+  if (meta.vertex_ids) {
+    meta.vertex_ids.forEach((vid, i) => {
+      if (i >= coords.length - 1) return;
+      const [x, yv] = coords[i];
+      const vx = x - cen.getX(), vy = yv - cen.getY(), n = Math.hypot(vx, vy) || 1;
+      let tx, ty;
+      for (const k of [0.55, 0.9, 1.3]) { tx = x + vx / n * th * k; ty = yv + vy / n * th * k; if (pl.free(tx, ty, th * 0.5, th * 0.6)) break; }
+      pl.add(tx, ty, th * 0.5, th * 0.6);
+      mtext(tx, ty, String(vid), { fs: 5.5, color: '#333', ha: 'center', va: 'center' });
+    });
+  }
+  for (let i = 0; i < coords.length - 1; i++) {
+    const p = coords[i], q = coords[i + 1], L = Math.hypot(q[0] - p[0], q[1] - p[1]);
+    if (L < 0.4) continue;
+    const mx = (p[0] + q[0]) / 2, my = (p[1] + q[1]) / 2, dx = (q[0] - p[0]) / L, dy = (q[1] - p[1]) / L;
+    const [nx, ny] = ccw ? [dy, -dx] : [-dy, dx];
+    const txt = fmt(L, 2), tw = txt.length * th * 0.62, an = ang(p, q);
+    let ok = false, tx, ty, kk = 0, shh = 0;
+    for (let k = 0; k < 8 && !ok; k++) {
+      const off = th * (0.7 + 0.75 * k);
+      for (const sh of [0, 0.3, -0.3]) { tx = mx + nx * off + dx * L * sh; ty = my + ny * off + dy * L * sh; if (pl.free(tx, ty, tw, th * 0.95, an)) { ok = true; kk = k; shh = sh; break; } }
+    }
+    if (!ok) continue;
+    pl.add(tx, ty, tw, th * 0.95, an);
+    if (kk >= 2 || shh !== 0) pen.line([T(mx + nx * th * 0.15, my + ny * th * 0.15), T(tx, ty)], { color: '#555', lw: 0.3 });
+    mtext(tx, ty, txt, { fs: 7.5, rot: an, ha: 'center', va: 'center', bbox: { fc: 'white', ec: 'none', alpha: 0.8, pad: 0.2 } });
+  }
+  // khoảng cách ranh thửa -> CGĐĐ
+  dimsToCgdd(pen, T, P, cgLines, lost, th, pl, mtext);
+  // khoảng lùi sau
+  const rs = result.rear_setback || 0;
+  if (rs && (result.rear_lines || []).length) {
+    const Lr = G.LS(result.rear_lines[0]), mpt = G.interpN(Lr, 0.5);
+    const [a] = G.nearestPoints(P.getExteriorRing(), mpt);
+    pen.arrow(T(a.getX(), a.getY()), T(mpt.getX(), mpt.getY()), { lw: 0.7, color: ORANGE, heads: 'both', hl: 3, hw: 1.2 });
+    const txt = `Lùi sau ${fmt(rs)} m`;
+    let tx, ty;
+    for (let k = 0; k < 5; k++) { tx = mpt.getX() + th * (1.2 + k * 0.8); ty = mpt.getY() + th * (0.6 + k * 0.5); if (pl.free(tx, ty, txt.length * th * 0.6, th)) break; }
+    pen.line([T((a.getX() + mpt.getX()) / 2, (a.getY() + mpt.getY()) / 2), T(tx, ty)], { color: ORANGE, lw: 0.4 });
+    mtext(tx, ty, txt, { fs: 7.5, color: ORANGE, ha: 'center', va: 'center', bbox: { fc: 'white', ec: 'none', alpha: 0.85, pad: 0.3 } });
+    pl.add(tx, ty, txt.length * th * 0.6, th);
+  }
+  // nhãn đất giao thông
+  if (lost.length) {
+    const g = lost.reduce((a, b) => a.getArea() >= b.getArea() ? a : b), rp = g.getInteriorPoint();
+    const txt = `Đất QH giao thông: ${fmt(meta.road_area !== null && meta.road_area !== undefined ? meta.road_area : g.getArea(), 1)} m²`;
+    const tw = txt.length * th * 0.58;
+    const vx = rp.getX() - cen.getX(), vy = rp.getY() - cen.getY(), n = Math.hypot(vx, vy) || 1;
+    let cand = null;
+    for (let k = 2; k < 12 && !cand; k++) {
+      for (const rot of [0, 25, -25, 50, -50]) {
+        const ar = rot * Math.PI / 180, ux = vx / n * Math.cos(ar) - vy / n * Math.sin(ar), uy = vx / n * Math.sin(ar) + vy / n * Math.cos(ar);
+        const tx = rp.getX() + ux * th * k * 1.3, ty = rp.getY() + uy * th * k * 1.3;
+        if (pl.free(tx, ty, tw, th * 1.1) && win.buffer(-tw / 2).contains(G.pt(tx, ty))) { cand = [tx, ty]; break; }
+      }
+    }
+    if (cand) {
+      const [tx, ty] = cand;
+      pen.arrow(T(tx, ty), T(rp.getX(), rp.getY()), { lw: 0.5, color: RED, heads: 'end', hl: 3, hw: 1.2 });
+      mtext(tx, ty, txt, { fs: 7.5, color: RED, ha: 'center', va: 'center', bbox: { fc: 'white', ec: RED, lw: 0.4, pad: 0.5 } });
+      pl.add(tx, ty, tw, th * 1.1);
+    }
+  }
+  // diện tích trong thửa
+  let kp = lost.length ? G.diff(P, G.union(lost)) : P;
+  let rp = (kp.getGeometryType() === 'Polygon' ? kp : G.largestPoly(kp)).getInteriorPoint();
+  const bp = (result.build_poly || []).length ? G.poly(result.build_poly[0]) : null;
+  if (bp && bp.getArea() > 5) rp = bp.getInteriorPoint();
+  mtext(rp.getX(), rp.getY(), `THỬA ${meta.so_thua || ''}\nDT phù hợp XD\n${fmt(meta.area_suit || P.getArea(), 1)} m²`, { fs: 7.5, bold: true, ha: 'center', va: 'center', color: '#222', linespacing: 1.1 });
+  // ô chú thích + nhãn khung
+  pen.text(MAP[0] + 0.008 * MAP[2], MAP[1] + 0.985 * MAP[3], 'VỊ TRÍ THỬA ĐẤT', { fs: 13, bold: true, va: 'top', bbox: { fc: 'white', ec: '#000', pad: 3.5 } });
+  if (meta.note) pen.text(MAP[0] + 0.008 * MAP[2], MAP[1] + 0.885 * MAP[3], meta.note, { fs: 7.6, va: 'top', linespacing: 1.35, bbox: { fc: 'white', ec: '#c8b060', pad: 3 } });
+  pen.text(MAP[0] + 0.992 * MAP[2], MAP[1] + 0.02 * MAP[3], `${meta.public ? 'Ngày tra cứu' : 'Ngày kiểm tra'}: ${meta.date || ''}`, { fs: 8.5, ha: 'right', va: 'bottom', bbox: { fc: 'white', ec: 'none', pad: 1 } });
+  // mũi tên Bắc
+  const nax = [MAP[0] + MAP[2] - 9, MAP[1] + MAP[3] - 16];
+  pen.arrow(nax, [nax[0], nax[1] + 10], { lw: 1.0, heads: 'end', filled: true, hl: 6, hw: 2.4 });
+  pen.text(nax[0], nax[1] + 12, 'B', { fs: 9, bold: true, ha: 'center' });
+  // vòng tròn chỉ tiêu
+  circle(pen, result.zone || {}, M + 28, MAP[1] + 30, 23);
+  // ---------------- chân trang ----------------
+  pen.line([[M, M + 33], [W - M, M + 33]], { lw: 0.6 });
+  pen.line([[W - 52, M], [W - 52, M + 33]], { lw: 0.6 });
+  pen.line([[W - 52, M + 17], [W - M, M + 17]], { lw: 0.4 });
+  pen.text(M + 5, M + 30, 'KÝ HIỆU', { fs: 10, bold: true, va: 'center' });
+  const L0 = M + 5;
+  const zrows = Object.entries(legendZ).sort((a, b) => b[1][2] - a[1][2]).slice(0, 4).map(([k, v]) => ['fill', v[0], k, v[1]]);
+  const rows = zrows.concat([['hatch', RED, 'Đất thuộc QH giao thông', null], ['line', GREEN, 'CGĐĐ: chỉ giới đường đỏ', null], ['dash', YEL, 'CGXD: chỉ giới xây dựng', null], ['dot', ORANGE, 'Khoảng lùi phía sau', null], ['arrow', BLUE, 'K/c từ ranh thửa đến CGĐĐ (m)', null]]);
+  if ((result.frontages || []).some(f => f.cs)) rows.push(['line', '#6b6b6b', 'Mép vỉa hè (bó vỉa) theo QH', null]);
+  rows.slice(0, 9).forEach(([k, c, t, ec], i) => {
+    const xx = L0 + Math.floor(i / 3) * 54, yy = M + 24 - (i % 3) * 7;
+    if (k === 'fill') pen.rect(xx, yy - 2, 10, 4, { fc: c, ec: ec || '#888', lw: 0.5 });
+    else if (k === 'hatch') { pen.hatch([[xx, yy - 2], [xx + 10, yy - 2], [xx + 10, yy + 2], [xx, yy + 2]], c, 1.0, 0.5); pen.rect(xx, yy - 2, 10, 4, { ec: c, lw: 0.5 }); }
+    else if (k === 'line') pen.line([[xx, yy], [xx + 10, yy]], { color: c, lw: c === GREEN ? 1.5 : 0.9 });
+    else if (k === 'dash') pen.line([[xx, yy], [xx + 10, yy]], { color: c, lw: 1.5, dash: [5, 3] });
+    else if (k === 'dot') pen.line([[xx, yy], [xx + 10, yy]], { color: c, lw: 1.0, dash: [2, 2] });
+    else if (k === 'arrow') pen.arrow([xx, yy], [xx + 10, yy], { lw: 0.8, color: c, heads: 'both', hl: 3, hw: 1.2 });
+    const tt = t.length <= 34 ? t : t.slice(0, 33) + '…';
+    pen.text(xx + 12.5, yy, tt, { fs: 6.6, va: 'center' });
+  });
+  pen.text(L0, M + 3, `Thửa đất có diện tích ${fmt(meta.area_gcn || P.getArea(), 1)} m² (theo GCN); diện tích phù hợp xây dựng ${fmt(meta.area_suit || P.getArea(), 1)} m²`, { fs: 7.4, va: 'center' });
+  const cxl = 186, cyl = M + 16.5;
+  pen.circle(cxl, cyl, 10.5, { lw: 0.8 });
+  pen.line([[cxl - 10.1, cyl + 3.5], [cxl + 10.1, cyl + 3.5]], { lw: 0.5 }); pen.line([[cxl - 10.1, cyl - 3.5], [cxl + 10.1, cyl - 3.5]], { lw: 0.5 });
+  pen.line([[cxl, cyl + 3.5], [cxl, cyl - 3.5]], { lw: 0.5 });
+  for (const [t, xx, yy] of [['A', cxl, cyl + 6.8], ['B', cxl - 5, cyl], ['C', cxl + 5, cyl], ['D', cxl, cyl - 5.1]]) pen.text(xx, yy, t, { fs: 7.5, ha: 'center', va: 'center' });
+  pen.text(cxl, cyl - 8.3, 'E', { fs: 7.5, ha: 'center', va: 'center' });
+  ['A: KÝ HIỆU LÔ ĐẤT', 'B: HỆ SỐ SỬ DỤNG ĐẤT (LẦN)', 'C: TẦNG CAO TỐI ĐA (TẦNG)', 'D: DIỆN TÍCH LÔ ĐẤT (HA)', 'E: MẬT ĐỘ XÂY DỰNG TỐI ĐA (%)'].forEach((t, i) => pen.text(cxl + 13, cyl + 10 - i * 5, t, { fs: 6.3, va: 'center', bold: true }));
+  if (meta.public) {
+    pen.text(W - 52 + 23.5, M + 25, 'BẢN TRA CỨU THAM KHẢO', { fs: 8.5, ha: 'center', va: 'center', bold: true });
+    pen.text(W - 52 + 23.5, M + 10, 'Không thay thế văn bản cung cấp', { fs: 6.8, ha: 'center', va: 'center' });
+    pen.text(W - 52 + 23.5, M + 6, 'thông tin quy hoạch của', { fs: 6.8, ha: 'center', va: 'center' });
+    pen.text(W - 52 + 23.5, M + 2.5, 'cơ quan có thẩm quyền', { fs: 6.8, ha: 'center', va: 'center' });
+  } else {
+    pen.text(W - 52 + 23.5, M + 25, 'CHUYÊN VIÊN KIỂM TRA', { fs: 8.5, ha: 'center', va: 'center' });
+    pen.text(W - 52 + 23.5, M + 5, meta.officer || '', { fs: 9, ha: 'center', va: 'center' });
+  }
+  return { svg: pen.svg(), scale };
+}
+
+function dimsToCgdd(pen, T, P, cgLines, lost, th, pl, mtext) {
+  if (!cgLines.length) return;
+  const lostg = lost.length ? G.union(lost.map(g => g.buffer(0.05))) : null;
+  const lostgB = lostg ? lostg.buffer(0.05) : null;
+  const Pin = P.buffer(-0.03);
+  for (const g0 of cgLines) {
+    const g = G.extend(g0, 30), cand = [];
+    for (const v of G.cs(P.getExteriorRing()).slice(0, -1)) {
+      const pv = G.pt(v[0], v[1]), d = g.distance(pv);
+      if (!(0.1 < d && d < 12)) continue;
+      const q = G.interpolate(g, G.project(g, pv)), seg = G.LS([v, [q.getX(), q.getY()]]);
+      const ii = G.inter(seg, Pin);
+      if (ii && ii.getLength() > 0.02 && !(lostgB && lostgB.contains(seg))) continue;
+      cand.push([G.project(g, pv), v, d, q]);
+    }
+    if (!cand.length) continue;
+    cand.sort((a, b) => a[0] - b[0]);
+    const mx = cand.reduce((a, b) => b[2] > a[2] ? b : a);
+    const pick = cand[cand.length - 1][0] - cand[0][0] > 1.5 ? [cand[0], cand[cand.length - 1]] : [mx];
+    if (pick.every(c => Math.abs(mx[0] - c[0]) > 1.2) && mx[2] > 0.3) pick.push(mx);
+    for (const [, v, d, q] of pick) {
+      pen.arrow(T(v[0], v[1]), T(q.getX(), q.getY()), { lw: 0.7, color: BLUE, heads: 'both', hl: 2.4, hw: 0.9 });
+      const txt = fmt(d, 2), tw = txt.length * th * 0.6;
+      const mx_ = (v[0] + q.getX()) / 2, my_ = (v[1] + q.getY()) / 2;
+      const ux = q.getX() - v[0], uy = q.getY() - v[1], n = Math.hypot(ux, uy) || 1, nx = -uy / n, ny = ux / n;
+      let tx, ty, kk = 6, found = false;
+      for (let k = 1; k < 7 && !found; k++) for (const sgn of [1, -1]) { tx = mx_ + sgn * nx * th * 0.75 * k; ty = my_ + sgn * ny * th * 0.75 * k; if (pl.free(tx, ty, tw, th * 0.9)) { found = true; kk = k; break; } }
+      if (kk > 2) pen.line([T(mx_, my_), T(tx, ty)], { color: BLUE, lw: 0.3 });
+      mtext(tx, ty, txt, { fs: 7.5, color: BLUE, ha: 'center', va: 'center', bbox: { fc: 'white', ec: 'none', alpha: 0.85, pad: 0.3 } });
+      pl.add(tx, ty, tw, th * 0.9);
+    }
+  }
+}
+
+function circle(pen, z, cx, cy, r) {
+  pen.circle(cx, cy, r, { fc: 'white', lw: 0.9 });
+  pen.circle(cx, cy, r + 0.8, { ec: '#555', lw: 0.4 });
+  const hline = yy => { const dx = Math.sqrt(Math.max(r * r - (yy - cy) ** 2, 0)); pen.line([[cx - dx, yy], [cx + dx, yy]], { lw: 0.6 }); };
+  const y1 = cy + r * 0.40, y3 = cy - r * 0.38, ymid = (y1 + y3) / 2;
+  hline(y1); hline(y3); hline(ymid); pen.line([[cx, y1], [cx, ymid]], { lw: 0.6 });
+  const t = (x, yy, s, fs = 17) => { s = String(s !== null && s !== undefined && s !== '' ? s : '-'); pen.text(x, yy, s, { fs: s.length <= 6 ? fs : fs * 6.5 / s.length, ha: 'center', va: 'center' }); };
+  t(cx, (y1 + cy + r) / 2 + 1.0, z.id || '-', 16);
+  t(cx - r * 0.42, (y1 + ymid) / 2, z.hssd);
+  t(cx + r * 0.42, (y1 + ymid) / 2, z.tang_cao);
+  t(cx, (ymid + y3) / 2, z.dt_ha);
+  t(cx, (y3 + cy - r) / 2 - 1.0, z.mdxd);
+}
+
+root.QHRender = { render, W, H };
+})(globalThis);
+
+/* Ghép dữ liệu cho sơ đồ, văn bản, KML (chuyển từ app.py). */
+(function(root){'use strict';
+const Q=root.QH,G=Q.geom;
+function f1(v){return Number(v).toFixed(1).replace('.',',')}
+function noteBox(p,r){const L=['DIỆN TÍCH (THEO GCN)'];
+ if(p.area_total)L.push(`- Tổng diện tích thửa: ${f1(p.area_total)} m²`);
+ if(p.area_rec)L.push(`- Diện tích được công nhận: ${f1(p.area_rec)} m²`);
+ const road=(p.qhgt_in!==null&&p.qhgt_in!==undefined)?(p.qhgt_in||0)+(p.area_not_rec||0):r.area_road_calc;
+ if(road){const det=(p.qhgt_in!==null&&p.qhgt_in!==undefined)?` (${f1(p.qhgt_in)} m² trong DT công nhận + ${f1(p.area_not_rec||0)} m² không công nhận)`:' (đo từ toạ độ)';L.push(`- Đất QH giao thông: ${f1(road)} m²${det}`)}
+ if((r.area_other_func||0)>0.3)L.push(`- Đất chức năng khác: ${f1(r.area_other_func)} m²`);
+ L.push(`- DIỆN TÍCH PHÙ HỢP XÂY DỰNG: ${f1(r.area_suitable||0)} m²${r.area_suitable_uoc_tinh?' (ước tính)':''}`);
+ return [L.join('\n'),road]}
+function today(){const d=new Date();return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear()}
+function diagram(db,p,ring,r){const P=G.poly(ring);const cad=r._cad||db.cadAt(P);let cadd=null;
+ if(cad){const c=P.getCentroid();cadd={bnd:G.near(cad.bnd,P,90),nums:cad.nums.filter(n=>Math.abs(n[1]-c.getX())<120&&Math.abs(n[2]-c.getY())<120)}}
+ const pl=r._pl;let zs=[];if(pl){const c=P.getCentroid(),e=c.buffer(150).getEnvelopeInternal();zs=pl.zones.filter(z=>z.poly.getEnvelopeInternal().intersects(e))}
+ const [note,road]=noteBox(p,r);
+ const meta={do_an:(r.plan||{}).do_an||'',qd:(r.plan||{}).qd||'',so_thua:p.so_thua,so_to:p.so_to,dia_chi:p.dia_chi,area_gcn:p.area_rec||p.area_total,area_suit:r.area_suitable,road_area:road,date:today(),officer:p.officer,note,public:!!root.PUBLIC,
+  vertex_ids:(p.coords||[]).length>=3?p.coords.map((c,i)=>c.id||String(i+1)):null};
+ return root.QHRender.render(r,ring,meta,cadd,zs)}
+function form(p){return {so_thua:p.so_thua,so_to:p.so_to,ten:p.ten,dia_chi_lh:p.dia_chi_lh||p.dia_chi,dia_diem:p.dia_chi,area_total:p.area_total,area_rec:p.area_rec,qhgt_in:p.qhgt_in,muc_dich:p.muc_dich,ngay_don:p.ngay_don,bien_nhan:p.bien_nhan,ngay_bn:p.ngay_bn}}
+root.QHGlue={noteBox,diagram,form,today};
+})(globalThis);
+
+/* Văn bản cung cấp thông tin quy hoạch (.docx) từ file mẫu của UBND phường (chuyển từ docx_out.py).
+   Giữ nguyên khổ giấy, lề, font, cỡ chữ, giãn dòng của mẫu; chỉ thay nội dung. Cần JSZip, DOMParser. */
+(function (root) {
+'use strict';
+const W_NS = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main';
+const XML_NS = 'http://www.w3.org/XML/1998/namespace';
+const fmt = root.QH.fmt;
+const f1 = v => (v !== null && v !== undefined && v !== '') ? Number(v).toFixed(1).replace('.', ',') : '...';
+const f2 = v => Number(v).toFixed(2).replace('.', ',');
+const fg = v => (v !== null && v !== undefined && v !== '') ? Number(v).toFixed(2).replace(/0+$/, '').replace(/\.$/, '').replace('.', ',') : '...';
+// thứ tự phần tử trong w:rPr theo lược đồ OOXML
+const RPR_ORDER = ['rStyle', 'rFonts', 'b', 'bCs', 'i', 'iCs', 'caps', 'smallCaps', 'strike', 'dstrike', 'outline', 'shadow', 'emboss', 'imprint', 'noProof', 'snapToGrid', 'vanish', 'webHidden', 'color', 'spacing', 'w', 'kern', 'position', 'sz', 'szCs', 'highlight', 'u', 'effect', 'bdr', 'shd', 'fitText', 'vertAlign', 'rtl', 'cs', 'em', 'lang', 'eastAsianLayout', 'specVanish', 'oMath'];
+
+const kids = (el, name) => Array.from(el.childNodes).filter(n => n.nodeType === 1 && n.namespaceURI === W_NS && n.localName === name);
+const runs = p => kids(p, 'r');
+const ptext = p => runs(p).map(r => kids(r, 't').map(t => t.textContent).join('')).join('');
+
+function rprSet(doc, r, name, attrs) {
+  let rpr = kids(r, 'rPr')[0];
+  if (!rpr) { rpr = doc.createElementNS(W_NS, 'w:rPr'); r.insertBefore(rpr, r.firstChild); }
+  const el = doc.createElementNS(W_NS, 'w:' + name);
+  for (const k in attrs || {}) el.setAttributeNS(W_NS, 'w:' + k, attrs[k]);
+  const idx = RPR_ORDER.indexOf(name);
+  const after = Array.from(rpr.childNodes).find(n => n.nodeType === 1 && RPR_ORDER.indexOf(n.localName) > idx);
+  rpr.insertBefore(el, after || null);
+}
+/* segs: [[text, italic|'sup'|null, bold|null]] - giữ định dạng run đầu tiên */
+function setRuns(doc, p, segs) {
+  let rs = runs(p);
+  let base;
+  if (rs.length) base = rs[0].cloneNode(true); else base = doc.createElementNS(W_NS, 'w:r');
+  for (const r of rs) p.removeChild(r);
+  for (const [text, it, bd] of segs) {
+    const el = base.cloneNode(true);
+    for (const n of Array.from(el.childNodes)) if (!(n.nodeType === 1 && n.localName === 'rPr')) el.removeChild(n);
+    const rpr = kids(el, 'rPr')[0];
+    if (rpr) for (const tag of ['i', 'iCs', 'b', 'bCs']) for (const x of kids(rpr, tag)) rpr.removeChild(x);
+    const t = doc.createElementNS(W_NS, 'w:t');
+    t.setAttributeNS(XML_NS, 'xml:space', 'preserve');
+    t.textContent = text;
+    el.appendChild(t);
+    if (it === 'sup') rprSet(doc, el, 'vertAlign', { val: 'superscript' });
+    else if (it) { rprSet(doc, el, 'i'); rprSet(doc, el, 'iCs'); }
+    if (bd) { rprSet(doc, el, 'b'); rprSet(doc, el, 'bCs'); }
+    p.appendChild(el);
+  }
+}
+function m2segs(text) {
+  const out = [];
+  text.split(/(?<=\bm)2(?=\b)/).forEach((part, i) => { if (i) out.push(['2', 'sup', null]); if (part) out.push([part, null, null]); });
+  return out;
+}
+
+async function build(res, form, templateBuf) {
+  const zip = await root.JSZip.loadAsync(templateBuf);
+  const xml = await zip.file('word/document.xml').async('string');
+  const doc = new DOMParser().parseFromString(xml, 'application/xml');
+  const body = doc.getElementsByTagNameNS(W_NS, 'body')[0];
+  const P = kids(body, 'p');
+  const find = prefix => P.find(p => ptext(p).trim().startsWith(prefix)) || null;
+  const S = (p, segs) => { if (p) setRuns(doc, p, segs); };
+  const ten = form.ten || '..........', dc = form.dia_diem || '..........';
+  S(find('Cấp cho'), [[`Cấp cho ${ten}`]]);
+  S(find('Địa chỉ liên hệ'), [[`Địa chỉ liên hệ: ${form.dia_chi_lh || dc}`]]);
+  const nd = (form.ngay_don || '').trim();
+  S(find('Theo đề nghị của'), [[`Theo đề nghị của ${ten} tại Đơn đề nghị cung cấp thông tin về quy hoạch xây dựng${nd ? ' ngày ' + nd : ''} đối với lô đất: ${dc}; UBND phường Nha Trang cung cấp thông tin về quy hoạch như sau:`]]);
+  S(find('- Thửa đất số'), [[`- Thửa đất số ${form.so_thua || '...'}, Tờ bản đồ số ${form.so_to || '...'};`]]);
+  S(find('- Địa điểm'), [[`- Địa điểm: ${dc};`]]);
+  const at = form.area_rec || form.area_total;
+  let sArea = `- Diện tích lô đất: ${fg(at)} m2`;
+  const est = res.area_suitable_uoc_tinh ? ' (ước tính)' : '';
+  const extra = [];
+  if (form.qhgt_in) extra.push(`trong đó ${form.qhgt_uoc_tinh ? f2(form.qhgt_in) : fg(form.qhgt_in)} m2${form.qhgt_uoc_tinh ? ' (ước tính)' : ''} thuộc quy hoạch giao thông`);
+  if ((res.area_other_func || 0) > 0.3) extra.push(`${f1(res.area_other_func)} m2 thuộc chức năng sử dụng đất khác`);
+  if (extra.length || Math.abs((res.area_suitable || 0) - Number(at || 0)) > 0.05) sArea += ' (' + extra.concat([`diện tích phù hợp quy hoạch xây dựng: ${f1(res.area_suitable)} m2${est}`]).join('; ') + ')';
+  S(find('- Diện tích lô đất'), m2segs(sArea + ';'));
+  S(find('- Mục đích sử dụng'), [[`- Mục đích sử dụng: ${form.muc_dich || 'Đất ở tại đô thị'}.`]]);
+  // 2. Thông tin quy hoạch
+  const pl = res.plan || {}, z = res.zone || {};
+  const pCot = find('- Cốt xây dựng');
+  let zoneTxt = z.id ? `- Vị trí lô đất thuộc ô đất ký hiệu ${z.id} (${(z.func || '').toLowerCase()})` : `- Vị trí lô đất thuộc ${(z.func || 'khu vực').toLowerCase()}`;
+  zoneTxt += ` theo ${pl.ten || ''}, được phê duyệt tại ${pl.qd || ''};`;
+  if (pCot) {
+    const pZone = pCot.cloneNode(true); pCot.parentNode.insertBefore(pZone, pCot); setRuns(doc, pZone, [[zoneTxt]]);
+    const cot = res.cot_xd;
+    setRuns(doc, pCot, [[`- Cốt xây dựng: +${cot !== null && cot !== undefined ? f2(cot) : '...'} m `], ['(theo hệ tọa độ VN-2000);', true]]);
+  }
+  const fr = res.frontages || [];
+  S(find('- Lộ giới đường'), fr.length ? [['- ' + fr.map(f => `Lộ giới đường ${f.name || ('phía ' + f.dir)} rộng ${f1(f.width)} m`).join('; ') + ';']] : [['- Lộ giới đường: ..... m;']]);
+  const sb = res.setback || 0;
+  S(find('- Khoảng lùi so với chỉ giới'), [[`- Khoảng lùi so với chỉ giới đường đỏ: ${f1(sb)} m;`]]);
+  const rs = res.rear_setback || 0;
+  S(find('- Khoảng lùi so với ranh giới khu đất phía sau'), [[rs > 0 ? `- Khoảng lùi so với ranh giới khu đất phía sau: ${f1(rs)} m;` : (res.area_type === 'QHCT' ? '- Khoảng lùi so với ranh giới khu đất phía sau: không quy định (theo quy hoạch chi tiết được duyệt);' : '- Khoảng lùi so với ranh giới khu đất phía sau: khuyến khích tăng cường tạo khoảng trống phía sau nhà;')]]);
+  const cg = fr.map(f => `Chỉ giới đường đỏ${f.name && fr.length > 1 ? ' đường ' + f.name : ''} cách tim đường hiện trạng: ${f1(f.half)} m`);
+  const cgxd = sb <= 0 ? 'chỉ giới xây dựng trùng với chỉ giới đường đỏ' : `chỉ giới xây dựng cách chỉ giới đường đỏ ${f1(sb)} m`;
+  S(find('- Chỉ giới đường đỏ cách tim'), [[`- ${cg.length ? cg.join('; ') : 'Chỉ giới đường đỏ cách tim đường hiện trạng: ..... m'}; ${cgxd};`]]);
+  S(find('- Mật độ xây dựng tối đa'), [[`- Mật độ xây dựng tối đa: ${res.mdxd_thuan !== null && res.mdxd_thuan !== undefined ? f2(res.mdxd_thuan).replace(/0+$/, '').replace(/,$/, '') : '...'}%;`]]);
+  S(find('- Hệ số sử dụng đất tối đa'), [[`- Hệ số sử dụng đất tối đa: ${fmt(res.hssd, 2)} lần;`]]);
+  S(find('- Số tầng cao tối đa'), [[`- Số tầng cao tối đa: ${String(Math.trunc(res.tang_cao)).padStart(2, '0')} tầng;`]]);
+  const h = res.chieu_cao || 19;
+  const htxt = h >= 19 ? `- Chiều cao công trình: ≤ ${fmt(h)} m (Trường hợp chiều cao công trình từ ${fmt(h)} m trở lên, thực hiện theo quy định tại Bảng 2.7 của Quy chuẩn kỹ thuật quốc gia về quy hoạch xây dựng)` : `- Chiều cao công trình: ≤ ${fmt(h)} m`;
+  S(find('- Chiều cao công trình'), [[htxt + ';']]);
+  S(find('- Số tầng hầm tối đa'), [[`- Số tầng hầm tối đa: ${String(Math.trunc(res.tang_ham ?? 1)).padStart(2, '0')} tầng;`]]);
+  const bl = res.ban_cong_list || [];
+  let btxt;
+  if (bl.length <= 1) { const b = bl[0]; btxt = `- Độ vươn ban công ra ngoài chỉ giới xây dựng tối đa: ${b ? f1(b.val) : '...'} m. Chiều cao mặt dưới kết cấu đỡ ban công so với mặt sân tối thiểu 3,5 m.`; }
+  else btxt = '- Độ vươn ban công ra ngoài chỉ giới xây dựng tối đa: ' + bl.map(b => `phía đường ${b.name || b.dir}: ${f1(b.val)} m`).join('; ') + '. Chiều cao mặt dưới kết cấu đỡ ban công so với mặt sân tối thiểu 3,5 m.';
+  S(find('- Độ vươn ban công'), [[btxt]]);
+  // 3. Lưu ý riêng của lô đất
+  const last = find('- Tầng hầm: Không được xây dựng') || find('- Tầng hầm');
+  if (last) for (const n of (res.tang_cao_note || []).slice().reverse()) { const np = last.cloneNode(true); last.parentNode.insertBefore(np, last.nextSibling); setRuns(doc, np, [['- ' + n]]); }
+  // bỏ tên người ký trong mẫu
+  for (const t of Array.from(doc.getElementsByTagNameNS(W_NS, 't'))) if (t.textContent.includes('Lê Tiến Vĩnh')) t.textContent = t.textContent.replace('Lê Tiến Vĩnh', '').trimEnd();
+  zip.file('word/document.xml', new XMLSerializer().serializeToString(doc));
+  return zip.generateAsync({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', compression: 'DEFLATE' });
+}
+
+/* Trích nội dung để xem trước: [['hd', row0, row1], ['p', text, bold, italic, center], ['sign', cells]] */
+async function paragraphs(blob) {
+  const zip = await root.JSZip.loadAsync(blob);
+  const doc = new DOMParser().parseFromString(await zip.file('word/document.xml').async('string'), 'application/xml');
+  const body = doc.getElementsByTagNameNS(W_NS, 'body')[0];
+  const tbls = kids(body, 'tbl');
+  const cellText = tc => kids(tc, 'p').map(ptext).join('\n').trim();
+  const rows = t => kids(t, 'tr').map(tr => kids(tr, 'tc').map(cellText));
+  const out = [];
+  const r0 = rows(tbls[0]); out.push(['hd', r0[0], r0[1]]);
+  for (const p of kids(body, 'p')) {
+    const tx = ptext(p).trim(); if (!tx) continue;
+    const rr = runs(p).filter(r => kids(r, 't').map(t => t.textContent).join('').trim());
+    const has = (r, tag) => { const rp = kids(r, 'rPr')[0]; if (!rp) return false; const e = kids(rp, tag)[0]; return !!e && e.getAttributeNS(W_NS, 'val') !== '0' && e.getAttributeNS(W_NS, 'val') !== 'false'; };
+    const bold = rr.length > 0 && rr.every(r => has(r, 'b')), ital = rr.length > 0 && rr.every(r => has(r, 'i'));
+    const ppr = kids(p, 'pPr')[0];
+    const jc = ppr && kids(ppr, 'jc')[0] ? kids(ppr, 'jc')[0].getAttributeNS(W_NS, 'val') : null;
+    const ind = ppr && kids(ppr, 'ind')[0] ? kids(ppr, 'ind')[0].getAttributeNS(W_NS, 'firstLine') : null;
+    const center = jc === 'center' || (!ind && tx.length < 90 && !tx.startsWith('-'));
+    out.push(['p', tx, bold, ital, center]);
+  }
+  const rl = rows(tbls[tbls.length - 1]); out.push(['sign', rl[rl.length - 1]]);
+  return out;
+}
+
+root.QHDocx = { build, paragraphs };
+})(globalThis);
+</script>
+<script>
+const $=i=>document.getElementById(i), nf=(v,d=1)=>v==null||v===''||isNaN(v)?'…':Number(v).toFixed(d).replace('.',','), esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const G=QH.geom;
+const VN2000='+proj=tmerc +lat_0=0 +lon_0=108.25 +k=0.9999 +x_0=500000 +y_0=0 +ellps=WGS84 +towgs84=-191.90441429,-39.30318279,-111.45032835,0.00928836,-0.01975479,0.00427372,0.252906278 +units=m +no_defs';
+const toWGS=(e,n)=>{const [lon,lat]=proj4(VN2000,'EPSG:4326',[e,n]);return [lat,lon]};
+const SAMPLE={"so_thua":"16","so_to":"30","dia_chi":"Số 38 Lê Quý Đôn, phường Nha Trang, tỉnh Khánh Hòa","dien_tich":206.6,"dien_tich_tong":208.6,"qhgt_trong_dt":2.3,"dt_khong_cap":2.0,"duong":"Lê Quý Đôn","lo_gioi_qh":13,"rong_ht":null,"chu_su_dung":"(hồ sơ mẫu)","muc_dich":"Đất ở tại đô thị","coords":[]};
+let DB=null,LAST=null,BODY=null,RING=null,DOCX=null,TPL=null,SVG=null;
+const getJSON=f=>fetch('data/'+f).then(r=>{if(!r.ok)throw new Error('Không tải được dữ liệu '+f);return r.json()});
+const boot=(async()=>{const [idx,ranh]=await Promise.all([getJSON('index.json'),getJSON('ranh.json')]);DB=new QH.DB(idx,getJSON,ranh);
+ $('plans').innerHTML=idx.plans.map(x=>'<li>'+esc(x.meta.loai)+' · '+esc(x.meta.ten)+' ('+esc(x.meta.qd.replace(/ của .*/,''))+')</li>').join('');return DB})();
+const num=id=>{const v=parseFloat(String($(id).value).replace(',','.'));return isFinite(v)?v:null};
+function parseCoords(){return $('co').value.trim().split(/\n/).map(l=>l.trim().split(/[\s;\t]+/).map(s=>s.replace(',','.'))).filter(a=>a.length>=2).map(a=>{const n=a.map(Number);return n.length>=3&&isFinite(n[1])&&isFinite(n[2])?{id:a[0],x:n[1],y:n[2]}:{x:n[0],y:n[1]}}).filter(c=>isFinite(c.x)&&isFinite(c.y))}
+function bodyFromForm(){return {coords:parseCoords(),so_thua:$('st').value.trim(),so_to:$('sto').value.trim(),dia_chi:$('dc').value.trim(),ten:$('ten').value.trim(),dia_chi_lh:$('dclh').value.trim(),muc_dich:$('md').value.trim()||'Đất ở tại đô thị',
+ area_total:num('dtt'),area_rec:num('dt'),qhgt_in:num('qg'),area_not_rec:num('kc'),road_name:$('rn').value.trim(),road_qh:num('rq'),road_ht:num('rh'),ngay_don:$('nd').value.trim(),officer:$('cb').value.trim()}}
+function fillForm(j){const s=(id,v)=>{$(id).value=v??''};s('st',j.so_thua);s('sto',j.so_to);s('dc',j.dia_chi);s('dt',j.dien_tich);s('dtt',j.dien_tich_tong);s('qg',j.qhgt_trong_dt);s('kc',j.dt_khong_cap);
+ s('ten',j.chu_su_dung);s('dclh',j.dia_chi);s('md',j.muc_dich||'Đất ở tại đô thị');s('rn',j.duong);s('rq',j.lo_gioi_qh);s('rh',j.rong_ht);
+ $('co').value=(j.coords||[]).map((c,i)=>(c.id||i+1)+' '+c.x+' '+c.y).join('\n');$('info').hidden=false;checkArea()}
+function polyArea(cs){let a=0;for(let i=0;i<cs.length;i++){const p=cs[i],q=cs[(i+1)%cs.length];a+=p.y*q.x-q.y*p.x}return Math.abs(a)/2}
+function checkArea(){const cs=parseCoords();if(cs.length<3){$('coinfo').textContent='Chưa có toạ độ: trang sẽ tìm thửa theo số thửa và địa chỉ trên bản đồ địa chính.';return}
+ const a=polyArea(cs),t=num('dtt')||num('dt');$('coinfo').textContent='Diện tích tính từ '+cs.length+' đỉnh: '+nf(a,2)+' m²'+(t?(' · lệch so với GCN '+nf(a-t,2)+' m²'+(Math.abs(a-t)<=0.3?' (trong sai số 0,3 m²)':' (vượt 0,3 m²: kiểm tra lại)')):'')}
+$('co').addEventListener('input',checkArea);$('dtt').addEventListener('input',checkArea);
+try{const o=localStorage.getItem('qh_officer');if(o)$('cb').value=o}catch(e){}
+$('cb').addEventListener('change',()=>{try{localStorage.setItem('qh_officer',$('cb').value.trim())}catch(e){}});
+const busy=(id,t)=>{$(id).textContent=t;$(id).classList.toggle('busy',!!t&&/…$/.test(t))};
+let DL;
+async function saveBlob(blob,name){if(PUBLIC){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);return}try{DL=DL||await window.claude?.use?.('downloads');if(!DL)throw {code:'na'};await DL.save({filename:name,data:blob});$('dlm').textContent=''}catch(e){if(e&&(e.code==='declined'||e.code==='cancelled'))return;$('dlm').textContent='Khung xem này không cho tải file. Mở trang trong Claude để tải.'}}
+
+/* ---------- đọc GCN bằng Claude ---------- */
+const GCN_PROMPT=`Đây là các trang Giấy chứng nhận quyền sử dụng đất (GCN) của Việt Nam (có thể là bản sao, nhiều trang hoặc nhiều mảnh cắt của cùng trang, có thể có nhiều GCN cấp cho các đồng sở hữu của cùng một thửa).
+Chỉ trả về MỘT JSON (không giải thích) với các khóa:
+so_thua (string), so_to (string), dia_chi (string, địa chỉ thửa đất),
+dien_tich (number: diện tích ghi ở mục 'Thông tin thửa đất' / diện tích được cấp GCN),
+dien_tich_tong (number|null: 'Tổng diện tích' ghi dưới sơ đồ thửa nếu có),
+qhgt_trong_dt (number|null: phần diện tích được cấp nhưng 'thuộc QHGT'/'thuộc quy hoạch giao thông', ví dụ '206,6m2 (có 2,3m2 thuộc QHGT)' -> 2.3),
+dt_khong_cap (number|null: 'Diện tích không được cấp giấy chứng nhận'),
+duong (string|null: tên đường tiếp giáp ghi trên sơ đồ), lo_gioi_qh (number|null: lộ giới/bề rộng QH của đường ghi trên sơ đồ, ví dụ 'QH rộng 14,0m' -> 14), rong_ht (number|null: bề rộng hiện trạng),
+chu_su_dung (string: tên TẤT CẢ người sử dụng đất trên các GCN, có danh xưng ông/bà, nối bằng ' và '; KHÔNG ghi số CCCD),
+muc_dich (string: loại đất, ví dụ 'Đất ở tại đô thị'),
+coords: [{"id":"1","x":number,"y":number}] theo bảng toạ độ VN-2000 (X ~ 1.3xx.xxx là cột X, Y ~ 60x.xxx là cột Y), giữ nguyên thứ tự số hiệu đỉnh, không lặp lại điểm cuối trùng điểm đầu; nếu không có bảng toạ độ thì [].
+Số thập phân dùng dấu chấm. Trường không có thì để null. Không đoán số liệu. Đọc kỹ từng chữ số của toạ độ.`;
+function loadScript(src){return new Promise((ok,no)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=()=>no(new Error('Không tải được thư viện đọc PDF'));document.head.appendChild(s)})}
+async function pdfImages(file){const W='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/';
+ if(!window.pdfjsLib){await loadScript(W+'pdf.worker.min.js');await loadScript(W+'pdf.min.js');window.pdfjsLib.GlobalWorkerOptions.workerSrc=W+'pdf.worker.min.js'}
+ const pdf=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise,out=[];
+ for(let i=1;i<=Math.min(pdf.numPages,4);i++){const pg=await pdf.getPage(i),vp=pg.getViewport({scale:2.2}),cv=document.createElement('canvas');cv.width=vp.width;cv.height=vp.height;
+  await pg.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;out.push(cv)}return out}
+async function fileCanvas(file){const url=URL.createObjectURL(file);try{const im=new Image();im.src=url;await im.decode();const cv=document.createElement('canvas');cv.width=im.naturalWidth;cv.height=im.naturalHeight;cv.getContext('2d').drawImage(im,0,0);return cv}finally{URL.revokeObjectURL(url)}}
+/* mỗi trang: ảnh toàn trang + 2 nửa trên/dưới (để số toạ độ rõ hơn sau khi Claude thu nhỏ ảnh) */
+function pieces(cv){const toB=c=>new Promise(r=>c.toBlob(r,'image/jpeg',0.9));const out=[toB(cv)];const h=cv.height,w=cv.width;
+ for(const [y0,y1] of [[0,0.55],[0.45,1]]){const c=document.createElement('canvas');c.width=w;c.height=Math.round(h*(y1-y0));c.getContext('2d').drawImage(cv,0,-Math.round(h*y0));out.push(toB(c))}return out}
+$('rd').onclick=async()=>{const fs=[...$('f').files];if(!fs.length){$('rdm').textContent='Chọn file GCN trước.';return}
+ const sample=await window.claude?.use?.('sample');if(!sample){$('rdm').textContent='Trang chỉ đọc được GCN khi mở trong Claude. Bấm “Nhập tay” để nhập số liệu.';return}
+ busy('rdm','Đang chuẩn bị ảnh…');$('rd').disabled=true;
+ try{let cvs=[];for(const f of fs){if(/pdf$/i.test(f.type)||/\.pdf$/i.test(f.name))cvs=cvs.concat(await pdfImages(f));else cvs.push(await fileCanvas(f))}
+  const lim=await sample.limits?.().catch(()=>null);const maxN=(lim&&lim.images&&lim.images.maxCount)||8;
+  let blobs=[];for(const cv of cvs)blobs=blobs.concat(await Promise.all(pieces(cv)));
+  if(blobs.length>maxN){blobs=[];for(const cv of cvs)blobs.push(await new Promise(r=>cv.toBlob(r,'image/jpeg',0.9)));blobs=blobs.slice(0,maxN)}
+  busy('rdm','Claude đang đọc GCN (30–90 giây)…');
+  const j=await sample.json(GCN_PROMPT,{images:blobs,modelTier:'complex'});
+  fillForm(j);$('rdm').classList.remove('busy');$('rdm').textContent='Đã đọc xong. Đối chiếu từng số với bản gốc (nhất là toạ độ) rồi bấm Tra cứu.'}
+ catch(e){$('rdm').classList.remove('busy');$('rdm').textContent=({not_granted:'Chưa cho phép trang dùng Claude để đọc ảnh.',rate_limited:'Đang có nhiều yêu cầu, thử lại sau ít phút.',image_rejected:'Ảnh không đọc được (định dạng hoặc kích thước).',images_unavailable:'Khung xem này không gửi được ảnh cho Claude.',invalid_json:'Claude trả kết quả không đúng dạng, bấm Đọc GCN lần nữa.'}[e&&e.code])||('Không đọc được GCN: '+(e&&e.message||e));$('info').hidden=false}
+ finally{$('rd').disabled=false}};
+$('manual').onclick=()=>{$('info').hidden=false;checkArea();$('info').scrollIntoView({behavior:'smooth'})};
+$('sample').onclick=()=>{fillForm(SAMPLE);$('ten').value='';$('rdm').textContent='Đã nạp hồ sơ mẫu thửa 16, tờ 30.';$('info').scrollIntoView({behavior:'smooth'})};
+$('fd').onclick=async()=>{busy('gom','Đang tải bản đồ địa chính và tìm thửa…');
+ try{await boot;const b=bodyFromForm();const c=(await DB.findParcel(b.so_thua,b.dia_chi,b.area_total||b.area_rec)).slice(0,5);$('gom').classList.remove('busy');$('gom').textContent=c.length?'Chọn thửa phù hợp diện tích GCN:':'Không tìm thấy, nhập toạ độ.';
+ $('cands').innerHTML=c.map((x,i)=>'<button class="pri sec" data-i="'+i+'">Bản đồ địa chính '+esc(x.ward)+': '+nf(x.area,1)+' m²'+(x.area_diff!=null?' (lệch '+nf(x.area_diff,1)+' m²)':'')+'</button>').join('');
+ $('cands').querySelectorAll('button').forEach(bt=>bt.onclick=()=>{const x=c[+bt.dataset.i];$('co').value=x.ring.map((p,k)=>(k+1)+' '+p[1].toFixed(2)+' '+p[0].toFixed(2)).join('\n');FROM_CAD=x.ward||'địa chính';checkArea();$('cands').innerHTML=''})}catch(e){$('gom').classList.remove('busy');$('gom').textContent=e.message}};
+
+/* ---------- tra cứu ---------- */
+let FROM_CAD=null;$('co').addEventListener('input',()=>{FROM_CAD=null});
+$('go').onclick=async()=>{busy('gom','Đang tra cứu…');$('go').disabled=true;await new Promise(r=>setTimeout(r,30));
+ try{await boot;BODY=bodyFromForm();let ring;
+  if(BODY.coords.length>=3){ring=BODY.coords.map(c=>[c.y,c.x]);if(FROM_CAD)BODY.coords_src='lấy từ bản đồ địa chính '+FROM_CAD+' (GCN không có toạ độ)'}
+  else{if(PUBLIC)throw new Error('Chưa nhập toạ độ đỉnh thửa (cần ít nhất 3 điểm).');BODY.coords_src='lấy từ bản đồ địa chính (GCN không có toạ độ)';const c=await DB.findParcel(BODY.so_thua,BODY.dia_chi,BODY.area_total||BODY.area_rec);if(!c.length)throw new Error('GCN không có toạ độ và không tìm thấy thửa trên bản đồ địa chính theo số thửa + địa chỉ. Đề nghị nhập toạ độ.');ring=c[0].ring}
+  RING=ring;const P=G.poly(ring);if(!P)throw new Error('Toạ độ không tạo thành thửa đất hợp lệ.');
+  await DB.ensure(P);const r=DB.analyze(ring,BODY);LAST=r;
+  if(!PUBLIC&&!TPL){const t=await getJSON('mau_cctt.json');const s=atob(t.b64),u=new Uint8Array(s.length);for(let i=0;i<s.length;i++)u[i]=s.charCodeAt(i);TPL=u.buffer}
+  DOCX=null;let dg=null;
+  if(r.plan){dg=QHGlue.diagram(DB,BODY,ring,r);if(!PUBLIC)DOCX=await QHDocx.build(r,QHGlue.form(BODY),TPL)}
+  SVG=dg&&dg.svg;show(r,dg);$('gom').classList.remove('busy');$('gom').textContent=''}
+ catch(e){console.error(e);$('gom').classList.remove('busy');$('gom').textContent=e.message||String(e)}finally{$('go').disabled=false}};
+async function show(j,dg){const z=j.zone||{},f=BODY,pl=j.plan||{};$('out').hidden=false;
+ const others=(j.plans||[]).filter(p=>p.code!==pl.code).map(p=>p.ten);
+ $('banner').innerHTML='<b>Thửa đất số '+esc(f.so_thua)+', tờ bản đồ số '+esc(f.so_to)+', '+esc(f.dia_chi)+'</b><div>Thuộc '+esc(pl.ten||'?')+(z.id?' · ô đất '+esc(z.id):'')+(z.func?' ('+esc(z.func.toLowerCase())+')':'')+' · '+esc(pl.qd||'')+'</div>'+(others.length?'<div>Cùng nằm trong: '+esc(others.join('; '))+'</div>':'')+'<div>Cấp cho: '+esc(f.ten||'—')+'</div>';
+ const fr=j.frontages||[];
+ const notesFr=fr.filter(x=>x.note).map(x=>x.note);
+ $('warns').innerHTML=(j.warnings||[]).map(w=>'<div class="note">'+esc(w)+'</div>').join('')+(j.questions||[]).map(q=>'<div class="note q"><b>Cần cán bộ xác nhận:</b> '+esc(q)+'</div>').join('')+(j.notes||[]).concat(notesFr).map(q=>'<div class="note ok">'+esc(q)+'</div>').join('');
+ if(!j.plan){$('kpis').innerHTML='';$('tbl').innerHTML='';$('dg').innerHTML='';$('paper').innerHTML='';}
+ else{
+ $('kpis').innerHTML=[[nf(j.area_suitable)+' m²'+(j.area_suitable_uoc_tinh?' <small>(ước tính)</small>':''),'Diện tích phù hợp xây dựng'],[nf(j.mdxd_thuan,2).replace(/,?0+$/,'')+'%','Mật độ xây dựng tối đa'],['0'+j.tang_cao+' tầng','Tầng cao tối đa'],['≤ '+nf(j.chieu_cao)+' m','Chiều cao công trình'],[nf(j.hssd,1)+' lần','Hệ số sử dụng đất']].map(k=>'<div><b>'+k[0]+'</b><span>'+k[1]+'</span></div>').join('');
+ const cs=j.cot_src||{};
+ const rows=[['Áp dụng',(j.area_type==='QHCT'?'Quy hoạch chi tiết: ':'Quy hoạch phân khu + Quy chế QLKT (Phụ lục 11): ')+esc(pl.ten||'')],
+  ['Ô đất theo quy hoạch',esc((z.id||'—')+' · '+(z.func||''))+(z.tang_cao||z.hssd?' · tầng cao '+esc(z.tang_cao||'-')+', HSSDĐ '+esc(z.hssd||'-')+', MĐXD '+esc(z.mdxd||'-')+'%':'')+(z.h_max?' · chiều cao '+z.h_max+' m':'')],
+  ['Lộ giới',fr.map(x=>'Đường '+esc(x.name||('phía '+x.dir))+' rộng '+nf(x.width)+' m (CGĐĐ cách tim '+nf(x.half)+' m; theo '+esc(x.source)+')').join('<br>')||'—'],
+  ['Khoảng lùi trước',nf(j.setback)+' m so với chỉ giới đường đỏ'+((j.setback||0)<=0?' (chỉ giới xây dựng trùng chỉ giới đường đỏ)':'')],
+  ['Khoảng lùi sau',j.rear_setback?nf(j.rear_setback)+' m so với ranh đất phía sau (chiều sâu lô '+nf(j.depth)+' m)':(j.area_type==='QHCT'?'Không quy định (khu vực có QHCT, không áp dụng Quy chế QLKT)':'Không bắt buộc (khuyến khích tạo khoảng trống phía sau)')],
+  ['Tổng diện tích thửa đất',(f.area_total?nf(f.area_total,1)+' m² (theo GCN)':'—')+'<br>'+(j.ranh_uoc_tinh?'<span class="mut">Ranh ước tính theo bản đồ địa chính: '+nf(j.area_calc,2)+' m² (chỉ tham khảo)</span>':nf(j.area_calc,2)+' m² (theo toạ độ)')+(j.area_dev!=null?'<br><span class="mut">Lệch '+nf(j.area_dev,2)+' m²: '+(Math.abs(j.area_dev)<=0.3?'trong sai số 0,3 m², lấy diện tích theo GCN':'vượt sai số 0,3 m², cần kiểm tra lại')+'</span>':'')],
+  ['Trong đó:','- Diện tích được công nhận: '+(f.area_rec?nf(f.area_rec,1)+' m²':'—')+(f.area_not_rec?'<br>- Diện tích không được công nhận: '+nf(f.area_not_rec,1)+' m²':'')+'<br>- Diện tích thuộc quy hoạch giao thông: '+nf(j.area_road_gcn??j.area_road_calc,1)+' m²'+(f.qhgt_in!=null?' (gồm '+nf(f.qhgt_in,1)+' m² nằm trong diện tích công nhận'+(f.area_not_rec?' và '+nf(f.area_not_rec,1)+' m² không công nhận':'')+')':'')],
+  ['Diện tích phù hợp xây dựng','<b>'+nf(j.area_suitable)+' m²'+(j.area_suitable_uoc_tinh?' (ước tính)':'')+'</b>'+(j.area_suit_expl?'<br><span class="mut">'+esc(j.area_suit_expl)+'</span>':'')],
+  ['Cốt xây dựng',j.cot_xd!=null?'+'+nf(j.cot_xd,2)+' m (cốt tim đường QH '+(cs.road?esc(cs.road)+' ':'')+'+'+nf(cs.tim,2)+' m + 0,2 m'+((cs.pts||[]).length===2?'; nội suy giữa +'+nf(cs.pts[0].tk,2)+' và +'+nf(cs.pts[1].tk,2):'')+')':'Chưa xác định'],
+  ['Tầng hầm','Tối đa 0'+j.tang_ham+' tầng'],
+  ['Ban công',(j.ban_cong_list||[]).map(b=>'Vươn tối đa '+nf(b.val)+' m '+esc(b.basis)+(b.name&&(j.ban_cong_list||[]).length>1?' (đường '+esc(b.name)+')':'')).join('<br>')||'—']];
+ $('tbl').innerHTML=rows.map(r=>'<tr><th>'+r[0]+'</th><td>'+r[1]+'</td></tr>').join('');
+ $('dg').innerHTML=dg?dg.svg:'';
+ paper(DOCX?await QHDocx.paragraphs(DOCX):[])}
+ // vị trí
+ const w=RING.map(([e,n])=>toWGS(e,n)),lat=w.reduce((a,p)=>a+p[0],0)/w.length,lon=w.reduce((a,p)=>a+p[1],0)/w.length;
+ $('gm').href='https://www.google.com/maps?q='+lat.toFixed(7)+','+lon.toFixed(7)+'&t=k&z=20';
+ $('wgs').textContent='Tâm thửa (WGS84): '+lat.toFixed(7)+', '+lon.toFixed(7);
+ const cc=BODY.coords.length>=3?BODY.coords:RING.map((p,i)=>({id:String(i+1),x:p[1],y:p[0]}));
+ const len=i=>{const p=cc[i],q=cc[(i+1)%cc.length];return Math.hypot(q.x-p.x,q.y-p.y)};
+ $('ctab').innerHTML='<caption class="mut" style="text-align:left;padding-bottom:4px">Toạ độ VN-2000 (KTT 108°15\', múi 3°)</caption><tr><th>Điểm</th><th>X (m)</th><th>Y (m)</th><th>Cạnh (m)</th></tr>'+cc.map((c,i)=>'<tr><td>'+esc(c.id||i+1)+'</td><td>'+c.x.toFixed(2)+'</td><td>'+c.y.toFixed(2)+'</td><td>'+len(i).toFixed(2)+'</td></tr>').join('');
+ $('out').scrollIntoView({behavior:'smooth'})}
+function paper(vb){let h='';for(const it of vb){if(it[0]==='hd'){h+='<div class="hd"><div><b>'+esc(it[1][0]).replace(/\n/g,'<br>')+'</b>'+esc(it[2][0])+'</div><div><b>'+esc(it[1][1]).replace(/\n/g,'<br>')+'</b><i>'+esc(it[2][1])+'</i></div></div>'}
+ else if(it[0]==='p'){const t=esc(it[1]);h+='<p'+(it[4]?' class="c"':'')+'>'+(it[2]?'<b>'+t+'</b>':it[3]?'<i>'+t+'</i>':t)+'</p>'}else if(it[0]==='sign'){h+='<div class="sg"><div>'+esc(it[1][0])+'</div><div>'+esc(it[1][1])+'</div></div>'}}$('paper').innerHTML=h}
+
+/* ---------- tải file ---------- */
+function kml(){const r=LAST,p=BODY;const co=cs=>cs.map(([e,n])=>{const [a,b]=toWGS(e,n);return b.toFixed(8)+','+a.toFixed(8)+',0'}).join(' ');const x=s=>esc(s);
+ const f2=v=>nf(v,2),f1=v=>nf(v,1),name='Thửa '+p.so_thua+' tờ '+p.so_to,n=RING.length;
+ const ids=(p.coords||[]).length>=3?p.coords.map((c,i)=>String(c.id||i+1)):RING.map((c,i)=>String(i+1));
+ const rows=RING.map(([e,nn],k)=>{const [la,lo]=toWGS(e,nn),[e2,n2]=RING[(k+1)%n];return '<tr><td>'+x(ids[k])+'</td><td>'+f2(nn)+'</td><td>'+f2(e)+'</td><td>'+la.toFixed(7)+'</td><td>'+lo.toFixed(7)+'</td><td>'+x(ids[k])+'-'+x(ids[(k+1)%n])+': '+f2(Math.hypot(e2-e,n2-nn))+'</td></tr>'}).join('');
+ const fr=(r.frontages||[]).filter(f=>f.width).map(f=>f.name+': lộ giới '+f1(f.width)+' m'+(f.cs?' (vỉa hè '+f1(f.cs.vh)+' m + mặt đường '+f1(f.cs.md)+' m + vỉa hè '+f1(f.cs.vh)+' m)':'')).join('; ');
+ const pl=r.plan||{};const info=[['Địa chỉ',p.dia_chi],['Đồ án',pl.do_an?pl.do_an+' ('+(pl.qd||'')+')':''],['Diện tích công nhận (GCN)',p.area_rec?f1(p.area_rec)+' m²':''],['Diện tích phù hợp XD',f1(r.area_suitable||0)+' m²'+(r.area_suitable_uoc_tinh?' (ước tính)':'')],['Lộ giới',fr]];
+ const desc='<![CDATA[<div style="font-family:Arial;font-size:12px">'+info.filter(a=>a[1]).map(([k,v])=>'<b>'+k+':</b> '+x(v)+'<br>').join('')+'<br><b>TOẠ ĐỘ ĐỈNH THỬA (VN-2000, KTT 108°15\', múi 3°)</b><table border="1" cellpadding="3" cellspacing="0" style="border-collapse:collapse;font-size:11px"><tr style="background:#eee"><th>Điểm</th><th>X (m)</th><th>Y (m)</th><th>Vĩ độ</th><th>Kinh độ</th><th>Cạnh (m)</th></tr>'+rows+'</table>'+(PUBLIC?'<p><i>Thông tin tham khảo, không thay thế văn bản cung cấp thông tin quy hoạch.</i></p>':'')+'</div>]]>';
+ const st='<Style id="thua"><LineStyle><color>ff0000ff</color><width>3</width></LineStyle><PolyStyle><color>4d0000ff</color></PolyStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style><Style id="dinh"><IconStyle><scale>0.6</scale><color>ff0000ff</color><Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon></IconStyle><LabelStyle><scale>0.8</scale></LabelStyle></Style><Style id="cgdd"><LineStyle><color>ff00c800</color><width>3</width></LineStyle></Style><Style id="cgxd"><LineStyle><color>ff00d4ff</color><width>2</width></LineStyle></Style>';
+ const pm=['<Placemark><name>'+x(name)+'</name><styleUrl>#thua</styleUrl><description>'+desc+'</description><Polygon><outerBoundaryIs><LinearRing><coordinates>'+co(RING.concat([RING[0]]))+'</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>'];
+ pm.push('<Folder><name>Đỉnh thửa (toạ độ)</name>'+RING.map(([e,nn],k)=>{const [la,lo]=toWGS(e,nn);return '<Placemark><name>'+x(ids[k])+'</name><styleUrl>#dinh</styleUrl><description><![CDATA[<b>Điểm '+x(ids[k])+'</b><br>X = '+f2(nn)+' m<br>Y = '+f2(e)+' m (VN-2000)<br>Vĩ độ '+la.toFixed(7)+', kinh độ '+lo.toFixed(7)+']]></description><Point><coordinates>'+lo.toFixed(8)+','+la.toFixed(8)+',0</coordinates></Point></Placemark>'}).join('')+'</Folder>');
+ for(const l of r.cgdd_lines||[])pm.push('<Placemark><name>CGĐĐ</name><styleUrl>#cgdd</styleUrl><LineString><coordinates>'+co(l)+'</coordinates></LineString></Placemark>');
+ for(const l of r.cgxd_lines||[])pm.push('<Placemark><name>CGXD</name><styleUrl>#cgxd</styleUrl><LineString><coordinates>'+co(l)+'</coordinates></LineString></Placemark>');
+ return '<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>'+x(name)+'</name>'+st+pm.join('')+'</Document></kml>'}
+$('kml').onclick=async()=>{if(!LAST)return;const z=new JSZip();z.file('doc.kml',kml());saveBlob(await z.generateAsync({type:'blob',mimeType:'application/vnd.google-earth.kmz'}),'thua-'+(BODY.so_thua||'x')+'.kmz')};
+$('dx').onclick=()=>{if(DOCX)saveBlob(DOCX,'van-ban-cctt-quy-hoach-thua-'+BODY.so_thua+'.docx')};
+let FONTS=null;
+async function fonts(doc){if(!FONTS){const b64=async f=>{const u=new Uint8Array(await fetch('fonts/'+f).then(r=>r.arrayBuffer()));let s='';for(let i=0;i<u.length;i+=0x8000)s+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));return btoa(s)};
+  FONTS=await Promise.all(['LiberationSans-Regular.ttf','LiberationSans-Bold.ttf','LiberationSans-Italic.ttf'].map(b64))}
+ [['LiberationSans-Regular.ttf','normal'],['LiberationSans-Bold.ttf','bold'],['LiberationSans-Italic.ttf','italic']].forEach(([f,st],i)=>{doc.addFileToVFS(f,FONTS[i]);doc.addFont(f,'Arimo',st)})}
+async function makePdf(){const {jsPDF}=window.jspdf;const doc=new jsPDF({orientation:'l',unit:'mm',format:'a4'});await fonts(doc);doc.setFont('Arimo','normal');
+ const host=document.createElement('div');host.style.cssText='position:absolute;left:-9999px;top:0';host.innerHTML=SVG;document.body.appendChild(host);
+ try{await doc.svg(host.firstElementChild,{x:0,y:0,width:297,height:210})}finally{host.remove()}return doc.output('blob')}
+$('pdf').onclick=async()=>{if(!SVG)return;busy('dlm','Đang tạo PDF…');try{const b=await makePdf();$('dlm').classList.remove('busy');$('dlm').textContent='';await saveBlob(b,'so-do-thua-'+BODY.so_thua+'-to-'+BODY.so_to+'.pdf')}catch(e){$('dlm').classList.remove('busy');$('dlm').textContent='Không tạo được PDF: '+e.message}};
+window.__qh={makePdf,get docx(){return DOCX},get last(){return LAST}};
+</script>
+</body></html>
