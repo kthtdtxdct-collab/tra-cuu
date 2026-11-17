@@ -76,10 +76,11 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
 <div class="grid2">
  <section class="card"><h2><span class="step">3</span>Thông tin quy hoạch thửa đất (tham khảo)</h2><div class="kpis" id="kpis"></div><div class="tw"><table id="tbl"></table></div></section>
  <section class="card"><h2>Vị trí thửa đất</h2>
+  <div id="sat" style="display:none;height:340px;border-radius:10px;overflow:hidden;margin-bottom:10px"></div>
   <div class="tw"><table class="ct" id="ctab"></table></div>
   <p class="mut" id="wgs"></p>
   <div class="acts"><a class="btn" id="gm" target="_blank" rel="noopener">Mở Google Maps (vệ tinh)</a><button class="pri sec" id="kml">Tải KMZ (Google Earth / My Maps)</button></div>
-  <p class="mut">Google My Maps: mở google.com/maps/d, tạo bản đồ mới, chọn “Nhập” rồi chọn file KML để thấy ranh thửa và chỉ giới đường đỏ trên ảnh vệ tinh. Có thể mở trực tiếp file KMZ bằng Google Earth.</p></section>
+  <p class="mut">Google My Maps: mở google.com/maps/d, tạo bản đồ mới, chọn “Nhập” rồi chọn file KML để thấy ranh thửa và chỉ giới đường đỏ trên ảnh vệ tinh. Có thể mở trực tiếp file KMZ bằng Google Earth. Ảnh vệ tinh phía trên chỉ để hình dung vị trí, có thể lệch vài mét.</p></section>
 </div>
 <section class="card"><h2>Sơ đồ vị trí thửa đất (A4, tham khảo)</h2><div class="dgw" id="dg"></div><div class="acts"><button class="pri" id="pdf">Tải sơ đồ PDF</button><span class="mut" id="dlm"></span></div></section>
 <section class="card pv-hide"><h2>Văn bản cung cấp thông tin quy hoạch</h2><div class="paper" id="paper"></div><div class="acts"><button class="pri" id="dx">Tải văn bản Word</button><span class="mut">Theo mẫu của UBND phường (A4, Times New Roman 14), chừa trống tên người ký.</span></div></section>
@@ -129,6 +130,8 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
   // ---------------- bảng toạ độ (lượt B) ----------------
   // tìm theo mẫu số trong từng dòng (chịu được ký tự rác, gạch chấm, dấu phẩy thập phân)
   const RX = /1\s?3\d{2}\s?\d{3}\s?[.,]?\s?\d{2}/, RY = /[56]\d{2}\s?\d{3}\s?[.,]\s?\d{2}|[56]\d{2}\s?\d{3}\s?\d{2}/, RE = /(?<![\d.,])\d{1,3}\s?[.,]\s?\d{2}(?!\d)/g;
+  // dòng cuối lặp lại điểm đầu (cho phép sai 1 chữ số)
+  function closes(a, b) { const dd = (p, q) => { const s1 = p.toFixed(2), s2 = q.toFixed(2); let n = 0; for (let k = 0; k < Math.max(s1.length, s2.length); k++) if (s1[k] !== s2[k]) n++; return n; }; return dd(a.x, b.x) + dd(a.y, b.y) <= 1; }
   const toNum = (s, ip) => { const d = s.replace(/[^\d]/g, ''); return parseFloat(d.slice(0, ip) + '.' + d.slice(ip, ip + 2)); };
   function parseTable(text) {
     const rows = [];
@@ -141,10 +144,7 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
       const idm = line.slice(0, mx.index).match(/(\d{1,2})\D*$/);
       rows.push({ id: idm ? idm[1] : '', x, y, edge: em.length ? em[em.length - 1] : null });
     }
-    if (rows.length > 3) {   // dòng cuối lặp lại điểm đầu (cho phép sai 1 chữ số)
-      const a = rows[0], b = rows[rows.length - 1], dd = (p, q) => { const s1 = p.toFixed(2), s2 = q.toFixed(2); let n = 0; for (let k = 0; k < Math.max(s1.length, s2.length); k++) if (s1[k] !== s2[k]) n++; return n; };
-      if (dd(a.x, b.x) + dd(a.y, b.y) <= 1) rows.pop();
-    }
+    if (rows.length > 3 && closes(rows[0], rows[rows.length - 1])) rows.pop();
     // số hiệu đỉnh: đọc được và tăng dần 1,2,3… thì giữ, không thì đánh lại
     const ok = rows.every((r, k) => r.id === String(k + 1));
     rows.forEach((r, k) => { if (!ok) r.id = String(k + 1); });
@@ -168,7 +168,7 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
     const start = xs[0].i, used = new Set(xs.concat(ys).map(o => o.i));
     const es = [...t.matchAll(/(?<![\d.,])\d{1,3}[.,]\d{2}(?![\d.,]|\s*m)/g)].filter(m => m.index > start && !used.has(m.index)).map(m => parseFloat(m[0].replace(',', '.')));
     let rows = []; for (let k = 0; k < n; k++) rows.push({ id: String(k + 1), x: xs[k].v, y: ys[k].v, edge: null });
-    if (rows.length > 3) { const a = rows[0], b = rows[rows.length - 1]; if (Math.abs(a.x - b.x) < 0.02 && Math.abs(a.y - b.y) < 0.02) rows.pop(); }
+    if (rows.length > 3 && closes(rows[0], rows[rows.length - 1])) rows.pop();
     // cạnh: bảng GCN ghi cạnh ở dòng 2..n (+ dòng lặp điểm 1) -> gán vào dòng k (k-1→k)
     if (es.length >= rows.length) es.slice(0, rows.length).forEach((e, k) => { rows[(k + 1) % rows.length].edge = e; });
     // Google đôi khi đảo thứ tự 2 số liền nhau trong cột: thử đổi chỗ cặp liền kề nếu làm khớp cột "cạnh"
@@ -1741,7 +1741,22 @@ async function show(j,dg){const z=j.zone||{},f=BODY,pl=j.plan||{};$('out').hidde
  const cc=BODY.coords.length>=3?BODY.coords:RING.map((p,i)=>({id:String(i+1),x:p[1],y:p[0]}));
  const len=i=>{const p=cc[i],q=cc[(i+1)%cc.length];return Math.hypot(q.x-p.x,q.y-p.y)};
  $('ctab').innerHTML='<caption class="mut" style="text-align:left;padding-bottom:4px">Toạ độ VN-2000 (KTT 108°15\', múi 3°)</caption><tr><th>Điểm</th><th>X (m)</th><th>Y (m)</th><th>Cạnh (m)</th></tr>'+cc.map((c,i)=>'<tr><td>'+esc(c.id||i+1)+'</td><td>'+c.x.toFixed(2)+'</td><td>'+c.y.toFixed(2)+'</td><td>'+len(i).toFixed(2)+'</td></tr>').join('');
+ if(PUBLIC)satMap(j,cc).catch(e=>console.warn('ảnh vệ tinh',e));
  $('out').scrollIntoView({behavior:'smooth'})}
+/* ảnh vệ tinh + ranh thửa (chỉ trang công khai; ảnh nền Esri World Imagery) */
+let SATMAP=null;
+async function satMap(j,cc){const el=$('sat');el.style.display='block';
+ if(!window.L){const l=document.createElement('link');l.rel='stylesheet';l.href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';document.head.appendChild(l);await loadScript('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js')}
+ if(SATMAP){SATMAP.remove();SATMAP=null}
+ const ll=(e,n)=>{const w=toWGS(e,n);return [w[0],w[1]]};
+ const m=SATMAP=L.map(el,{zoomControl:true,attributionControl:true,maxZoom:22});
+ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:19,maxZoom:22,attribution:'Ảnh vệ tinh: Esri, Maxar, Earthstar Geographics'}).addTo(m);
+ for(const l of j.cgdd_lines||[])L.polyline(l.map(p=>ll(p[0],p[1])),{color:'#00c853',weight:3}).addTo(m);
+ for(const l of j.cgxd_lines||[])L.polyline(l.map(p=>ll(p[0],p[1])),{color:'#ffd600',weight:2,dashArray:'6 5'}).addTo(m);
+ const poly=L.polygon(RING.map(p=>ll(p[0],p[1])),{color:'#ff1744',weight:3,fillColor:'#ff1744',fillOpacity:.15}).addTo(m);
+ cc.forEach((c,i)=>L.marker(ll(c.y,c.x),{icon:L.divIcon({className:'',html:'<div style="color:#fff;font:bold 12px Arial;text-shadow:0 0 3px #000,0 0 3px #000;white-space:nowrap;transform:translate(4px,-14px)">'+esc(c.id||i+1)+'</div>',iconSize:[0,0]})}).addTo(m));
+ m.fitBounds(poly.getBounds(),{padding:[60,60],maxZoom:21});
+ setTimeout(()=>m.invalidateSize(),200)}
 function paper(vb){let h='';for(const it of vb){if(it[0]==='hd'){h+='<div class="hd"><div><b>'+esc(it[1][0]).replace(/\n/g,'<br>')+'</b>'+esc(it[2][0])+'</div><div><b>'+esc(it[1][1]).replace(/\n/g,'<br>')+'</b><i>'+esc(it[2][1])+'</i></div></div>'}
  else if(it[0]==='p'){const t=esc(it[1]);h+='<p'+(it[4]?' class="c"':'')+'>'+(it[2]?'<b>'+t+'</b>':it[3]?'<i>'+t+'</i>':t)+'</p>'}else if(it[0]==='sign'){h+='<div class="sg"><div>'+esc(it[1][0])+'</div><div>'+esc(it[1][1])+'</div></div>'}}$('paper').innerHTML=h}
 
