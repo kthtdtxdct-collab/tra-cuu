@@ -50,7 +50,7 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
 <header><h1>Tra cứu thông tin quy hoạch – phường Nha Trang</h1><p>Nhập toạ độ đỉnh thửa (VN-2000, ghi trên Giấy chứng nhận) để xem thửa đất thuộc đồ án quy hoạch nào, lộ giới, mặt cắt đường, mật độ xây dựng, tầng cao, chiều cao và sơ đồ vị trí. Mọi tính toán chạy ngay trên máy của bạn; số liệu bạn nhập không được gửi đi đâu.</p></header><div class="disc"><b>Thông tin tham khảo.</b> Kết quả tra cứu tự động từ bản vẽ các đồ án quy hoạch đã được phê duyệt, không thay thế văn bản cung cấp thông tin quy hoạch. Để có thông tin chính thức, đề nghị liên hệ UBND phường Nha Trang (nộp hồ sơ đề nghị cung cấp thông tin quy hoạch theo quy định).</div>
 
 <section class="card"><h2><span class="step">1</span>Tải Giấy chứng nhận (ảnh hoặc PDF)</h2>
-<div class="drop"><input type="file" id="f" accept="image/*,.pdf" multiple><p>Ảnh chụp rõ, thẳng hoặc file PDF các trang có “Thông tin thửa đất” và bảng toạ độ VN-2000. Ảnh được gửi tới dịch vụ đọc chữ của Google (Google Drive) để đọc, file tạm được xoá ngay sau khi đọc, không lưu lại. Mỗi trang đọc khoảng 5–15 giây.</p></div>
+<div class="drop"><input type="file" id="f" accept="image/*,.pdf" multiple><p>Ảnh chụp rõ, thẳng hoặc file PDF các trang có “Thông tin thửa đất” và bảng toạ độ VN-2000. Ảnh được gửi tới dịch vụ đọc chữ của Google (Google Drive) để đọc, file tạm được xoá ngay sau khi đọc, không lưu lại. Mỗi trang đọc khoảng 5–15 giây.</p><p><b>Mẹo:</b> nếu đọc chưa đúng, hãy cắt riêng vùng bảng toạ độ (Windows: phím Win + Shift + S; điện thoại: chụp màn hình rồi cắt) và bấm <b>Ctrl + V</b> trên trang này để dán ảnh: trang đọc lại bảng toạ độ, giữ nguyên các thông tin đã nhập.</p></div>
 <div class="acts"><button class="pri" id="rd">Đọc GCN</button><button class="pri sec" id="manual">Nhập tay</button><button class="pri sec pv-hide" id="sample">Nạp hồ sơ mẫu (thửa 16, tờ 30)</button><span class="mut" id="rdm"></span></div></section>
 
 <section class="card" id="info"><h2><span class="step">2</span>Kiểm tra / nhập thông tin thửa đất (theo Giấy chứng nhận)</h2>
@@ -1668,12 +1668,15 @@ async function ocrRead(fs){busy('rdm','Đang chuẩn bị ảnh…');$('rd').dis
   let j=null;
   if(OCR_URL){try{j=await QHOcr.readGoogle(cvs,OCR_URL,pr)}catch(e){console.warn('Google OCR lỗi, chuyển sang đọc trên máy',e);j=null}}
   if(!j||(j.coords||[]).length<3){if(!window.Tesseract)await loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js');const k=await QHOcr.read(cvs,pr);if(!j||(k.coords||[]).length>(j.coords||[]).length)j=Object.assign({},j||{},k,{so_thua:(j&&j.so_thua)||k.so_thua,so_to:(j&&j.so_to)||k.so_to,dia_chi:(j&&j.dia_chi)||k.dia_chi})}
-  fillForm({so_thua:j.so_thua||'',so_to:j.so_to||'',dia_chi:j.dia_chi||'',dien_tich:j.dien_tich||'',coords:j.coords,muc_dich:'Đất ở tại đô thị'});
+  const keep=(v,id)=>v||$(id).value||'';
+  fillForm({so_thua:keep(j.so_thua,'st'),so_to:keep(j.so_to,'sto'),dia_chi:keep(j.dia_chi,'dc'),dien_tich:keep(j.dien_tich,'dt'),dien_tich_tong:$('dtt').value,qhgt_trong_dt:$('qg').value,dt_khong_cap:$('kc').value,duong:$('rn').value,lo_gioi_qh:$('rq').value,rong_ht:$('rh').value,coords:(j.coords||[]).length>=3?j.coords:parseCoords(),muc_dich:$('md').value||'Đất ở tại đô thị'});
   $('rdm').classList.remove('busy');
   const n=(j.coords||[]).length;
   $('rdm').innerHTML=(n?'Đã đọc '+n+' điểm toạ độ.':'Không tìm thấy bảng toạ độ trong ảnh: nhập toạ độ bằng tay.')+' <b>Máy đọc ảnh có thể sai: đối chiếu từng số với GCN trước khi tra cứu.</b>'+((j.checks||[]).length?'<br>Cần kiểm tra: '+j.checks.map(esc).join('; '):'')}
  catch(e){console.error(e);$('rdm').classList.remove('busy');$('rdm').textContent='Không đọc được ảnh: '+(e&&e.message||e)+'. Nhập số liệu bằng tay.';$('info').hidden=false}
  finally{$('rd').disabled=false}}
+document.addEventListener('paste',e=>{const its=[...(e.clipboardData&&e.clipboardData.items||[])].filter(i=>i.type.startsWith('image/'));if(!its.length)return;e.preventDefault();
+ const fs=its.map((it,k)=>new File([it.getAsFile()],'anh-dan-'+(k+1)+'.png',{type:it.type}));try{const dt=new DataTransfer();fs.forEach(f=>dt.items.add(f));$('f').files=dt.files}catch(_){}ocrRead(fs)});
 $('rd').onclick=async()=>{const fs=[...$('f').files];if(!fs.length){$('rdm').textContent='Chọn file GCN trước.';return}
  if(PUBLIC||!window.claude)return ocrRead(fs);
  const sample=await window.claude?.use?.('sample');if(!sample){$('rdm').textContent='Trang chỉ đọc được GCN khi mở trong Claude. Bấm “Nhập tay” để nhập số liệu.';return}
