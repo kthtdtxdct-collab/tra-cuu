@@ -171,6 +171,18 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
     if (rows.length > 3) { const a = rows[0], b = rows[rows.length - 1]; if (Math.abs(a.x - b.x) < 0.02 && Math.abs(a.y - b.y) < 0.02) rows.pop(); }
     // cạnh: bảng GCN ghi cạnh ở dòng 2..n (+ dòng lặp điểm 1) -> gán vào dòng k (k-1→k)
     if (es.length >= rows.length) es.slice(0, rows.length).forEach((e, k) => { rows[(k + 1) % rows.length].edge = e; });
+    // Google đôi khi đảo thứ tự 2 số liền nhau trong cột: thử đổi chỗ cặp liền kề nếu làm khớp cột "cạnh"
+    if (rows.some(r => r.edge != null)) {
+      for (let pass = 0; pass < 3; pass++) {
+        let improved = false;
+        for (const key of ['x', 'y']) for (let k = 0; k + 1 < rows.length; k++) {
+          const before = checkEdges(rows).length; if (!before) break;
+          [rows[k][key], rows[k + 1][key]] = [rows[k + 1][key], rows[k][key]];
+          if (checkEdges(rows).length < before) improved = true; else [rows[k][key], rows[k + 1][key]] = [rows[k + 1][key], rows[k][key]];
+        }
+        if (!improved) break;
+      }
+    }
     return rows;
   }
 
@@ -1645,7 +1657,7 @@ async function pdfImages(file,sc){const W='https://cdn.jsdelivr.net/npm/pdfjs-di
  const pdf=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise,out=[];
  for(let i=1;i<=Math.min(pdf.numPages,4);i++){const pg=await pdf.getPage(i),vp=pg.getViewport({scale:sc||2.2}),cv=document.createElement('canvas');cv.width=vp.width;cv.height=vp.height;
   await pg.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;out.push(cv)}return out}
-async function fileCanvas(file){const url=URL.createObjectURL(file);try{const im=new Image();im.src=url;await im.decode();const cv=document.createElement('canvas');cv.width=im.naturalWidth;cv.height=im.naturalHeight;cv.getContext('2d').drawImage(im,0,0);return cv}finally{URL.revokeObjectURL(url)}}
+async function fileCanvas(file){let b;try{b=await createImageBitmap(file)}catch(e){const url=URL.createObjectURL(file);try{b=new Image();b.src=url;await new Promise((ok,no)=>{b.onload=ok;b.onerror=()=>no(new Error('Không mở được ảnh '+file.name))})}finally{setTimeout(()=>URL.revokeObjectURL(url),1000)}}const cv=document.createElement('canvas');cv.width=b.naturalWidth||b.width;cv.height=b.naturalHeight||b.height;cv.getContext('2d').drawImage(b,0,0);return cv}
 /* mỗi trang: ảnh toàn trang + 2 nửa trên/dưới (để số toạ độ rõ hơn sau khi Claude thu nhỏ ảnh) */
 function pieces(cv){const toB=c=>new Promise(r=>c.toBlob(r,'image/jpeg',0.9));const out=[toB(cv)];const h=cv.height,w=cv.width;
  for(const [y0,y1] of [[0,0.55],[0.45,1]]){const c=document.createElement('canvas');c.width=w;c.height=Math.round(h*(y1-y0));c.getContext('2d').drawImage(cv,0,-Math.round(h*y0));out.push(toB(c))}return out}
