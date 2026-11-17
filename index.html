@@ -1750,7 +1750,7 @@ async function satMap(j,cc){const el=$('sat');el.style.display='block';
  if(SATMAP){SATMAP.remove();SATMAP=null}
  const ll=(e,n)=>{const w=toWGS(e,n);return [w[0],w[1]]};
  const m=SATMAP=L.map(el,{zoomControl:true,attributionControl:true,maxZoom:22});
- L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:19,maxZoom:22,attribution:'Ảnh vệ tinh: Esri, Maxar, Earthstar Geographics'}).addTo(m);
+ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:18,maxZoom:22,attribution:'Ảnh vệ tinh: Esri, Maxar, Earthstar Geographics'}).addTo(m);
  for(const l of j.cgdd_lines||[])L.polyline(l.map(p=>ll(p[0],p[1])),{color:'#00c853',weight:3}).addTo(m);
  for(const l of j.cgxd_lines||[])L.polyline(l.map(p=>ll(p[0],p[1])),{color:'#ffd600',weight:2,dashArray:'6 5'}).addTo(m);
  const poly=L.polygon(RING.map(p=>ll(p[0],p[1])),{color:'#ff1744',weight:3,fillColor:'#ff1744',fillOpacity:.15}).addTo(m);
