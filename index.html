@@ -80,8 +80,9 @@ th{color:var(--mut)}
 .pv-hide{display:none!important}
 footer{color:var(--mut);font-size:12.5px;margin-top:22px;border-top:1px solid var(--ln);padding-top:12px}
 #out{margin-top:16px}
-.logo{flex:none;background:#fff;border-radius:14px;padding:4px 12px;box-shadow:0 3px 12px rgba(0,0,0,.25);line-height:0}
-.logo svg{width:132px;height:40px;display:block}
+.logo{flex:none;display:flex;flex-direction:column;align-items:center;gap:3px;line-height:0}
+.logo svg{width:58px;height:58px;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,.35))}
+.logo i{font:700 9px/1 var(--font);font-style:normal;letter-spacing:.22em;color:#ffe08a}
 .colL{display:grid;gap:16px}
 .guide ol{margin:4px 0 0;padding-left:20px;font-size:13.5px;line-height:1.6}.guide li{margin-bottom:4px}.guide .note{margin-top:10px}
 .drop.over{border-color:var(--navy2);background:#e3ecfb}
@@ -91,20 +92,22 @@ table.cog{width:100%;border-collapse:separate;border-spacing:0 4px}table.cog th{
 table.cog td{padding:0 3px;border:0}table.cog td:first-child{width:64px}table.cog td:last-child{width:34px}
 table.cog input{width:100%;font:13px ui-monospace,Consolas,monospace;padding:6px 8px;border:1px solid var(--ln);border-radius:6px}
 table.cog button.del{border:0;background:transparent;color:#b42318;font-size:18px;cursor:pointer;line-height:1}
-.grid2{grid-template-columns:minmax(0,1fr)!important}
-.grid2>.card:first-child .tw{max-width:100%}
-#sat{height:620px!important}
+.grid2{grid-template-columns:minmax(0,1fr) minmax(0,2fr)!important;align-items:start}
+.grid2>.card:first-child{font-size:13px}.grid2>.card:first-child h2{font-size:15px}
+.grid2>.card:first-child .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2>.card:first-child .kpis b{font-size:16px}.grid2>.card:first-child .kpis span{font-size:11.5px}
+.grid2>.card:first-child table th,.grid2>.card:first-child table td{font-size:12.5px;padding:5px 7px}
+#sat{height:600px!important}
+@media(max-width:960px){.grid2{grid-template-columns:minmax(0,1fr)!important}#sat{height:440px!important}}
 table.ct{font-size:11px}table.ct th,table.ct td{padding:2px 6px!important;font-size:11px!important}
 .grid2>.card:last-child .tw{max-height:130px;overflow:auto;border:1px solid var(--ln);border-radius:8px;margin-top:-4px}
 .leaflet-control-layers-expanded{max-height:70%;overflow:auto}
 </style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap">
 <div class="wrap">
-<div class="topbar"><div class="in"><div class="logo" title="MinTu"><svg viewBox="0 0 230 70" role="img" aria-label="mintu"><defs><linearGradient id="mtg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#e8897a"/><stop offset=".4" stop-color="#f2b39c"/><stop offset=".72" stop-color="#ebc477"/><stop offset="1" stop-color="#9fc48c"/></linearGradient></defs><text x="115" y="50" text-anchor="middle" font-family="Comfortaa,Varela Round,Arial Rounded MT Bold,sans-serif" font-weight="700" font-size="54" letter-spacing="1" fill="url(#mtg)">mintu</text></svg></div><div><small>Phường Nha Trang · Tỉnh Khánh Hòa</small><h1>Tra cứu thông tin quy hoạch</h1><p>Tải Giấy chứng nhận hoặc nhập toạ độ VN-2000 để xem thửa đất thuộc đồ án quy hoạch nào, lộ giới, mặt cắt đường, mật độ xây dựng, tầng cao, chiều cao, vị trí trên bản đồ và sơ đồ A4.</p></div></div></div><div class="disc"><b>Thông tin tham khảo.</b> Kết quả tra cứu tự động từ bản vẽ các đồ án quy hoạch đã được phê duyệt, không thay thế văn bản cung cấp thông tin quy hoạch. Để có thông tin chính thức, đề nghị liên hệ UBND phường Nha Trang (nộp hồ sơ đề nghị cung cấp thông tin quy hoạch theo quy định).</div>
+<div class="topbar"><div class="in"><div class="logo" title="MinTu"><svg viewBox="0 0 64 64" role="img" aria-label="Logo MinTu"><defs><linearGradient id="mtg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#e09f1f"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="16" fill="url(#mtg)"/><path d="M14 44 L30 36 L50 42 L34 52 Z" fill="#0b3d91" opacity=".18"/><path d="M14 44 L30 36 L50 42 L34 52 Z M22 40 L42 47 M30 36 L34 52" fill="none" stroke="#0a2351" stroke-width="2" stroke-linejoin="round"/><path d="M32 9c-7.2 0-12.5 5.4-12.5 12.3 0 8.6 12.5 21.2 12.5 21.2s12.5-12.6 12.5-21.2C44.5 14.4 39.2 9 32 9z" fill="#0a2351"/><path d="M26 26 V16 L32 22 L38 16 V26" fill="none" stroke="#ffc93c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><i>MINTU</i></div><div><small>Phường Nha Trang · Tỉnh Khánh Hòa</small><h1>Tra cứu thông tin quy hoạch</h1><p>Tải Giấy chứng nhận hoặc nhập toạ độ VN-2000 để xem thửa đất thuộc đồ án quy hoạch nào, lộ giới, mặt cắt đường, mật độ xây dựng, tầng cao, chiều cao, vị trí trên bản đồ và sơ đồ A4.</p></div></div></div><div class="disc"><b>Thông tin tham khảo.</b> Kết quả tra cứu tự động từ bản vẽ các đồ án quy hoạch đã được phê duyệt, không thay thế văn bản cung cấp thông tin quy hoạch. Để có thông tin chính thức, đề nghị liên hệ UBND phường Nha Trang (nộp hồ sơ đề nghị cung cấp thông tin quy hoạch theo quy định).</div>
 
 <div class="g12"><div class="colL"><section class="card"><h2><span class="step">1</span>Tải Giấy chứng nhận (ảnh hoặc PDF)</h2>
 <div class="drop"><p class="big">Kéo thả file PDF hoặc ảnh GCN vào đây</p><input type="file" id="f" accept="image/*,.pdf" multiple><p>Ảnh chụp rõ, thẳng hoặc file PDF các trang có “Thông tin thửa đất” và bảng toạ độ VN-2000. Ảnh được gửi tới dịch vụ đọc chữ của Google (Google Drive) để đọc, file tạm được xoá ngay sau khi đọc, không lưu lại. Mỗi trang đọc khoảng 5–15 giây.</p></div>
-<div class="acts"><button class="pri" id="rd">Đọc GCN</button><button class="pri sec" id="manual">Nhập tay</button><button class="pri sec pv-hide" id="sample">Nạp hồ sơ mẫu (thửa 16, tờ 30)</button><span class="mut" id="rdm"></span></div></section><section class="card guide"><h2>Hướng dẫn nhanh</h2><ol><li><b>Chọn hoặc kéo thả</b> file PDF/ảnh Giấy chứng nhận vào khung trên: trang tự đọc số thửa, tờ bản đồ, địa chỉ, diện tích và bảng toạ độ.</li><li><b>Đối chiếu</b> từng số với GCN ở khung bên phải; sửa trực tiếp trong bảng toạ độ nếu sai. Dòng “Diện tích tính từ toạ độ” lệch không quá 0,3 m² so với GCN là toạ độ đúng.</li><li>Bấm <b>Tra cứu quy hoạch</b> để xem chỉ tiêu, vị trí trên bản đồ và tải sơ đồ A4, file KMZ.</li></ol><div class="note">Đọc sai bảng toạ độ? Phóng to bảng trong GCN, bấm <b>Win + Shift + S</b> cắt riêng bảng rồi bấm <b>Ctrl + V</b> trên trang.</div></section></div>
+<div class="acts"><button class="pri" id="rd">Đọc GCN</button><button class="pri sec" id="manual">Nhập tay</button><button class="pri sec pv-hide" id="sample">Nạp hồ sơ mẫu (thửa 16, tờ 30)</button><span class="mut" id="rdm"></span></div></section><section class="card guide"><h2>Hướng dẫn nhanh</h2><ol><li><b>Chọn hoặc kéo thả</b> file PDF/ảnh Giấy chứng nhận vào khung trên: trang tự đọc số thửa, tờ bản đồ, địa chỉ, diện tích và bảng toạ độ.</li><li><b>Đối chiếu</b> từng số với GCN ở khung bên phải; sửa trực tiếp trong bảng toạ độ nếu sai. Dòng “Diện tích tính từ toạ độ” lệch không quá 0,3 m² so với GCN là toạ độ đúng.</li><li>Bấm <b>Tra cứu quy hoạch</b> để xem chỉ tiêu, vị trí trên bản đồ và tải sơ đồ A4, file KMZ.</li></ol><div class="note"><b>Mẹo nhanh:</b> nếu bảng toạ độ đọc chưa đúng, phóng to bảng toạ độ trên GCN, bấm <b>Win + Shift + S</b> để cắt riêng vùng bảng, rồi bấm <b>Ctrl + V</b> trên trang này để đọc lại.</div></section></div>
 
 <section class="card" id="info"><h2><span class="step">2</span>Kiểm tra / nhập thông tin thửa đất (theo Giấy chứng nhận)</h2>
 <div class="row"><div><label for="st">Thửa đất số</label><input type="text" id="st"></div><div><label for="sto">Tờ bản đồ số</label><input type="text" id="sto"></div><div><label for="md">Mục đích sử dụng</label><input type="text" id="md"></div></div>
