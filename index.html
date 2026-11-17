@@ -50,7 +50,7 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
 <header><h1>Tra cứu thông tin quy hoạch – phường Nha Trang</h1><p>Nhập toạ độ đỉnh thửa (VN-2000, ghi trên Giấy chứng nhận) để xem thửa đất thuộc đồ án quy hoạch nào, lộ giới, mặt cắt đường, mật độ xây dựng, tầng cao, chiều cao và sơ đồ vị trí. Mọi tính toán chạy ngay trên máy của bạn; số liệu bạn nhập không được gửi đi đâu.</p></header><div class="disc"><b>Thông tin tham khảo.</b> Kết quả tra cứu tự động từ bản vẽ các đồ án quy hoạch đã được phê duyệt, không thay thế văn bản cung cấp thông tin quy hoạch. Để có thông tin chính thức, đề nghị liên hệ UBND phường Nha Trang (nộp hồ sơ đề nghị cung cấp thông tin quy hoạch theo quy định).</div>
 
 <section class="card"><h2><span class="step">1</span>Tải Giấy chứng nhận (ảnh hoặc PDF)</h2>
-<div class="drop"><input type="file" id="f" accept="image/*,.pdf" multiple><p>Ảnh chụp rõ, thẳng hoặc file PDF các trang có “Thông tin thửa đất” và bảng toạ độ VN-2000. Ảnh được đọc ngay trên máy của bạn, không gửi đi đâu. Lần đầu cần tải bộ đọc chữ (khoảng 5 MB); mỗi trang đọc khoảng 20–60 giây.</p></div>
+<div class="drop"><input type="file" id="f" accept="image/*,.pdf" multiple><p>Ảnh chụp rõ, thẳng hoặc file PDF các trang có “Thông tin thửa đất” và bảng toạ độ VN-2000. Ảnh được gửi tới dịch vụ đọc chữ của Google (Google Drive) để đọc, file tạm được xoá ngay sau khi đọc, không lưu lại. Mỗi trang đọc khoảng 5–15 giây.</p></div>
 <div class="acts"><button class="pri" id="rd">Đọc GCN</button><button class="pri sec" id="manual">Nhập tay</button><button class="pri sec pv-hide" id="sample">Nạp hồ sơ mẫu (thửa 16, tờ 30)</button><span class="mut" id="rdm"></span></div></section>
 
 <section class="card" id="info"><h2><span class="step">2</span>Kiểm tra / nhập thông tin thửa đất (theo Giấy chứng nhận)</h2>
@@ -92,7 +92,7 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@4.2.1/dist/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/svg2pdf.js@2.8.1/dist/svg2pdf.umd.min.js"></script>
-<script>var PUBLIC=true;</script>
+<script>var PUBLIC=true;var OCR_URL='https://script.google.com/macros/s/AKfycbzgLbntPJWt9eOiMaFMi7GcuOH057aQon56OIh_ZJ1NwmgxZUqx_LdQIV4zLa35FgjKrw/exec';</script>
 <script>/* Đọc GCN bằng OCR ngay trên trình duyệt (Tesseract.js) cho trang công khai: ảnh không gửi đi đâu.
    Hai lượt: (A) đọc cả trang bằng tiếng Việt để lấy số thửa, tờ, địa chỉ và tìm vị trí bảng toạ độ;
              (B) cắt riêng bảng toạ độ, phóng to, đọc lại chỉ với chữ số.
@@ -159,6 +159,40 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
   }
   function score(rows) { return rows.length * 10 - outliers(rows).length * 15 - checkEdges(rows).length * 3; }
 
+  // OCR của Google trả chữ theo cột/khối: lấy lần lượt các số X, các số Y, các số cạnh rồi ghép theo thứ tự
+  function parseColumns(text) {
+    const t = text.replace(/\r/g, '');
+    const xs = [...t.matchAll(/(?<![\d.,])1\s?3\d{2}\s?\d{3}\s?[.,]\s?\d{2}(?!\d)/g)].map(m => ({ v: toNum(m[0], 7), i: m.index }));
+    const ys = [...t.matchAll(/(?<![\d.,])[56]\d{2}\s?\d{3}\s?[.,]\s?\d{2}(?!\d)/g)].map(m => ({ v: toNum(m[0], 6), i: m.index }));
+    const n = Math.min(xs.length, ys.length); if (n < 3) return [];
+    const start = xs[0].i, used = new Set(xs.concat(ys).map(o => o.i));
+    const es = [...t.matchAll(/(?<![\d.,])\d{1,3}[.,]\d{2}(?![\d.,]|\s*m)/g)].filter(m => m.index > start && !used.has(m.index)).map(m => parseFloat(m[0].replace(',', '.')));
+    let rows = []; for (let k = 0; k < n; k++) rows.push({ id: String(k + 1), x: xs[k].v, y: ys[k].v, edge: null });
+    if (rows.length > 3) { const a = rows[0], b = rows[rows.length - 1]; if (Math.abs(a.x - b.x) < 0.02 && Math.abs(a.y - b.y) < 0.02) rows.pop(); }
+    // cạnh: bảng GCN ghi cạnh ở dòng 2..n (+ dòng lặp điểm 1) -> gán vào dòng k (k-1→k)
+    if (es.length >= rows.length) es.slice(0, rows.length).forEach((e, k) => { rows[(k + 1) % rows.length].edge = e; });
+    return rows;
+  }
+
+  // Đọc bằng OCR của Google Drive (qua Google Apps Script), mỗi trang một ảnh JPEG
+  async function readGoogle(canvases, url, onProgress) {
+    const prog = (s, p) => onProgress && onProgress(s, p);
+    let all = '', rows = [];
+    for (let i = 0; i < canvases.length; i++) {
+      prog(`Đang đọc trang ${i + 1}/${canvases.length} (Google)…`, 0);
+      let cv = canvases[i]; if (cv.width > 2400) cv = crop(cv, 0, 0, cv.width, cv.height, 2400 / cv.width);
+      const data = cv.toDataURL('image/jpeg', 0.88).split(',')[1];
+      const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ data, mime: 'image/jpeg' }) });
+      const j = await r.json(); if (j.error) throw new Error(j.error);
+      all += '\n' + j.text;
+      let r1 = parseColumns(j.text); const r2 = parseTable(j.text); if (score(r2) > score(r1)) r1 = r2;
+      if (score(r1) > score(rows)) rows = r1;
+    }
+    const info = parseInfo(all);
+    const checks = outliers(rows).map(r => `điểm ${r.id} (${r.x}; ${r.y}) lệch xa các điểm khác, có thể đọc sai`).concat(checkEdges(rows));
+    return Object.assign(info, { coords: rows.map(r => ({ id: r.id, x: r.x, y: r.y })), checks, engine: 'google' });
+  }
+
   // dự phòng: không thấy dòng bảng rõ ràng -> ghép lần lượt mỗi số giống X với số giống Y kế tiếp
   function parseLoose(text) {
     const toks = text.replace(/(?<=\d)[)|lI\]!](?=\d)/g, '1').replace(/[|()\[\]{}]/g, ' ').split(/\s+/).filter(Boolean);
@@ -196,6 +230,7 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
       so_thua: pick(t, /th[^\s\d]{0,2}a\s*đ[^\s\d]{0,2}t\s*s[^\s\d:]{0,2}\s*[:.]?\s*(\d{1,5})/i),
       so_to: pick(t, /t[^\s\d]{0,2}\s*b[^\s\d]{0,2}n\s*đ[^\s\d]{0,2}\s*s[^\s\d:]{0,2}\s*[:.]?\s*(\d{1,4})/i),
       dia_chi: pick(t, /đ[ịi]a\s*ch[^\s]{0,2}\s*(?:th[^\s]{0,2}a\s*đ[^\s]{0,2}t)?\s*[:/.]\s*([^\n]{5,140})/i),
+      dien_tich: (v => v ? parseFloat(v.replace(/\./g, '').replace(',', '.')) : null)(pick(t, /di[ệe]n\s*t[íi]ch\s*[:.]?\s*(\d{1,6}(?:[.,]\d{1,2})?)\s*m/i)),
     };
   }
 
@@ -270,7 +305,7 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
     } finally { await wv.terminate(); await we.terminate(); }
   }
 
-  root.QHOcr = { read, parseLoose, parseTable, parseInfo, checkEdges, coordNum };
+  root.QHOcr = { read, readGoogle, parseColumns, parseLoose, parseTable, parseInfo, checkEdges, coordNum };
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 </script>
 <script>/* Lõi tính thông tin quy hoạch nhà ở riêng lẻ - phường Nha Trang (bản JavaScript, chuyển từ engine.py).
@@ -1615,10 +1650,13 @@ async function fileCanvas(file){const url=URL.createObjectURL(file);try{const im
 function pieces(cv){const toB=c=>new Promise(r=>c.toBlob(r,'image/jpeg',0.9));const out=[toB(cv)];const h=cv.height,w=cv.width;
  for(const [y0,y1] of [[0,0.55],[0.45,1]]){const c=document.createElement('canvas');c.width=w;c.height=Math.round(h*(y1-y0));c.getContext('2d').drawImage(cv,0,-Math.round(h*y0));out.push(toB(c))}return out}
 async function ocrRead(fs){busy('rdm','Đang chuẩn bị ảnh…');$('rd').disabled=true;
- try{if(!window.Tesseract)await loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js');
+ try{
   let cvs=[];for(const f of fs){if(/pdf$/i.test(f.type)||/\.pdf$/i.test(f.name))cvs=cvs.concat(await pdfImages(f,4.2));else cvs.push(await fileCanvas(f))}
-  const j=await QHOcr.read(cvs,(s,p)=>{if(s)busy('rdm',s);else if(p!=null){const t=$('rdm').textContent.replace(/ \d+%…?$/,'').replace(/…$/,'');busy('rdm',t+' '+Math.round(p*100)+'%…')}});
-  fillForm({so_thua:j.so_thua||'',so_to:j.so_to||'',dia_chi:j.dia_chi||'',coords:j.coords,muc_dich:'Đất ở tại đô thị'});
+  const pr=(s,p)=>{if(s)busy('rdm',s);else if(p!=null){const t=$('rdm').textContent.replace(/ \d+%…?$/,'').replace(/…$/,'');busy('rdm',t+' '+Math.round(p*100)+'%…')}};
+  let j=null;
+  if(OCR_URL){try{j=await QHOcr.readGoogle(cvs,OCR_URL,pr)}catch(e){console.warn('Google OCR lỗi, chuyển sang đọc trên máy',e);j=null}}
+  if(!j||(j.coords||[]).length<3){if(!window.Tesseract)await loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js');const k=await QHOcr.read(cvs,pr);if(!j||(k.coords||[]).length>(j.coords||[]).length)j=Object.assign({},j||{},k,{so_thua:(j&&j.so_thua)||k.so_thua,so_to:(j&&j.so_to)||k.so_to,dia_chi:(j&&j.dia_chi)||k.dia_chi})}
+  fillForm({so_thua:j.so_thua||'',so_to:j.so_to||'',dia_chi:j.dia_chi||'',dien_tich:j.dien_tich||'',coords:j.coords,muc_dich:'Đất ở tại đô thị'});
   $('rdm').classList.remove('busy');
   const n=(j.coords||[]).length;
   $('rdm').innerHTML=(n?'Đã đọc '+n+' điểm toạ độ.':'Không tìm thấy bảng toạ độ trong ảnh: nhập toạ độ bằng tay.')+' <b>Máy đọc ảnh có thể sai: đối chiếu từng số với GCN trước khi tra cứu.</b>'+((j.checks||[]).length?'<br>Cần kiểm tra: '+j.checks.map(esc).join('; '):'')}
