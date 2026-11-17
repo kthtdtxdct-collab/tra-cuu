@@ -44,12 +44,46 @@ ul.plans{margin:6px 0 0;padding-left:18px;font-size:13px;color:var(--mut);column
 @keyframes sp{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.busy::after{animation:none}}
 </style>
-<style>.pv-hide{display:none!important}.disc{background:var(--warn-bg);color:var(--warn-ink);border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:14px}
-footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
+<style>
+/* Giao diện trang công khai: tông đỏ - vàng - kem (theo thiệp mời), chuyên nghiệp */
+:root,:root[data-theme],:root:not([data-theme="light"]){--bg:#fff8ef;--card:#ffffff;--ink:#3b2422;--mut:#8a6a5e;--pri:#c1121f;--pri-ink:#fff;--ln:#f1dccf;--soft:#fff3ea;
+ --warn-bg:#fff4d6;--warn-ink:#7a4b00;--q-bg:#ffeceb;--q-ink:#8b1d1d;--ok:#2e7d32;--gold:#ffc93c;--gold-d:#e09f1f;--red:#e63946;--coral:#ff7b5c;color-scheme:light}
+body{background:var(--bg);background-image:radial-gradient(rgba(230,57,70,.06) 1.2px,transparent 1.3px);background-size:22px 22px}
+.wrap{max-width:1320px}
+.topbar{width:100vw;margin:0 0 18px calc(50% - 50vw);padding:22px 24px 20px;
+ background:linear-gradient(120deg,#9e0f1a 0%,#c1121f 45%,#e63946 100%);color:#fff;box-shadow:0 6px 24px rgba(193,18,31,.25);position:relative}
+.topbar:after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--gold-d),var(--gold),var(--gold-d))}
+.topbar .in{max-width:1320px;margin:0 auto;display:flex;gap:16px;align-items:center}
+.emb{flex:none;width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3b8,var(--gold) 55%,var(--gold-d));display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.emb svg{width:30px;height:30px;color:#9e0f1a}
+.topbar small{display:block;letter-spacing:.12em;text-transform:uppercase;font-size:11.5px;font-weight:600;color:#ffe3a3}
+.topbar h1{margin:2px 0 0;font-size:26px;font-weight:700;color:#fff}
+.topbar p{margin:4px 0 0;font-size:13.5px;color:#ffe9dc;max-width:90ch}
+header{display:none}
+.card{border:1px solid var(--ln);border-radius:14px;box-shadow:0 2px 14px rgba(193,18,31,.06);padding:18px}
+h2{color:#9e0f1a;font-weight:700}
+.step{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#7a0f12;font-weight:700}
+button.pri,a.btn{background:linear-gradient(135deg,var(--red),#c1121f);border-color:#c1121f;border-radius:9px;box-shadow:0 4px 12px rgba(230,57,70,.25)}
+button.sec,a.btn.sec{background:#fff;color:#c1121f;box-shadow:none}
+.drop{border-color:#f3c6b3;background:var(--soft)}
+.banner{background:linear-gradient(120deg,#9e0f1a,#c1121f 60%,#e63946);border-left:6px solid var(--gold)}
+.kpis div{background:linear-gradient(180deg,#fff,#fff6ee);border-color:#f3d9c8}.kpis b{color:#9e0f1a}
+th{color:var(--mut)}
+.disc{background:#fff4d6;color:#7a4b00;border:1px solid #f6dc9a;border-left:6px solid var(--gold-d);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:14px}
+.g12{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:16px;align-items:start}
+.g12>.card{margin-bottom:0}
+.grid2{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:16px}
+#sat{height:560px!important;border:1px solid var(--ln)}
+@media(max-width:960px){.g12,.grid2{grid-template-columns:minmax(0,1fr)}#sat{height:420px!important}}
+.leaflet-control-layers{font:12.5px var(--font);border-radius:10px!important}
+.pv-hide{display:none!important}
+footer{color:var(--mut);font-size:12.5px;margin-top:22px;border-top:1px solid var(--ln);padding-top:12px}
+#out{margin-top:16px}
+</style>
 <div class="wrap">
-<header><h1>Tra cứu thông tin quy hoạch – phường Nha Trang</h1><p>Nhập toạ độ đỉnh thửa (VN-2000, ghi trên Giấy chứng nhận) để xem thửa đất thuộc đồ án quy hoạch nào, lộ giới, mặt cắt đường, mật độ xây dựng, tầng cao, chiều cao và sơ đồ vị trí. Mọi tính toán chạy ngay trên máy của bạn; số liệu bạn nhập không được gửi đi đâu.</p></header><div class="disc"><b>Thông tin tham khảo.</b> Kết quả tra cứu tự động từ bản vẽ các đồ án quy hoạch đã được phê duyệt, không thay thế văn bản cung cấp thông tin quy hoạch. Để có thông tin chính thức, đề nghị liên hệ UBND phường Nha Trang (nộp hồ sơ đề nghị cung cấp thông tin quy hoạch theo quy định).</div>
+<div class="topbar"><div class="in"><div class="emb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3z"/><path d="M9 3v15M15 6v15"/></svg></div><div><small>Phường Nha Trang · Tỉnh Khánh Hòa</small><h1>Tra cứu thông tin quy hoạch</h1><p>Tải Giấy chứng nhận hoặc nhập toạ độ VN-2000 để xem thửa đất thuộc đồ án quy hoạch nào, lộ giới, mặt cắt đường, mật độ xây dựng, tầng cao, chiều cao, vị trí trên bản đồ và sơ đồ A4.</p></div></div></div><div class="disc"><b>Thông tin tham khảo.</b> Kết quả tra cứu tự động từ bản vẽ các đồ án quy hoạch đã được phê duyệt, không thay thế văn bản cung cấp thông tin quy hoạch. Để có thông tin chính thức, đề nghị liên hệ UBND phường Nha Trang (nộp hồ sơ đề nghị cung cấp thông tin quy hoạch theo quy định).</div>
 
-<section class="card"><h2><span class="step">1</span>Tải Giấy chứng nhận (ảnh hoặc PDF)</h2>
+<div class="g12"><section class="card"><h2><span class="step">1</span>Tải Giấy chứng nhận (ảnh hoặc PDF)</h2>
 <div class="drop"><input type="file" id="f" accept="image/*,.pdf" multiple><p>Ảnh chụp rõ, thẳng hoặc file PDF các trang có “Thông tin thửa đất” và bảng toạ độ VN-2000. Ảnh được gửi tới dịch vụ đọc chữ của Google (Google Drive) để đọc, file tạm được xoá ngay sau khi đọc, không lưu lại. Mỗi trang đọc khoảng 5–15 giây.</p><p><b>Mẹo:</b> nếu đọc chưa đúng, hãy cắt riêng vùng bảng toạ độ (Windows: phím Win + Shift + S; điện thoại: chụp màn hình rồi cắt) và bấm <b>Ctrl + V</b> trên trang này để dán ảnh: trang đọc lại bảng toạ độ, giữ nguyên các thông tin đã nhập.</p></div>
 <div class="acts"><button class="pri" id="rd">Đọc GCN</button><button class="pri sec" id="manual">Nhập tay</button><button class="pri sec pv-hide" id="sample">Nạp hồ sơ mẫu (thửa 16, tờ 30)</button><span class="mut" id="rdm"></span></div></section>
 
@@ -68,7 +102,7 @@ footer{color:var(--mut);font-size:12.5px;margin-top:18px}</style>
 <label for="co">Toạ độ đỉnh thửa VN-2000 (mỗi dòng: số hiệu X Y). Ví dụ: 1 1354151.10 601723.28. Giấy chứng nhận chưa có toạ độ thì đề nghị liên hệ UBND phường.</label><textarea id="co"></textarea>
 <div class="mut" id="coinfo"></div>
 <div class="acts"><button class="pri" id="go">Tra cứu quy hoạch</button><button class="pri sec pv-hide" id="fd">Tìm thửa trên bản đồ địa chính</button><span class="mut" id="gom"></span></div>
-<div class="cands" id="cands"></div></section>
+<div class="cands" id="cands"></div></section></div>
 
 <div id="out" hidden>
 <div class="banner" id="banner"></div>
@@ -1712,7 +1746,7 @@ $('go').onclick=async()=>{busy('gom','Đang tra cứu…');$('go').disabled=true
  catch(e){console.error(e);$('gom').classList.remove('busy');$('gom').textContent=e.message||String(e)}finally{$('go').disabled=false}};
 async function show(j,dg){const z=j.zone||{},f=BODY,pl=j.plan||{};$('out').hidden=false;
  const others=(j.plans||[]).filter(p=>p.code!==pl.code).map(p=>p.ten);
- $('banner').innerHTML='<b>Thửa đất số '+esc(f.so_thua)+', tờ bản đồ số '+esc(f.so_to)+', '+esc(f.dia_chi)+'</b><div>Thuộc '+esc(pl.ten||'?')+(z.id?' · ô đất '+esc(z.id):'')+(z.func?' ('+esc(z.func.toLowerCase())+')':'')+' · '+esc(pl.qd||'')+'</div>'+(others.length?'<div>Cùng nằm trong: '+esc(others.join('; '))+'</div>':'')+'<div>Cấp cho: '+esc(f.ten||'—')+'</div>';
+ $('banner').innerHTML='<b>Thửa đất số '+esc(f.so_thua)+', tờ bản đồ số '+esc(f.so_to)+', '+esc(f.dia_chi)+'</b><div>Thuộc '+esc(pl.ten||'?')+(z.id?' · ô đất '+esc(z.id):'')+(z.func?' ('+esc(z.func.toLowerCase())+')':'')+' · '+esc(pl.qd||'')+'</div>'+(others.length?'<div>Cùng nằm trong: '+esc(others.join('; '))+'</div>':'')+(PUBLIC?'':'<div>Cấp cho: '+esc(f.ten||'—')+'</div>');
  const fr=j.frontages||[];
  const notesFr=fr.filter(x=>x.note).map(x=>x.note);
  $('warns').innerHTML=(j.warnings||[]).map(w=>'<div class="note">'+esc(w)+'</div>').join('')+(j.questions||[]).map(q=>'<div class="note q"><b>Cần cán bộ xác nhận:</b> '+esc(q)+'</div>').join('')+(j.notes||[]).concat(notesFr).map(q=>'<div class="note ok">'+esc(q)+'</div>').join('');
@@ -1750,12 +1784,19 @@ async function satMap(j,cc){const el=$('sat');el.style.display='block';
  if(SATMAP){SATMAP.remove();SATMAP=null}
  const ll=(e,n)=>{const w=toWGS(e,n);return [w[0],w[1]]};
  const m=SATMAP=L.map(el,{zoomControl:true,attributionControl:true,maxZoom:22});
- L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:18,maxZoom:22,attribution:'Ảnh vệ tinh: Esri, Maxar, Earthstar Geographics'}).addTo(m);
- for(const l of j.cgdd_lines||[])L.polyline(l.map(p=>ll(p[0],p[1])),{color:'#00c853',weight:3}).addTo(m);
- for(const l of j.cgxd_lines||[])L.polyline(l.map(p=>ll(p[0],p[1])),{color:'#ffd600',weight:2,dashArray:'6 5'}).addTo(m);
- const poly=L.polygon(RING.map(p=>ll(p[0],p[1])),{color:'#ff1744',weight:3,fillColor:'#ff1744',fillOpacity:.15}).addTo(m);
- cc.forEach((c,i)=>L.marker(ll(c.y,c.x),{icon:L.divIcon({className:'',html:'<div style="color:#fff;font:bold 12px Arial;text-shadow:0 0 3px #000,0 0 3px #000;white-space:nowrap;transform:translate(4px,-14px)">'+esc(c.id||i+1)+'</div>',iconSize:[0,0]})}).addTo(m));
- m.fitBounds(poly.getBounds(),{padding:[60,60],maxZoom:21});
+ const sat=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:18,maxZoom:22,attribution:'Ảnh vệ tinh: Esri, Maxar, Earthstar Geographics'});
+ const osm=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxNativeZoom:19,maxZoom:22,attribution:'© OpenStreetMap'});
+ const lbl=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxNativeZoom:20,maxZoom:22,attribution:'Nhãn: © OpenStreetMap, © CARTO'});
+ sat.addTo(m);lbl.addTo(m);
+ const gd=L.layerGroup(),gx=L.layerGroup(),gt=L.layerGroup();
+ for(const l of j.cgdd_lines||[])L.polyline(l.map(p=>ll(p[0],p[1])),{color:'#00c853',weight:3}).addTo(gd);
+ for(const l of j.cgxd_lines||[])L.polyline(l.map(p=>ll(p[0],p[1])),{color:'#ffd600',weight:2,dashArray:'6 5'}).addTo(gx);
+ const poly=L.polygon(RING.map(p=>ll(p[0],p[1])),{color:'#ff1744',weight:3,fillColor:'#ff1744',fillOpacity:.15}).addTo(gt);
+ cc.forEach((c,i)=>L.marker(ll(c.y,c.x),{icon:L.divIcon({className:'',html:'<div style="color:#fff;font:bold 12px Arial;text-shadow:0 0 3px #000,0 0 3px #000;white-space:nowrap;transform:translate(4px,-14px)">'+esc(c.id||i+1)+'</div>',iconSize:[0,0]})}).addTo(gt));
+ gd.addTo(m);gx.addTo(m);gt.addTo(m);
+ L.control.layers({'Ảnh vệ tinh':sat,'Bản đồ đường phố':osm},{'Tên đường, địa danh':lbl,'Ranh thửa đất':gt,'Chỉ giới đường đỏ':gd,'Chỉ giới xây dựng':gx},{collapsed:false,position:'topright'}).addTo(m);
+ L.control.scale({imperial:false}).addTo(m);
+ m.fitBounds(poly.getBounds(),{padding:[60,60],maxZoom:20});
  setTimeout(()=>m.invalidateSize(),200)}
 function paper(vb){let h='';for(const it of vb){if(it[0]==='hd'){h+='<div class="hd"><div><b>'+esc(it[1][0]).replace(/\n/g,'<br>')+'</b>'+esc(it[2][0])+'</div><div><b>'+esc(it[1][1]).replace(/\n/g,'<br>')+'</b><i>'+esc(it[2][1])+'</i></div></div>'}
  else if(it[0]==='p'){const t=esc(it[1]);h+='<p'+(it[4]?' class="c"':'')+'>'+(it[2]?'<b>'+t+'</b>':it[3]?'<i>'+t+'</i>':t)+'</p>'}else if(it[0]==='sign'){h+='<div class="sg"><div>'+esc(it[1][0])+'</div><div>'+esc(it[1][1])+'</div></div>'}}$('paper').innerHTML=h}
