@@ -101,13 +101,17 @@ table.cog button.del{border:0;background:transparent;color:#b42318;font-size:18p
 table.ct{font-size:11px}table.ct th,table.ct td{padding:2px 6px!important;font-size:11px!important}
 .grid2>.card:last-child .tw{max-height:130px;overflow:auto;border:1px solid var(--ln);border-radius:8px;margin-top:-4px}
 .leaflet-control-layers-expanded{max-height:70%;overflow:auto}
+#pmap{height:520px;border:1px solid var(--ln);border-radius:10px;margin-top:8px}
+#pres{margin-top:12px}table.pt{width:100%;max-width:760px;font-size:13.5px}table.pt th{width:180px;text-align:left;color:var(--mut);font-weight:500}
+#dxfpick .pk{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}#dxfpick button{font-size:13px;padding:6px 10px}
+@media(max-width:960px){#pmap{height:400px}}
 </style>
 <div class="wrap">
 <div class="topbar"><div class="in"><div class="logo" title="MinTu"><svg viewBox="0 0 64 64" role="img" aria-label="Logo MinTu"><defs><linearGradient id="mtg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#e09f1f"/></linearGradient></defs><circle cx="32" cy="32" r="31" fill="url(#mtg)"/><circle cx="32" cy="32" r="28.2" fill="none" stroke="#0a2351" stroke-width="1.2"/><polygon points="32.00,8.70 39.99,22.20 55.30,25.63 44.93,37.40 46.40,53.02 32.00,46.80 17.60,53.02 19.07,37.40 8.70,25.63 24.01,22.20" fill="#0a2351" stroke="#0a2351" stroke-width="2.2" stroke-linejoin="round"/><text x="32" y="38.4" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="13.5" fill="#ffc93c" letter-spacing="-.4">Tu</text></svg><i>MinTu</i></div><div><small>Phường Nha Trang · Tỉnh Khánh Hòa</small><h1>Tra cứu thông tin quy hoạch</h1><p>Tải Giấy chứng nhận hoặc nhập toạ độ VN-2000 để xem thửa đất thuộc đồ án quy hoạch nào, lộ giới, mặt cắt đường, mật độ xây dựng, tầng cao, chiều cao, vị trí trên bản đồ và sơ đồ A4.</p></div></div></div><div class="disc"><b>Thông tin tham khảo.</b> Kết quả tra cứu tự động từ bản vẽ các đồ án quy hoạch đã được phê duyệt, không thay thế văn bản cung cấp thông tin quy hoạch. Để có thông tin chính thức, đề nghị liên hệ UBND phường Nha Trang (nộp hồ sơ đề nghị cung cấp thông tin quy hoạch theo quy định).</div>
 
-<div class="g12"><div class="colL"><section class="card"><h2><span class="step">1</span>Tải Giấy chứng nhận (ảnh hoặc PDF)</h2>
-<div class="drop"><p class="big">Kéo thả file PDF hoặc ảnh GCN vào đây</p><input type="file" id="f" accept="image/*,.pdf" multiple><p>Ảnh chụp rõ, thẳng hoặc file PDF các trang có “Thông tin thửa đất” và bảng toạ độ VN-2000. Ảnh được gửi tới dịch vụ đọc chữ của Google (Google Drive) để đọc, file tạm được xoá ngay sau khi đọc, không lưu lại. Mỗi trang đọc khoảng 5–15 giây.</p></div>
-<div class="acts"><button class="pri" id="rd">Đọc GCN</button><button class="pri sec" id="manual">Nhập tay</button><button class="pri sec pv-hide" id="sample">Nạp hồ sơ mẫu (thửa 16, tờ 30)</button><span class="mut" id="rdm"></span></div></section><section class="card guide"><h2>Hướng dẫn nhanh</h2><ol><li><b>Chọn hoặc kéo thả</b> file PDF/ảnh Giấy chứng nhận vào khung trên: trang tự đọc số thửa, tờ bản đồ, địa chỉ, diện tích và bảng toạ độ.</li><li><b>Đối chiếu</b> từng số với GCN ở khung bên phải; sửa trực tiếp trong bảng toạ độ nếu sai. Dòng “Diện tích tính từ toạ độ” lệch không quá 0,3 m² so với GCN là toạ độ đúng.</li><li>Bấm <b>Tra cứu quy hoạch</b> để xem chỉ tiêu, vị trí trên bản đồ và tải sơ đồ A4, file KMZ.</li></ol><div class="note"><b>Mẹo nhanh:</b> nếu bảng toạ độ đọc chưa đúng, phóng to bảng toạ độ trên GCN, bấm <b>Win + Shift + S</b> để cắt riêng vùng bảng, rồi bấm <b>Ctrl + V</b> trên trang này để đọc lại.</div></section></div>
+<div class="g12"><div class="colL"><section class="card"><h2><span class="step">1</span>Tải Giấy chứng nhận hoặc file toạ độ</h2>
+<div class="drop"><p class="big">Kéo thả file GCN (PDF, ảnh) hoặc file toạ độ (DXF, Excel) vào đây</p><input type="file" id="f" accept="image/*,.pdf,.dxf,.xlsx,.xls,.csv,.txt" multiple><p>Ảnh chụp rõ, thẳng hoặc file PDF các trang có “Thông tin thửa đất” và bảng toạ độ VN-2000. Ảnh được gửi tới dịch vụ đọc chữ của Google (Google Drive) để đọc, file tạm được xoá ngay sau khi đọc, không lưu lại. Mỗi trang đọc khoảng 5–15 giây.</p><p><b>File DXF</b> ranh thửa (hệ VN-2000 Khánh Hòa; file DWG cần Save As sang DXF) hoặc <b>Excel/CSV</b> bảng toạ độ được đọc ngay trên máy, không gửi đi đâu, cho toạ độ chính xác.</p></div>
+<div class="acts"><button class="pri" id="rd">Đọc GCN</button><button class="pri sec" id="manual">Nhập tay</button><button class="pri sec pv-hide" id="sample">Nạp hồ sơ mẫu (thửa 16, tờ 30)</button><span class="mut" id="rdm"></span></div></section><section class="card guide"><h2>Hướng dẫn nhanh</h2><ol><li><b>Chọn hoặc kéo thả</b> file PDF/ảnh Giấy chứng nhận vào khung trên: trang tự đọc số thửa, tờ bản đồ, địa chỉ, diện tích và bảng toạ độ. Có file <b>DXF</b> ranh thửa hoặc <b>Excel</b> bảng toạ độ thì tải file đó lên để toạ độ chính xác tuyệt đối.</li><li><b>Đối chiếu</b> từng số với GCN ở khung bên phải; sửa trực tiếp trong bảng toạ độ nếu sai. Dòng “Diện tích tính từ toạ độ” lệch không quá 0,3 m² so với GCN là toạ độ đúng.</li><li>Bấm <b>Tra cứu quy hoạch</b> để xem chỉ tiêu, vị trí trên bản đồ và tải sơ đồ A4, file KMZ.</li></ol><p class="mut" style="margin:6px 0 0">Chưa có toạ độ? Bấm <b>Chọn trên bản đồ</b>, phóng to ảnh vệ tinh và bấm vào thửa đất để xem nhanh đồ án, chức năng, chỉ tiêu tại điểm đó.</p><div class="note"><b>Mẹo nhanh:</b> nếu bảng toạ độ đọc chưa đúng, phóng to bảng toạ độ trên GCN, bấm <b>Win + Shift + S</b> để cắt riêng vùng bảng, rồi bấm <b>Ctrl + V</b> trên trang này để đọc lại.</div></section></div>
 
 <section class="card" id="info"><h2><span class="step">2</span>Kiểm tra / nhập thông tin thửa đất (theo Giấy chứng nhận)</h2>
 <div class="row"><div><label for="st">Thửa đất số</label><input type="text" id="st"></div><div><label for="sto">Tờ bản đồ số</label><input type="text" id="sto"></div><div><label for="md">Mục đích sử dụng</label><input type="text" id="md"></div></div>
@@ -124,7 +128,7 @@ table.ct{font-size:11px}table.ct th,table.ct td{padding:2px 6px!important;font-s
 <label for="co">Toạ độ đỉnh thửa VN-2000. Nhập theo bảng toạ độ trên GCN. Giấy chứng nhận chưa có toạ độ thì đề nghị liên hệ UBND phường.</label><textarea id="co"></textarea>
 <div class="mut" id="coinfo"></div>
 <div class="acts"><button class="pri" id="go">Tra cứu quy hoạch</button><button class="pri sec pv-hide" id="fd">Tìm thửa trên bản đồ địa chính</button><span class="mut" id="gom"></span></div>
-<div class="cands" id="cands"></div></section></div>
+<div class="cands" id="cands"></div></section></div><section class="card" id="pick" hidden><h2>Tra nhanh: chọn vị trí trên bản đồ</h2><p class="mut">Phóng to ảnh vệ tinh đến thửa đất rồi bấm vào giữa thửa. Kết quả tại một điểm, chỉ để tham khảo nhanh.</p><div id="pmap"></div><div id="pres"></div></section>
 
 <div id="out" hidden>
 <div class="banner" id="banner"></div>
@@ -1694,6 +1698,86 @@ const busy=(id,t)=>{$(id).textContent=t;$(id).classList.toggle('busy',!!t&&/…$
 let DL;
 async function saveBlob(blob,name){if(PUBLIC){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);return}try{DL=DL||await window.claude?.use?.('downloads');if(!DL)throw {code:'na'};await DL.save({filename:name,data:blob});$('dlm').textContent=''}catch(e){if(e&&(e.code==='declined'||e.code==='cancelled'))return;$('dlm').textContent='Khung xem này không cho tải file. Mở trang trong Claude để tải.'}}
 
+/* ---------- đọc toạ độ từ file DXF / Excel / CSV (đọc ngay trên máy, không gửi đi đâu) ---------- */
+const isDataFile=f=>/\.(dxf|xlsx|xls|csv|txt)$/i.test(f.name||'');
+const isN=v=>v>1.2e6&&v<1.5e6,isE=v=>v>4.5e5&&v<7.5e5;
+function parseNum(v){if(typeof v==='number')return v;let s=String(v??'').trim().replace(/[\s ]/g,'').replace(/m$/i,'');if(!s)return NaN;
+ const lc=s.lastIndexOf(','),ld=s.lastIndexOf('.');
+ if(lc>=0&&ld>=0){s=lc>ld?s.replace(/\./g,'').replace(',','.'):s.replace(/,/g,'')}
+ else if(lc>=0){s=(s.match(/,/g).length>1)?s.replace(/,/g,''):s.replace(',','.')}
+ else if((s.match(/\./g)||[]).length>1)s=s.replace(/\./g,'');
+ return /^[-+]?\d+(\.\d+)?$/.test(s)?Number(s):NaN}
+function coordsFromRows(rows){const out=[];
+ for(const r of rows){const cells=(r||[]).map(c=>c==null?'':c),nums=cells.map(parseNum);let ix=-1,iy=-1;
+  nums.forEach((v,i)=>{if(ix<0&&isN(v))ix=i;else if(iy<0&&isE(v))iy=i});
+  if(ix<0||iy<0)continue;
+  let id='';for(let k=Math.min(ix,iy)-1;k>=0;k--){const s=String(cells[k]).trim();if(s){id=s.length<=8?s:'';break}}
+  out.push({id:id||String(out.length+1),x:nums[ix],y:nums[iy]})}
+ if(out.length>3){const a=out[0],b=out[out.length-1];if(Math.abs(a.x-b.x)<0.005&&Math.abs(a.y-b.y)<0.005)out.pop()}
+ return out}
+function rowsFromText(t){return t.split(/\r?\n/).map(l=>l.trim()).filter(Boolean).map(l=>/[;\t]/.test(l)?l.split(/[;\t]/):(/\./.test(l)?l.split(/[\s,]+/):l.split(/\s+/)))}
+async function readSheet(f){if(/\.(csv|txt)$/i.test(f.name))return coordsFromRows(rowsFromText(await f.text()));
+ if(!window.XLSX)await loadScript('https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js');
+ const wb=XLSX.read(await f.arrayBuffer(),{type:'array'});let best=[];
+ for(const n of wb.SheetNames){const c=coordsFromRows(XLSX.utils.sheet_to_json(wb.Sheets[n],{header:1,raw:true,defval:''}));if(c.length>best.length)best=c}
+ return best}
+/* DXF dạng chữ (ASCII): lấy LWPOLYLINE/POLYLINE khép kín + chữ số hiệu đỉnh */
+function dxfParse(txt){const L=txt.split(/\r?\n/),ents=[];let sec='',cur=null,poly=null;
+ for(let i=0;i+1<L.length;i+=2){const c=parseInt(L[i]),v=L[i+1].trim();
+  if(c===0){
+   if(cur&&cur.t!=='VERTEX')ents.push(cur);
+   if(v==='SECTION'){sec='?';cur=null;continue}if(v==='ENDSEC'){sec='';cur=null;continue}
+   if(sec!=='ENTITIES'){cur=null;continue}
+   if(v==='VERTEX'&&poly){cur={t:'VERTEX'};poly.pts.push(cur);continue}
+   if(v==='SEQEND'){poly=null;cur=null;continue}
+   cur={t:v,pts:[],layer:''};if(v==='POLYLINE')poly=cur;continue}
+  if(sec==='?'&&c===2){sec=v;continue}
+  if(!cur)continue;
+  if(c===8)cur.layer=v;else if(c===70)cur.flag=parseInt(v);else if(c===1)cur.text=(cur.text||'')+v;else if(c===3)cur.text=v+(cur.text||'');
+  else if(c===10){if(cur.t==='LWPOLYLINE')cur.pts.push([parseFloat(v),NaN]);else cur.x=parseFloat(v)}
+  else if(c===20){if(cur.t==='LWPOLYLINE'&&cur.pts.length)cur.pts[cur.pts.length-1][1]=parseFloat(v);else cur.y=parseFloat(v)}}
+ if(cur&&cur.t!=='VERTEX')ents.push(cur);
+ const rings=[],texts=[];let nLine=0;
+ for(const e of ents){
+  if(e.t==='LWPOLYLINE'||e.t==='POLYLINE'){let pts=e.t==='LWPOLYLINE'?e.pts:e.pts.filter(q=>!(q.flag&16)).map(q=>[q.x,q.y]);pts=pts.filter(q=>isFinite(q[0])&&isFinite(q[1]));
+   if(pts.length<3)continue;const a=pts[0],b=pts[pts.length-1],shut=Math.hypot(a[0]-b[0],a[1]-b[1])<0.01;
+   if(!(e.flag&1)&&!shut)continue;if(shut)pts=pts.slice(0,-1);if(pts.length<3)continue;rings.push({layer:e.layer,pts})}
+  else if((e.t==='TEXT'||e.t==='MTEXT')&&isFinite(e.x)&&isFinite(e.y)){const s=String(e.text||'').replace(/\\[A-Za-z][^;]*;/g,'').replace(/[{}]/g,'').trim();if(s)texts.push({s,x:e.x,y:e.y})}
+  else if(e.t==='LINE')nLine++}
+ return {rings,texts,nLine}}
+function dxfCands(d){const out=[],seen=new Set();
+ for(const r of d.rings){let pts=r.pts;
+  if(pts.every(q=>isN(q[0])&&isE(q[1])))pts=pts.map(q=>[q[1],q[0]]);   // bản vẽ để X=Bắc, Y=Đông
+  if(!pts.every(q=>isE(q[0])&&isN(q[1])))continue;
+  const cs=pts.map(q=>({x:+q[1].toFixed(3),y:+q[0].toFixed(3)})),a=polyArea(cs);if(a<5||a>50000)continue;
+  const key=cs.map(c=>c.x.toFixed(2)+','+c.y.toFixed(2)).sort().join('|');if(seen.has(key))continue;seen.add(key);
+  // số hiệu đỉnh: chữ số ngắn đặt cách đỉnh dưới 2,5 m
+  const ids=cs.map(c=>{let b=null,bd=2.5;for(const t of d.texts){if(!/^[0-9]{1,3}[A-Za-z']?$/.test(t.s))continue;const dd=Math.hypot(t.x-c.y,t.y-c.x);if(dd<bd){bd=dd;b=t.s}}return b});
+  const uniq=ids.every(Boolean)&&new Set(ids).size===ids.length;
+  let lst=cs.map((c,i)=>({id:uniq?ids[i]:String(i+1),x:c.x,y:c.y}));
+  if(uniq){const k=lst.findIndex(c=>c.id==='1');if(k>0)lst=lst.slice(k).concat(lst.slice(0,k))}
+  out.push({layer:r.layer,cs:lst,area:a,named:uniq})}
+ const pri=c=>(/ranh|thua|thửa|rt|ranh_?dat/i.test(c.layer)?0:1)+(c.named?0:0.5);
+ return out.sort((a,b)=>pri(a)-pri(b)||b.area-a.area)}
+function setCoords(cs,msg){$('co').value=cs.map((c,i)=>(c.id||i+1)+' '+c.x+' '+c.y).join('\n');try{FROM_CAD=null}catch(_){}
+ $('info').hidden=false;checkArea();if(window.coRender)coRender();$('rdm').classList.remove('busy');$('rdm').innerHTML=msg;
+ const pk=$('dxfpick');if(pk)pk.innerHTML='';$('info').scrollIntoView({behavior:'smooth',block:'start'})}
+async function readDataFiles(fs){const f=fs[0];busy('rdm','Đang đọc file '+f.name+'…');
+ try{
+  if(/\.dxf$/i.test(f.name)){const t=await f.text();if(/^AutoCAD Binary DXF/.test(t.slice(0,22)))throw new Error('File DXF dạng nhị phân: mở bằng AutoCAD, Save As chọn “DXF (ASCII)” rồi tải lại.');
+   const d=dxfParse(t),c=dxfCands(d);
+   if(!c.length)throw new Error(d.rings.length?'Không thấy đường ranh nào theo hệ toạ độ VN-2000 (Khánh Hòa) trong file DXF. Kiểm tra bản vẽ có đặt đúng toạ độ thực (X ~ 1.35x.xxx, Y ~ 60x.xxx) không.':(d.nLine?'Ranh thửa trong file đang là các đoạn LINE rời. Nối thành một polyline khép kín (lệnh JOIN hoặc PEDIT) rồi lưu lại DXF.':'Không thấy đường polyline khép kín nào trong file DXF.'));
+   const rl=c.filter(x=>/ranh|thua|thửa/i.test(x.layer));
+   if(c.length===1||rl.length===1){const x=rl[0]||c[0];setCoords(x.cs,'Đã lấy '+x.cs.length+' đỉnh từ file DXF'+(x.layer?' (lớp '+esc(x.layer)+')':'')+', diện tích '+nf(x.area,2)+' m². Kiểm tra bảng toạ độ ở phần 2.');if(c.length===1)return true}
+   let pk=$('dxfpick');if(!pk){pk=document.createElement('div');pk.id='dxfpick';$('rdm').closest('.acts').insertAdjacentElement('afterend',pk)}
+   if(rl.length!==1){$('rdm').classList.remove('busy');$('rdm').textContent='File có '+c.length+' đường khép kín: chọn đường ranh thửa.'}else $('rdm').innerHTML+=' Không đúng đường ranh thì chọn đường khác bên dưới.';
+   pk.innerHTML='<div class="pk">'+c.slice(0,30).map((x,i)=>'<button type="button" class="pri sec" data-i="'+i+'"><b>'+nf(x.area,2)+' m²</b> · '+x.cs.length+' đỉnh'+(x.layer?' · lớp '+esc(x.layer):'')+'</button>').join('')+'</div>';
+   pk.querySelectorAll('button').forEach(b=>b.onclick=()=>{const x=c[+b.dataset.i];setCoords(x.cs,'Đã lấy '+x.cs.length+' đỉnh từ file DXF (diện tích '+nf(x.area,2)+' m²). Kiểm tra bảng toạ độ ở phần 2.')});return true}
+  const cs=await readSheet(f);
+  if(cs.length<3)throw new Error('Không thấy bảng toạ độ VN-2000 trong file (cần các cột X ~ 1.35x.xxx và Y ~ 60x.xxx).');
+  return setCoords(cs,'Đã lấy '+cs.length+' đỉnh từ file '+esc(f.name)+'. Kiểm tra bảng toạ độ ở phần 2.')}
+ catch(e){$('rdm').classList.remove('busy');$('rdm').textContent=e.message||String(e);return false}}
+
 /* ---------- đọc GCN bằng Claude ---------- */
 const GCN_PROMPT=`Đây là các trang Giấy chứng nhận quyền sử dụng đất (GCN) của Việt Nam (có thể là bản sao, nhiều trang hoặc nhiều mảnh cắt của cùng trang, có thể có nhiều GCN cấp cho các đồng sở hữu của cùng một thửa).
 Chỉ trả về MỘT JSON (không giải thích) với các khóa:
@@ -1717,7 +1801,8 @@ async function fileCanvas(file){let b;try{b=await createImageBitmap(file)}catch(
 /* mỗi trang: ảnh toàn trang + 2 nửa trên/dưới (để số toạ độ rõ hơn sau khi Claude thu nhỏ ảnh) */
 function pieces(cv){const toB=c=>new Promise(r=>c.toBlob(r,'image/jpeg',0.9));const out=[toB(cv)];const h=cv.height,w=cv.width;
  for(const [y0,y1] of [[0,0.55],[0.45,1]]){const c=document.createElement('canvas');c.width=w;c.height=Math.round(h*(y1-y0));c.getContext('2d').drawImage(cv,0,-Math.round(h*y0));out.push(toB(c))}return out}
-async function ocrRead(fs){busy('rdm','Đang chuẩn bị ảnh…');$('rd').disabled=true;
+async function ocrRead(fs){if(fs.some(isDataFile)){const ok=await readDataFiles(fs.filter(isDataFile));fs=fs.filter(f=>!isDataFile(f));if(!fs.length)return ok}
+ busy('rdm','Đang chuẩn bị ảnh…');$('rd').disabled=true;
  try{
   let cvs=[];for(const f of fs){if(/pdf$/i.test(f.type)||/\.pdf$/i.test(f.name))cvs=cvs.concat(await pdfImages(f,4.2));else cvs.push(await fileCanvas(f))}
   const pr=(s,p)=>{if(s)busy('rdm',s);else if(p!=null){const t=$('rdm').textContent.replace(/ \d+%…?$/,'').replace(/…$/,'');busy('rdm',t+' '+Math.round(p*100)+'%…')}};
@@ -1739,7 +1824,7 @@ if(PUBLIC){
  const dz=document.querySelector('.drop');
  if(dz){['dragenter','dragover'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add('over')}));
   ['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove('over')}));
-  dz.addEventListener('drop',e=>{const fs=[...e.dataTransfer.files].filter(f=>/^image\//.test(f.type)||/pdf$/i.test(f.type)||/\.pdf$/i.test(f.name));if(!fs.length)return;try{const dt=new DataTransfer();fs.forEach(f=>dt.items.add(f));$('f').files=dt.files}catch(_){}ocrRead(fs)})}
+  dz.addEventListener('drop',e=>{const fs=[...e.dataTransfer.files].filter(f=>/^image\//.test(f.type)||/pdf$/i.test(f.type)||/\.pdf$/i.test(f.name)||isDataFile(f));if(!fs.length)return;try{const dt=new DataTransfer();fs.forEach(f=>dt.items.add(f));$('f').files=dt.files}catch(_){}ocrRead(fs)})}
  const g=document.createElement('div');g.id='cogrid';$('co').insertAdjacentElement('afterend',g);
  const rowsFromCo=()=>$('co').value.split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{const a=l.split(/[\s;\t]+/);return a.length>=3?a.slice(0,3):['',a[0]||'',a[1]||'']});
  const sync=()=>{const rs=[...g.querySelectorAll('tbody tr')].map(tr=>[...tr.querySelectorAll('input')].map(i=>i.value.trim()));
@@ -1757,7 +1842,8 @@ if(PUBLIC){
   const out=cur.slice(0,Math.max(0,start)).concat(add);$('co').value=out.map((r,k)=>(r[0]||k+1)+' '+r[1]+' '+r[2]).join('\n');coRender();checkArea()});
  coRender();
 }
-$('rd').onclick=async()=>{const fs=[...$('f').files];if(!fs.length){$('rdm').textContent='Chọn file GCN trước.';return}
+$('rd').onclick=async()=>{let fs=[...$('f').files];if(!fs.length){$('rdm').textContent='Chọn file GCN trước.';return}
+ if(fs.some(isDataFile)){await readDataFiles(fs.filter(isDataFile));fs=fs.filter(f=>!isDataFile(f));if(!fs.length)return}
  if(PUBLIC||!window.claude)return ocrRead(fs);
  const sample=await window.claude?.use?.('sample');if(!sample){$('rdm').textContent='Trang chỉ đọc được GCN khi mở trong Claude. Bấm “Nhập tay” để nhập số liệu.';return}
  busy('rdm','Đang chuẩn bị ảnh…');$('rd').disabled=true;
@@ -1823,6 +1909,35 @@ async function show(j,dg){const z=j.zone||{},f=BODY,pl=j.plan||{};$('out').hidde
  $('ctab').innerHTML='<caption class="mut" style="text-align:left;padding-bottom:4px">Toạ độ VN-2000 (KTT 108°15\', múi 3°)</caption><tr><th>Điểm</th><th>X (m)</th><th>Y (m)</th><th>Cạnh (m)</th></tr>'+cc.map((c,i)=>'<tr><td>'+esc(c.id||i+1)+'</td><td>'+c.x.toFixed(2)+'</td><td>'+c.y.toFixed(2)+'</td><td>'+len(i).toFixed(2)+'</td></tr>').join('');
  if(PUBLIC)satMap(j,cc).catch(e=>console.warn('ảnh vệ tinh',e));
  $('out').scrollIntoView({behavior:'smooth'})}
+/* ---------- trang công khai: chọn điểm trên bản đồ để tra nhanh ---------- */
+async function ensureLeaflet(){if(window.L)return;const l=document.createElement('link');l.rel='stylesheet';l.href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';document.head.appendChild(l);await loadScript('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js')}
+let PMAP=null,PMK=null;
+async function openPick(){const sec=$('pick');sec.hidden=false;sec.scrollIntoView({behavior:'smooth',block:'start'});await ensureLeaflet();if(PMAP){setTimeout(()=>PMAP.invalidateSize(),150);return}
+ const m=PMAP=L.map('pmap',{maxZoom:22}).setView([12.2420,109.1940],15);
+ const sat=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:18,maxZoom:22,attribution:'Ảnh vệ tinh: Esri, Maxar, Earthstar Geographics'}).addTo(m);
+ const osm=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxNativeZoom:19,maxZoom:22,attribution:'© OpenStreetMap'});
+ const lbl=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxNativeZoom:20,maxZoom:22,attribution:'Nhãn: © OpenStreetMap, © CARTO'}).addTo(m);
+ L.control.layers({'Ảnh vệ tinh':sat,'Bản đồ đường phố':osm},{'Tên đường, địa danh':lbl},{collapsed:true}).addTo(m);L.control.scale({imperial:false}).addTo(m);
+ m.on('click',e=>pickAt(e.latlng));setTimeout(()=>m.invalidateSize(),150)}
+async function pickAt(ll){const m=PMAP;if(PMK)PMK.remove();PMK=L.circleMarker(ll,{radius:7,color:'#fff',weight:2,fillColor:'#ff1744',fillOpacity:1}).addTo(m);
+ const [e,n]=proj4('EPSG:4326',VN2000,[ll.lng,ll.lat]);const out=$('pres');out.innerHTML='<p class="mut busy">Đang tra cứu tại điểm đã chọn…</p>';
+ try{await boot;const d=1.5,ring=[[e-d,n-d],[e+d,n-d],[e+d,n+d],[e-d,n+d]],P=G.poly(ring);await DB.ensure(P);
+  let r=null;try{r=DB.analyze(ring,{})}catch(err){console.warn(err)}
+  const plans=DB.plansAt(P);
+  const xy='<p class="mut">Toạ độ điểm chọn (VN-2000): X = '+nf(n,2)+' m; Y = '+nf(e,2)+' m · WGS84: '+ll.lat.toFixed(6)+', '+ll.lng.toFixed(6)+'</p>';
+  if(!plans.length){out.innerHTML=xy+'<div class="note">Điểm này không thuộc đồ án quy hoạch nào đã có dữ liệu trên trang.</div>';return}
+  const pl=(r&&r.plan)||plans[0].meta;let z=(r&&r.zone)||{};
+  if(!r||!r.zone){const h=plans[0].zonesHit(P);if(h.length)z=h[0][1]}
+  const fr=((r&&r.frontages)||[]).filter(x=>x.width);
+  const rows=[['Đồ án',esc(pl.ten||'')+'<br><span class="mut">'+esc(pl.qd||'')+'</span>'],['Ô đất',esc(z.id||'—')],['Chức năng',esc(z.func||'—')],
+   ['Mật độ xây dựng',z.mdxd?esc(z.mdxd)+'%':'—'],['Tầng cao',z.tang_cao?esc(z.tang_cao)+' tầng':'—'],['Hệ số sử dụng đất',z.hssd?esc(z.hssd)+' lần':'—']];
+  if(z.h_max)rows.push(['Chiều cao tối đa',nf(z.h_max)+' m']);
+  if(fr.length)rows.push(['Đường gần nhất',fr.map(x=>esc(x.name||'')+' · lộ giới '+nf(x.width)+' m').join('<br>')]);
+  const others=plans.slice(1).map(p=>p.meta.ten).filter(Boolean);
+  out.innerHTML=xy+'<table class="pt">'+rows.map(r=>'<tr><th>'+r[0]+'</th><td>'+r[1]+'</td></tr>').join('')+'</table>'+(others.length?'<p class="mut">Cùng nằm trong: '+esc(others.join('; '))+'</p>':'')+
+   '<div class="note">Kết quả tại <b>một điểm</b>, chỉ để tham khảo nhanh. Để có diện tích phù hợp xây dựng, lộ giới, khoảng lùi và sơ đồ A4 của cả thửa, hãy tải GCN, file DXF/Excel toạ độ hoặc nhập toạ độ ở phần 1–2.</div>'}
+ catch(err){console.error(err);out.innerHTML='<div class="note">'+esc(err.message||String(err))+'</div>'}}
+if(PUBLIC){const a=document.querySelector('.drop')&&$('rdm').closest('.acts');if(a){const b=document.createElement('button');b.type='button';b.className='pri sec';b.id='pickbtn';b.textContent='Chọn trên bản đồ';a.insertBefore(b,$('rdm'));b.onclick=openPick}}
 /* ảnh vệ tinh + ranh thửa (chỉ trang công khai; ảnh nền Esri World Imagery) */
 let SATMAP=null;
 async function satMap(j,cc){const el=$('sat');el.style.display='block';
@@ -1838,14 +1953,20 @@ async function satMap(j,cc){const el=$('sat');el.style.display='block';
  for(const l of j.cgdd_lines||[])L.polyline(l.map(p=>ll(p[0],p[1])),{color:'#00c853',weight:3}).addTo(gd);
  for(const l of j.cgxd_lines||[])L.polyline(l.map(p=>ll(p[0],p[1])),{color:'#ffd600',weight:2,dashArray:'6 5'}).addTo(gx);
  const poly=L.polygon(RING.map(p=>ll(p[0],p[1])),{color:'#ff1744',weight:3,fillColor:'#ff1744',fillOpacity:.15}).addTo(gt);
- cc.forEach((c,i)=>L.marker(ll(c.y,c.x),{icon:L.divIcon({className:'',html:'<div style="color:#fff;font:bold 12px Arial;text-shadow:0 0 3px #000,0 0 3px #000;white-space:nowrap;transform:translate(4px,-14px)">'+esc(c.id||i+1)+'</div>',iconSize:[0,0]})}).addTo(gt));
+ /* toạ độ màn hình (mức zoom cố định): góc xoay và hướng ra ngoài không đổi khi phóng to/thu nhỏ */
+ const px=cc.map(c=>m.project(L.latLng(ll(c.y,c.x)),20)),pc=px.reduce((a,p)=>[a[0]+p.x/px.length,a[1]+p.y/px.length],[0,0]);
+ const tag=(t,css,tf)=>L.divIcon({className:'',html:'<div style="display:inline-block;white-space:nowrap;text-shadow:0 0 3px #000,0 0 3px #000,0 0 2px #000;'+css+';transform:'+tf+'">'+t+'</div>',iconSize:[0,0]});
+ cc.forEach((c,i)=>{let vx=px[i].x-pc[0],vy=px[i].y-pc[1];const vl=Math.hypot(vx,vy)||1;vx/=vl;vy/=vl;
+  L.marker(ll(c.y,c.x),{interactive:false,icon:tag(esc(c.id||i+1),'color:#fff;font:bold 12px Arial','translate(-50%,-50%) translate('+(vx*13).toFixed(1)+'px,'+(vy*13).toFixed(1)+'px)')}).addTo(gt)});
  const ge=L.layerGroup();
- cc.forEach((c,i)=>{const d=cc[(i+1)%cc.length],len=Math.hypot(d.x-c.x,d.y-c.y);if(len<0.2)return;const a=ll(c.y,c.x),b=ll(d.y,d.x);
-  L.marker([(a[0]+b[0])/2,(a[1]+b[1])/2],{interactive:false,icon:L.divIcon({className:'',html:'<div style="color:#ffe27a;font:600 11px Arial;text-shadow:0 0 3px #000,0 0 3px #000;white-space:nowrap;transform:translate(-50%,-50%)">'+len.toFixed(2)+'</div>',iconSize:[0,0]})}).addTo(ge)});
+ cc.forEach((c,i)=>{const k=(i+1)%cc.length,d=cc[k],len=Math.hypot(d.x-c.x,d.y-c.y);if(len<0.5)return;const a=ll(c.y,c.x),b=ll(d.y,d.x),p=px[i],q=px[k];
+  const dx=q.x-p.x,dy=q.y-p.y,dl=Math.hypot(dx,dy)||1;let ang=Math.atan2(dy,dx)*180/Math.PI;if(ang>90)ang-=180;if(ang<-90)ang+=180;
+  let nx=-dy/dl,ny=dx/dl;if(((p.x+q.x)/2-pc[0])*nx+((p.y+q.y)/2-pc[1])*ny<0){nx=-nx;ny=-ny}
+  L.marker([(a[0]+b[0])/2,(a[1]+b[1])/2],{interactive:false,icon:tag(len.toFixed(2),'color:#ffe27a;font:600 11px Arial','translate(-50%,-50%) translate('+(nx*10).toFixed(1)+'px,'+(ny*10).toFixed(1)+'px) rotate('+ang.toFixed(1)+'deg)')}).addTo(ge)});
  gd.addTo(m);gx.addTo(m);gt.addTo(m);ge.addTo(m);
  L.control.layers({'Ảnh vệ tinh':sat,'Bản đồ đường phố':osm},{'Tên đường, địa danh':lbl,'Ranh thửa đất':gt,'Kích thước cạnh (m)':ge,'Chỉ giới đường đỏ':gd,'Chỉ giới xây dựng':gx},{collapsed:true,position:'topright'}).addTo(m);
  L.control.scale({imperial:false}).addTo(m);
- m.fitBounds(poly.getBounds(),{padding:[60,60],maxZoom:20});
+ m.fitBounds(poly.getBounds(),{padding:[70,70],maxZoom:21});
  setTimeout(()=>m.invalidateSize(),200)}
 function paper(vb){let h='';for(const it of vb){if(it[0]==='hd'){h+='<div class="hd"><div><b>'+esc(it[1][0]).replace(/\n/g,'<br>')+'</b>'+esc(it[2][0])+'</div><div><b>'+esc(it[1][1]).replace(/\n/g,'<br>')+'</b><i>'+esc(it[2][1])+'</i></div></div>'}
  else if(it[0]==='p'){const t=esc(it[1]);h+='<p'+(it[4]?' class="c"':'')+'>'+(it[2]?'<b>'+t+'</b>':it[3]?'<i>'+t+'</i>':t)+'</p>'}else if(it[0]==='sign'){h+='<div class="sg"><div>'+esc(it[1][0])+'</div><div>'+esc(it[1][1])+'</div></div>'}}$('paper').innerHTML=h}
