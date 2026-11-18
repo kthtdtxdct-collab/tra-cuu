@@ -1916,7 +1916,7 @@ async function openPick(){const sec=$('pick');sec.hidden=false;sec.scrollIntoVie
  const m=PMAP=L.map('pmap',{maxZoom:22}).setView([12.2420,109.1940],15);
  const sat=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:18,maxZoom:22,attribution:'Ảnh vệ tinh: Esri, Maxar, Earthstar Geographics'}).addTo(m);
  const osm=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxNativeZoom:19,maxZoom:22,attribution:'© OpenStreetMap'});
- const lbl=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxNativeZoom:20,maxZoom:22,attribution:'Nhãn: © OpenStreetMap, © CARTO'}).addTo(m);
+ const lbl=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxNativeZoom:18,maxZoom:22,attribution:'Nhãn: © OpenStreetMap, © CARTO'}).addTo(m);
  L.control.layers({'Ảnh vệ tinh':sat,'Bản đồ đường phố':osm},{'Tên đường, địa danh':lbl},{collapsed:true}).addTo(m);L.control.scale({imperial:false}).addTo(m);
  m.on('click',e=>pickAt(e.latlng));setTimeout(()=>m.invalidateSize(),150)}
 async function pickAt(ll){const m=PMAP;if(PMK)PMK.remove();PMK=L.circleMarker(ll,{radius:7,color:'#fff',weight:2,fillColor:'#ff1744',fillOpacity:1}).addTo(m);
@@ -1947,7 +1947,7 @@ async function satMap(j,cc){const el=$('sat');el.style.display='block';
  const m=SATMAP=L.map(el,{zoomControl:true,attributionControl:true,maxZoom:22});
  const sat=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:18,maxZoom:22,attribution:'Ảnh vệ tinh: Esri, Maxar, Earthstar Geographics'});
  const osm=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxNativeZoom:19,maxZoom:22,attribution:'© OpenStreetMap'});
- const lbl=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxNativeZoom:20,maxZoom:22,attribution:'Nhãn: © OpenStreetMap, © CARTO'});
+ const lbl=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxNativeZoom:18,maxZoom:22,attribution:'Nhãn: © OpenStreetMap, © CARTO'});
  sat.addTo(m);lbl.addTo(m);
  const gd=L.layerGroup(),gx=L.layerGroup(),gt=L.layerGroup();
  for(const l of j.cgdd_lines||[])L.polyline(l.map(p=>ll(p[0],p[1])),{color:'#00c853',weight:3}).addTo(gd);
