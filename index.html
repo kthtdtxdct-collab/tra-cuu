@@ -101,17 +101,14 @@ table.cog button.del{border:0;background:transparent;color:#b42318;font-size:18p
 table.ct{font-size:11px}table.ct th,table.ct td{padding:2px 6px!important;font-size:11px!important}
 .grid2>.card:last-child .tw{max-height:130px;overflow:auto;border:1px solid var(--ln);border-radius:8px;margin-top:-4px}
 .leaflet-control-layers-expanded{max-height:70%;overflow:auto}
-#pmap{height:520px;border:1px solid var(--ln);border-radius:10px;margin-top:8px}
-#pres{margin-top:12px}table.pt{width:100%;max-width:760px;font-size:13.5px}table.pt th{width:180px;text-align:left;color:var(--mut);font-weight:500}
 #dxfpick .pk{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}#dxfpick button{font-size:13px;padding:6px 10px}
-@media(max-width:960px){#pmap{height:400px}}
 </style>
 <div class="wrap">
 <div class="topbar"><div class="in"><div class="logo" title="MinTu"><svg viewBox="0 0 64 64" role="img" aria-label="Logo MinTu"><defs><linearGradient id="mtg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#e09f1f"/></linearGradient></defs><circle cx="32" cy="32" r="31" fill="url(#mtg)"/><circle cx="32" cy="32" r="28.2" fill="none" stroke="#0a2351" stroke-width="1.2"/><polygon points="32.00,8.70 39.99,22.20 55.30,25.63 44.93,37.40 46.40,53.02 32.00,46.80 17.60,53.02 19.07,37.40 8.70,25.63 24.01,22.20" fill="#0a2351" stroke="#0a2351" stroke-width="2.2" stroke-linejoin="round"/><text x="32" y="38.4" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="13.5" fill="#ffc93c" letter-spacing="-.4">Tu</text></svg><i>MinTu</i></div><div><small>Phường Nha Trang · Tỉnh Khánh Hòa</small><h1>Tra cứu thông tin quy hoạch</h1><p>Tải Giấy chứng nhận hoặc nhập toạ độ VN-2000 để xem thửa đất thuộc đồ án quy hoạch nào, lộ giới, mặt cắt đường, mật độ xây dựng, tầng cao, chiều cao, vị trí trên bản đồ và sơ đồ A4.</p></div></div></div><div class="disc"><b>Thông tin tham khảo.</b> Kết quả tra cứu tự động từ bản vẽ các đồ án quy hoạch đã được phê duyệt, không thay thế văn bản cung cấp thông tin quy hoạch. Để có thông tin chính thức, đề nghị liên hệ UBND phường Nha Trang (nộp hồ sơ đề nghị cung cấp thông tin quy hoạch theo quy định).</div>
 
 <div class="g12"><div class="colL"><section class="card"><h2><span class="step">1</span>Tải Giấy chứng nhận hoặc file toạ độ</h2>
 <div class="drop"><p class="big">Kéo thả file GCN (PDF, ảnh) hoặc file toạ độ (DXF, Excel) vào đây</p><input type="file" id="f" accept="image/*,.pdf,.dxf,.xlsx,.xls,.csv,.txt" multiple><p>Ảnh chụp rõ, thẳng hoặc file PDF các trang có “Thông tin thửa đất” và bảng toạ độ VN-2000. Ảnh được gửi tới dịch vụ đọc chữ của Google (Google Drive) để đọc, file tạm được xoá ngay sau khi đọc, không lưu lại. Mỗi trang đọc khoảng 5–15 giây.</p><p><b>File DXF</b> ranh thửa (hệ VN-2000 Khánh Hòa; file DWG cần Save As sang DXF) hoặc <b>Excel/CSV</b> bảng toạ độ được đọc ngay trên máy, không gửi đi đâu, cho toạ độ chính xác.</p></div>
-<div class="acts"><button class="pri" id="rd">Đọc GCN</button><button class="pri sec" id="manual">Nhập tay</button><button class="pri sec pv-hide" id="sample">Nạp hồ sơ mẫu (thửa 16, tờ 30)</button><span class="mut" id="rdm"></span></div></section><section class="card guide"><h2>Hướng dẫn nhanh</h2><ol><li><b>Chọn hoặc kéo thả</b> file PDF/ảnh Giấy chứng nhận vào khung trên: trang tự đọc số thửa, tờ bản đồ, địa chỉ, diện tích và bảng toạ độ. Có file <b>DXF</b> ranh thửa hoặc <b>Excel</b> bảng toạ độ thì tải file đó lên để toạ độ chính xác tuyệt đối.</li><li><b>Đối chiếu</b> từng số với GCN ở khung bên phải; sửa trực tiếp trong bảng toạ độ nếu sai. Dòng “Diện tích tính từ toạ độ” lệch không quá 0,3 m² so với GCN là toạ độ đúng.</li><li>Bấm <b>Tra cứu quy hoạch</b> để xem chỉ tiêu, vị trí trên bản đồ và tải sơ đồ A4, file KMZ.</li></ol><p class="mut" style="margin:6px 0 0">Chưa có toạ độ? Bấm <b>Chọn trên bản đồ</b>, phóng to ảnh vệ tinh và bấm vào thửa đất để xem nhanh đồ án, chức năng, chỉ tiêu tại điểm đó.</p><div class="note"><b>Mẹo nhanh:</b> nếu bảng toạ độ đọc chưa đúng, phóng to bảng toạ độ trên GCN, bấm <b>Win + Shift + S</b> để cắt riêng vùng bảng, rồi bấm <b>Ctrl + V</b> trên trang này để đọc lại.</div></section></div>
+<div class="acts"><button class="pri" id="rd">Đọc GCN</button><button class="pri sec" id="manual">Nhập tay</button><button class="pri sec pv-hide" id="sample">Nạp hồ sơ mẫu (thửa 16, tờ 30)</button><span class="mut" id="rdm"></span></div></section><section class="card guide"><h2>Hướng dẫn nhanh</h2><ol><li><b>Chọn hoặc kéo thả</b> file PDF/ảnh Giấy chứng nhận vào khung trên: trang tự đọc số thửa, tờ bản đồ, địa chỉ, diện tích và bảng toạ độ. Có file <b>DXF</b> ranh thửa hoặc <b>Excel</b> bảng toạ độ thì tải file đó lên để toạ độ chính xác tuyệt đối.</li><li><b>Đối chiếu</b> từng số với GCN ở khung bên phải; sửa trực tiếp trong bảng toạ độ nếu sai. Dòng “Diện tích tính từ toạ độ” lệch không quá 0,3 m² so với GCN là toạ độ đúng.</li><li>Bấm <b>Tra cứu quy hoạch</b> để xem chỉ tiêu, vị trí trên bản đồ và tải sơ đồ A4, file KMZ.</li></ol><div class="note"><b>Mẹo nhanh:</b> nếu bảng toạ độ đọc chưa đúng, phóng to bảng toạ độ trên GCN, bấm <b>Win + Shift + S</b> để cắt riêng vùng bảng, rồi bấm <b>Ctrl + V</b> trên trang này để đọc lại.</div></section></div>
 
 <section class="card" id="info"><h2><span class="step">2</span>Kiểm tra / nhập thông tin thửa đất (theo Giấy chứng nhận)</h2>
 <div class="row"><div><label for="st">Thửa đất số</label><input type="text" id="st"></div><div><label for="sto">Tờ bản đồ số</label><input type="text" id="sto"></div><div><label for="md">Mục đích sử dụng</label><input type="text" id="md"></div></div>
@@ -128,7 +125,7 @@ table.ct{font-size:11px}table.ct th,table.ct td{padding:2px 6px!important;font-s
 <label for="co">Toạ độ đỉnh thửa VN-2000. Nhập theo bảng toạ độ trên GCN. Giấy chứng nhận chưa có toạ độ thì đề nghị liên hệ UBND phường.</label><textarea id="co"></textarea>
 <div class="mut" id="coinfo"></div>
 <div class="acts"><button class="pri" id="go">Tra cứu quy hoạch</button><button class="pri sec pv-hide" id="fd">Tìm thửa trên bản đồ địa chính</button><span class="mut" id="gom"></span></div>
-<div class="cands" id="cands"></div></section></div><section class="card" id="pick" hidden><h2>Tra nhanh: chọn vị trí trên bản đồ</h2><p class="mut">Phóng to ảnh vệ tinh đến thửa đất rồi bấm vào giữa thửa. Kết quả tại một điểm, chỉ để tham khảo nhanh.</p><div id="pmap"></div><div id="pres"></div></section>
+<div class="cands" id="cands"></div></section></div>
 
 <div id="out" hidden>
 <div class="banner" id="banner"></div>
@@ -1909,36 +1906,6 @@ async function show(j,dg){const z=j.zone||{},f=BODY,pl=j.plan||{};$('out').hidde
  $('ctab').innerHTML='<caption class="mut" style="text-align:left;padding-bottom:4px">Toạ độ VN-2000 (KTT 108°15\', múi 3°)</caption><tr><th>Điểm</th><th>X (m)</th><th>Y (m)</th><th>Cạnh (m)</th></tr>'+cc.map((c,i)=>'<tr><td>'+esc(c.id||i+1)+'</td><td>'+c.x.toFixed(2)+'</td><td>'+c.y.toFixed(2)+'</td><td>'+len(i).toFixed(2)+'</td></tr>').join('');
  if(PUBLIC)satMap(j,cc).catch(e=>console.warn('ảnh vệ tinh',e));
  $('out').scrollIntoView({behavior:'smooth'})}
-/* ---------- trang công khai: chọn điểm trên bản đồ để tra nhanh ---------- */
-async function ensureLeaflet(){if(window.L)return;const l=document.createElement('link');l.rel='stylesheet';l.href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';document.head.appendChild(l);await loadScript('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js')}
-let PMAP=null,PMK=null;
-async function openPick(){const sec=$('pick');sec.hidden=false;sec.scrollIntoView({behavior:'smooth',block:'start'});await ensureLeaflet();if(PMAP){setTimeout(()=>PMAP.invalidateSize(),150);return}
- const m=PMAP=L.map('pmap',{maxZoom:22}).setView([12.2420,109.1940],15);
- const sat=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:18,maxZoom:22,attribution:'Ảnh vệ tinh: Esri, Maxar, Earthstar Geographics'}).addTo(m);
- const osm=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxNativeZoom:19,maxZoom:22,attribution:'© OpenStreetMap'});
- const lbl=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxNativeZoom:18,maxZoom:22,attribution:'Nhãn: © OpenStreetMap, © CARTO'}).addTo(m);
- L.control.layers({'Ảnh vệ tinh':sat,'Bản đồ đường phố':osm},{'Tên đường, địa danh':lbl},{collapsed:true}).addTo(m);L.control.scale({imperial:false}).addTo(m);
- m.on('click',e=>pickAt(e.latlng));setTimeout(()=>m.invalidateSize(),150)}
-async function pickAt(ll){const m=PMAP;if(PMK)PMK.remove();PMK=L.circleMarker(ll,{radius:7,color:'#fff',weight:2,fillColor:'#ff1744',fillOpacity:1}).addTo(m);
- const [e,n]=proj4('EPSG:4326',VN2000,[ll.lng,ll.lat]);const out=$('pres');out.innerHTML='<p class="mut busy">Đang tra cứu tại điểm đã chọn…</p>';
- try{await boot;const d=1.5,ring=[[e-d,n-d],[e+d,n-d],[e+d,n+d],[e-d,n+d]],P=G.poly(ring);await DB.ensure(P);
-  let r=null;try{r=DB.analyze(ring,{})}catch(err){console.warn(err)}
-  const plans=DB.plansAt(P);
-  const xy='<p class="mut">Toạ độ điểm chọn (VN-2000): X = '+nf(n,2)+' m; Y = '+nf(e,2)+' m · WGS84: '+ll.lat.toFixed(6)+', '+ll.lng.toFixed(6)+'</p>';
-  if(!plans.length){out.innerHTML=xy+'<div class="note">Điểm này không thuộc đồ án quy hoạch nào đã có dữ liệu trên trang.</div>';return}
-  const pl=(r&&r.plan)||plans[0].meta;let z=(r&&r.zone)||{};
-  if(!r||!r.zone){const h=plans[0].zonesHit(P);if(h.length)z=h[0][1]}
-  const fr=((r&&r.frontages)||[]).filter(x=>x.width);
-  const rows=[['Đồ án',esc(pl.ten||'')+'<br><span class="mut">'+esc(pl.qd||'')+'</span>'],['Ô đất',esc(z.id||'—')],['Chức năng',esc(z.func||'—')],
-   ['Mật độ xây dựng',z.mdxd?esc(z.mdxd)+'%':'—'],['Tầng cao',z.tang_cao?esc(z.tang_cao)+' tầng':'—'],['Hệ số sử dụng đất',z.hssd?esc(z.hssd)+' lần':'—']];
-  if(z.h_max)rows.push(['Chiều cao tối đa',nf(z.h_max)+' m']);
-  if(fr.length)rows.push(['Đường gần nhất',fr.map(x=>(x.name?'Đường '+esc(x.name):'Đường phía '+esc(x.dir||''))+' · lộ giới '+nf(x.width)+' m').join('<br>')]);
-  if(!z.mdxd&&!z.tang_cao)rows.push(['Ghi chú','Ô đất không ghi chỉ tiêu riêng: mật độ, tầng cao, hệ số sử dụng đất của nhà ở riêng lẻ được tính theo diện tích và bề rộng mặt tiền của từng thửa (Quy chế quản lý kiến trúc), cần toạ độ thửa để tính.']);
-  const others=plans.slice(1).map(p=>p.meta.ten).filter(Boolean);
-  out.innerHTML=xy+'<table class="pt">'+rows.map(r=>'<tr><th>'+r[0]+'</th><td>'+r[1]+'</td></tr>').join('')+'</table>'+(others.length?'<p class="mut">Cùng nằm trong: '+esc(others.join('; '))+'</p>':'')+
-   '<div class="note">Kết quả tại <b>một điểm</b>, chỉ để tham khảo nhanh. Để có diện tích phù hợp xây dựng, lộ giới, khoảng lùi và sơ đồ A4 của cả thửa, hãy tải GCN, file DXF/Excel toạ độ hoặc nhập toạ độ ở phần 1–2.</div>'}
- catch(err){console.error(err);out.innerHTML='<div class="note">'+esc(err.message||String(err))+'</div>'}}
-if(PUBLIC){const a=document.querySelector('.drop')&&$('rdm').closest('.acts');if(a){const b=document.createElement('button');b.type='button';b.className='pri sec';b.id='pickbtn';b.textContent='Chọn trên bản đồ';a.insertBefore(b,$('rdm'));b.onclick=openPick}}
 /* ảnh vệ tinh + ranh thửa (chỉ trang công khai; ảnh nền Esri World Imagery) */
 let SATMAP=null;
 async function satMap(j,cc){const el=$('sat');el.style.display='block';
