@@ -1932,7 +1932,8 @@ async function pickAt(ll){const m=PMAP;if(PMK)PMK.remove();PMK=L.circleMarker(ll
   const rows=[['Đồ án',esc(pl.ten||'')+'<br><span class="mut">'+esc(pl.qd||'')+'</span>'],['Ô đất',esc(z.id||'—')],['Chức năng',esc(z.func||'—')],
    ['Mật độ xây dựng',z.mdxd?esc(z.mdxd)+'%':'—'],['Tầng cao',z.tang_cao?esc(z.tang_cao)+' tầng':'—'],['Hệ số sử dụng đất',z.hssd?esc(z.hssd)+' lần':'—']];
   if(z.h_max)rows.push(['Chiều cao tối đa',nf(z.h_max)+' m']);
-  if(fr.length)rows.push(['Đường gần nhất',fr.map(x=>esc(x.name||'')+' · lộ giới '+nf(x.width)+' m').join('<br>')]);
+  if(fr.length)rows.push(['Đường gần nhất',fr.map(x=>(x.name?'Đường '+esc(x.name):'Đường phía '+esc(x.dir||''))+' · lộ giới '+nf(x.width)+' m').join('<br>')]);
+  if(!z.mdxd&&!z.tang_cao)rows.push(['Ghi chú','Ô đất không ghi chỉ tiêu riêng: mật độ, tầng cao, hệ số sử dụng đất của nhà ở riêng lẻ được tính theo diện tích và bề rộng mặt tiền của từng thửa (Quy chế quản lý kiến trúc), cần toạ độ thửa để tính.']);
   const others=plans.slice(1).map(p=>p.meta.ten).filter(Boolean);
   out.innerHTML=xy+'<table class="pt">'+rows.map(r=>'<tr><th>'+r[0]+'</th><td>'+r[1]+'</td></tr>').join('')+'</table>'+(others.length?'<p class="mut">Cùng nằm trong: '+esc(others.join('; '))+'</p>':'')+
    '<div class="note">Kết quả tại <b>một điểm</b>, chỉ để tham khảo nhanh. Để có diện tích phù hợp xây dựng, lộ giới, khoảng lùi và sơ đồ A4 của cả thửa, hãy tải GCN, file DXF/Excel toạ độ hoặc nhập toạ độ ở phần 1–2.</div>'}
